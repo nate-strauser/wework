@@ -1,0 +1,13 @@
+{
+  "packages": {
+    "voltage": {},
+    "iron-router": {},
+    "sugarjs": {},
+    "bootstrap-3": {},
+    "font-awesome": {},
+    "handlebar-helpers": {},
+    "moment": {},
+    "accounts-entry": {},
+    "collection2": {}
+  }
+}

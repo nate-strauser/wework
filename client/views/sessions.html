@@ -1,0 +1,45 @@
+
+<template name="sessions">
+	{{#each sessions}}
+		<div class="well">
+			User Session Count: {{count}}
+			<br>
+			Start: {{getPrettyDateAndTime timestamp}}
+			<br>
+			End: {{getPrettyDateAndTime endTimestamp}}
+			<br>
+			<a href="{{pathFor 'session'}}">Details</a>
+		</div>
+	{{/each}}
+</template>
+
+<template name="session">
+	{{#with session}}
+		User Session Count: {{count}}
+		<br>
+		Start: {{getPrettyDateAndTime timestamp}}
+		<br>
+		End: {{getPrettyDateAndTime endTimestamp}}
+	{{/with}}
+
+	<div class="well">
+		<h4>Achievements - {{achievementsCount}}</h4>
+		{{#each achievements}}
+			{{>achievementEmbed}}
+		{{/each}}		
+	</div>
+
+	<div class="well">
+		<h4>Submissions - {{submissionsCount}}</h4>
+		{{#each submissions}}
+			{{>submissionEmbed}}
+		{{/each}}		
+	</div>
+
+</template>
+
+<template name="sessionEmbed">
+	<div>
+		{{count}} - {{getPrettyDateAndTime timestamp}} - {{getPrettyDateAndTime endTimestamp}} - <a href="{{pathFor 'session'}}"><i class="fa fa-eye"></i></div>
+	</div>
+</template>

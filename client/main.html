@@ -1,0 +1,50 @@
+<head>
+  <title>We Work Meteor</title>
+</head>
+
+<template name="layout">
+	{{yield 'header'}}
+	<div id="content-wrapper" class="container-fluid">
+		{{yield}}
+	</div>
+	{{yield 'footer'}}
+</template>
+
+<template name="home">
+	{{#unless currentUser}}
+		Please sign in...
+	{{else}}
+		<a href="{{pathFor 'dashboard'}}">Go to Dashboard</a>
+	{{/unless}}
+	
+</template>
+
+<template name="dashboard">
+	<a href="{{pathFor 'submit'}}" class="btn btn-info"><i class="fa fa-chevron-right"></i> Submit Testing</a>
+	<div class="row">
+		<div class="col-md-4">
+			<h4>Sessions</h4>
+			{{#each recentSessions}}
+				<div>
+					{{count}} - {{getPrettyDateAndTime timestamp}} - {{getPrettyDateAndTime endTimestamp}}
+				</div>
+			{{/each}}
+		</div>
+		<div class="col-md-2">
+			<h4>Submissions</h4>
+			{{#each recentSubmissions}}
+				<div>
+					{{getPrettyDateAndTime timestamp}}
+				</div>
+			{{/each}}
+		</div>
+		<div class="col-md-6">
+			<h4>Achievements</h4>
+			{{#each recentAchievements}}
+				<div>
+					{{title}} - {{message}} - {{getPrettyDateAndTime timestamp}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

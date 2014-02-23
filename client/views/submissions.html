@@ -1,0 +1,108 @@
+
+<template name="submit">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle btn-warning" data-toggle="dropdown">
+			    <i class="fa fa-rocket"></i> Automated Programs <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#" id="auto-50-submits-1-session">50 submits in 1 session</a></li>
+			    <li><a href="#" id="auto-100-submits-1-session">100 submits in 1 session</a></li>
+			    <li><a href="#" id="auto-200-submits-1-session">200 submits in 1 session</a></li>
+			    <li><a href="#" id="auto-1000-submits-1-session">1000 submits in 1 session</a></li>
+			    <li><a href="#" id="auto-1000-submits-random-sessions">1000 submits over a random number of sessions</a></li>
+			    <li><a href="#" id="auto-3-days-in-row">3 days of submits</a></li>
+			    <li><a href="#" id="auto-10-days-in-row">10 days of submits</a></li>
+			  </ul>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<form role="form" class="form-inline" id="submitForm">
+				<div class="form-group">
+					<label for="hoursOffset">Hours Offset (0+ only)</label>
+					<input type="number" id="hoursOffset" placeholder="Hours offset (future only - 0 or higher)" value="{{$.Session.get 'hoursOffset'}}" min="0" max="240"/>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-4">
+			<button id="newSession" class="btn btn-info"><i class="fa fa-share-square-o"></i> Start New Session</button>
+			{{#if currentSession}}
+				<button id="newSubmission" class="btn btn-primary"><i class="fa fa-chevron-right"></i> Submit</button>
+			{{/if}}
+		</div>
+		<div class="col-md-2">
+			{{#if currentSession}}
+				<div class="pull-right">
+					Submission this Session: {{currentSession.submissionCount}}
+					<br>
+					Personal Best Streak: {{user.profile.longestStreak}}
+				</div>
+			{{/if}}
+		</div>
+		
+		
+		
+	</div>
+	<div class="row {{#unless $.Session.equals 'auto-prog-running' true}}hidden{{/unless}}">
+		<div class="col-md-12">
+			<div class="alert alert-warning"><strong>Automated Testing Running</strong><br>{{$.Session.get 'auto-prog-message'}}</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h4>Sessions</h4>
+			<small> Last 10 of {{sessionsCount}}</small>
+			{{#each recentSessions}}
+			{{>sessionEmbed}}
+			{{/each}}
+		</div>
+		<div class="col-md-2">
+			<h4>Submissions</h4>
+			<small> Last 10 of {{submissionsCount}}</small>
+			{{#each recentSubmissions}}
+			{{>submissionEmbed}}
+			{{/each}}
+		</div>
+		<div class="col-md-6">
+			<h4>Achievements</h4>
+			<small> Last 10 of {{achievementsCount}}</small>
+			{{#each recentAchievements}}
+			{{>achievementEmbed}}
+			{{/each}}
+		</div>
+	</div>
+</template>
+
+<template name="submissions">
+	{{#each submissions}}
+	<div class="well">
+		DateTime: {{getPrettyDateAndTime timestamp}}
+		<br>
+		<a href="{{pathFor 'submission'}}">Details</a>
+	</div>
+	{{/each}}
+</template>
+
+<template name="submission">
+	{{#with submission}}
+	<div class="well">
+		DateTime: {{getPrettyDateAndTime timestamp}}
+		<br>
+		Session: <a href="/sessions/{{sessionId}}"><i class="fa fa-eye"></i></a>
+	</div>
+	{{/with}}
+
+	<div class="well">
+		<h4>Achievements - {{achievementsCount}}</h4>
+		{{#each achievements}}
+			{{>achievementEmbed}}
+		{{/each}}		
+	</div>
+</template>
+
+<template name="submissionEmbed">
+	<div>
+		{{getPrettyDateAndTime timestamp}} - <a href="{{pathFor 'submission'}}"><i class="fa fa-eye"></i></a>
+	</div>
+</template>

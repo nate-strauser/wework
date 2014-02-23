@@ -1,0 +1,36 @@
+
+<template name="achievements">
+	{{#each achievements}}
+		<div class="well">
+			Title: {{title}}
+			<br>
+			Message: {{message}}
+			<br>
+			DateTime: {{getPrettyDateAndTime timestamp}}
+			<br>
+			<a href="{{pathFor 'achievement'}}">Details</a>
+		</div>
+	{{/each}}
+</template>
+
+<template name="achievement">
+	{{#with achievement}}
+		<div class="well">
+			Title: {{title}}
+			<br>
+			Message: {{message}}
+			<br>
+			DateTime: {{getPrettyDateAndTime timestamp}}
+			<br>
+			Version: {{version}}
+			<br>
+			Session: <a href="/sessions/{{sessionId}}"><i class="fa fa-eye"></i></a>
+			<br>
+			Submission: <a href="/submissions/{{submissionId}}"><i class="fa fa-eye"></i></a>
+		</div>
+	{{/with}}
+</template>
+
+<template name="achievementEmbed">
+	<div>{{title}} - {{message}} - {{getPrettyDateAndTime timestamp}} - <a href="{{pathFor 'achievement'}}"><i class="fa fa-eye"></i></div>
+</template>
