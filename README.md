@@ -23,13 +23,17 @@ job only>
 *equity offered > min/max
 *salary offered
 
+add location field and remote ok option
+
+
 ## Features / Plans
 * Charge for posting
-* Pull in postings from other sites (elance, stackoverflow, angellist, etc)
+* Pull in postings from other sites (elance, stackoverflow, angellist, twitter 'meteorjs hiring', etc)
 * expire postings after 90? days, only send down non-expired to client
 * auto generate for multiple languages/communities
 * add logging
 * add metrics
+* add filtering / sorting
 
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.

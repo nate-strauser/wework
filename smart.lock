@@ -12,7 +12,8 @@
       "accounts-entry": {},
       "collection2": {},
       "iron-router-progress": {},
-      "autoform": {}
+      "autoform": {},
+      "accounts-linkedin": {}
     },
     "packages": {
       "voltage": {
@@ -22,8 +23,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.3",
-        "commit": "79861385df5d2b667630ec82abe4de3efa3166e3"
+        "tag": "v0.6.4",
+        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
       },
       "sugarjs": {
         "git": "https://github.com/crapthings/meteor-sugarjs.git",
@@ -52,8 +53,8 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.6.0",
-        "commit": "54cd9585ea58c88f3dc2d736f3ae7a6fa8432c13"
+        "tag": "v0.6.1",
+        "commit": "8e42d4abca33d6a00d236d198589fe4924729d09"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
@@ -69,6 +70,11 @@
         "git": "https://github.com/aldeed/meteor-autoform.git",
         "tag": "v0.4.16",
         "commit": "314a85e982e228e35d193019441f208a95645189"
+      },
+      "accounts-linkedin": {
+        "git": "https://github.com/yefim/meteor-accounts-linkedin.git",
+        "tag": "v0.0.5",
+        "commit": "0ccf12b93f5cd6f487caa68a12a640099e358ffd"
       },
       "minimongoid": {
         "git": "https://github.com/Exygy/minimongoid.git",
@@ -104,6 +110,11 @@
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
         "tag": "v0.2.38",
         "commit": "2deec0041fc6cb2666df8cd6a51914e499e95683"
+      },
+      "linkedin": {
+        "git": "https://github.com/yefim/meteor-linkedin.git",
+        "tag": "v0.0.2",
+        "commit": "c3bac682ea0edd19e58b9172e708f91616888ba0"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
