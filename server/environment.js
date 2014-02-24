@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-  AccountsEntry.config({
-    signupCode: null
-  });
+	AccountsEntry.config({
+		signupCode: null
+	});
 });

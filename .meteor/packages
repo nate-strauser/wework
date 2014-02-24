@@ -6,7 +6,6 @@
 standard-app-packages
 insecure
 preserve-inputs
-voltage
 iron-router
 sugarjs
 bootstrap-3

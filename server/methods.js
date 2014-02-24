@@ -1,7 +1,7 @@
 
-Meteor.startup(function () {
-	Meteor.methods({
-		methodX: function () {
-		}
-   });
-});
+// Meteor.startup(function () {
+// 	Meteor.methods({
+// 		methodX: function () {
+// 		}
+//    });
+// });

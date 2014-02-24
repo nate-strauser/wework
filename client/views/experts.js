@@ -1,37 +1,32 @@
 var expertsForm = new AutoForm(Experts);
 
 expertsForm.hooks({
-  after: {
-    insert: function(error, result) {
-		if (error) {
-			console.log("Insert Error:", error);
-		} else {
-			//console.log("Insert Result:", result);
-			Router.go('expert', {_id:result});
-		}
-	},
-	update: function(error, result) {
-		if (error) {
-			console.log("Update Error:", error);
-		} else {
-			//console.log("Update Result:", result);
-			Router.go('expert', {_id: Session.get('editingExpertId')});
-		}
-	},
-	remove: function(error, result) {
-		if (error) {
-			console.log("Remove Error:", error);
-		} else {
-			//console.log("Insert Result:", result);
-			Router.go('experts');
+	after: {
+		insert: function(error, result) {
+			if (error) {
+				console.log("Insert Error:", error);
+			} else {
+				//console.log("Insert Result:", result);
+				Router.go('expert', {_id:result});
+			}
+		},
+		update: function(error, result) {
+			if (error) {
+				console.log("Update Error:", error);
+			} else {
+				//console.log("Update Result:", result);
+				Router.go('expert', {_id: Session.get('editingExpertId')});
+			}
+		},
+		remove: function(error, result) {
+			if (error) {
+				console.log("Remove Error:", error);
+			} else {
+				//console.log("Insert Result:", result);
+				Router.go('experts');
+			}
 		}
 	}
-  }
-  // ,
-  // onSuccess:function(operation, result, template) {
-  // 	console.log('success ' + operation);
-  // 	console.log(result);
-  // }
 });
 
 var baseHelpers = {
