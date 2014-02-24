@@ -31,31 +31,50 @@
 	{{/each}}
 </template>
 
+<template name="jobLabels">
+	<span class="pull-right">
+		{{#if found}}<span class="label label-info"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}
+		{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
+	</span>
+</template>
+
 <template name="jobEmbedSmall">
-	<h4><a href="{{pathFor 'job'}}">{{title}}</a>{{#if found}} <span class="label label-info pull-right"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}</h4>
+	<h4>
+		<a href="{{pathFor 'job'}}">{{title}}</a>
+		{{>jobLabels}}
+	</h4>
 	{{#if company}}{{company}} - {{/if}}{{getPrettyDateAndTime createdAt}}
 </template>
 
 <template name="jobEmbedLarge">
 	<div class="row">
 		<div class="col-xs-12">
-			<h3><a href="{{pathFor 'job'}}">{{title}}</a>{{#if found}} <span class="label label-info pull-right"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}</h3>
+			<h3>
+				<a href="{{pathFor 'job'}}">{{title}}</a>
+				{{>jobLabels}}
+			</h3>
 			{{#if company}}
 				<br>
-				Company: {{company}}
+				{{company}}
+				<hr>
+			{{/if}}
+			{{#if location}}
+				<br>
+				{{location}}
+				<hr>
 			{{/if}}
 			{{#if url}}
 				<br>
-				URL: <a href="{{url}}" target="_blank">{{url}}</a>
+				<i class="fa fa-external-link fa-lg"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
 			{{/if}}
 			{{#if htmlDescription}}
-				<br>
-				Description: {{{htmlDescription}}}
+				<hr><br>
+				{{{htmlDescription}}}
 			{{/if}}
 			<!-- <br>
 			By: userName -->
 			<br>
-			Created On: {{getPrettyDateAndTime createdAt}}
+			{{getPrettyDateAndTime createdAt}}
 		</div>
 	</div>
 	<div class="row">
@@ -110,7 +129,9 @@
 <template name="jobFields">
 	{{afQuickField 'title'}}
     {{afQuickField 'company'}}
-    {{afQuickField 'url'}}
+    {{afQuickField 'location'}}
+    {{afQuickField 'remote'}}
+    {{afQuickField 'url' type="url"}}
     {{afQuickField 'description' rows=8}}
     {{afQuickField 'found'}}
 </template>

@@ -1,47 +1,59 @@
 
 <template name="header">
 	<nav class="navbar navbar-default" role="navigation">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="/">We Work Meteor</a>
-	    </div>
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">We Work Meteor</a>
+			</div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	      	<li><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-	      	<!-- <li><a href="{{pathFor 'experts'}}">Experts</a></li> -->
-	      	{{#if currentUser}}
-		      	<li><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
-		      	<!-- <li><a href="{{pathFor 'expertNew'}}">Become an Expert</a></li> -->
-	      	{{/if}}
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	      	{{accountButtons}}
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="{{pathFor 'jobs'}}">Jobs</a></li>
+					<li><a href="{{pathFor 'experts'}}">Experts</a></li>
+					{{#if currentUser}}
+					<li><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
+					<li>
+						{{#if $.Session.equals 'isExpert' true}}
+							{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
+						{{else}}
+							<a href="{{pathFor 'expertNew'}}">Offer Expert Services</a>
+						{{/if}}
+					</li>
+					{{/if}}
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{{accountButtons}}
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
 	</nav>
 </template>
 
 <template name="footer">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12 text-center">
+			<div class="col-xs-12 text-center">
 				<br><hr><br>
-				<small>by <a href="http://www.natestrauser.com">Nate Strauser</a> - <a href="https://github.com/nate-strauser/wework"><i class="fa fa-github"></i></a></small>
+				<small>
+					<i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<a href="http://www.natestrauser.com">Nate Strauser</a>
+					&nbsp;-&nbsp;
+					<i class="fa fa-btc fa-lg"></i>&nbsp;&nbsp;1565ZfsW2xEheJK2vMiQyBFeUAz6kGD4HB
+					&nbsp;-&nbsp;
+					<i class="fa fa-github fa-lg"></i>&nbsp;&nbsp;<a href="https://github.com/nate-strauser/wework">Fork me on GitHub</a>
+				</small>
 			</div>
 		</div>
 	</div>
 </template>
 
 <template name="loading">
-    <i class="fa fa-spinner fa-spin"></i>&nbsp;Loading....
+	<i class="fa fa-spinner fa-spin"></i>&nbsp;Loading....
 </template>

@@ -13,32 +13,46 @@
 <template name="home">
 	{{#if currentUser}}
 		<div class="row">
-			<div class="col-xs-12">
-				<!-- TBD - DASHBOARD
-				<br>
-				You are currently listed as an expert, edit profile
-				<br> -->
-				You currently have {{myJobsCount}} job postings
+			<div class="col-xs-6">
+				You currently have {{myJobsCount}} job postings - <a href="{{pathFor 'jobNew'}}">Post a New Job</a>
 			</div>
+			<div class="col-xs-6">
+				{{#if $.Session.equals 'isExpert' true}}
+					You are currently listed as an expert - {{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
+				{{else}}
+					You are not currently offering your services as an expert - <a href="{{pathFor 'expertNew'}}">Offer Expert Services</a>
+				{{/if}}
+			</div>
+
 		</div>
 	{{else}}
-	<div class="jumbotron">
-		<h1>Welcome to We Work Meteor</h1>
-		  <p>We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire. The site is not all the way there yet, but the plan is in motion , so bear with us as new features are added.  In the meantime, join the community.</p>
-
-		  <p>
-		  	If you are hiring or just found something you'd like to add
-		  	<a class="btn btn-primary btn-md" role="button" href="{{pathFor 'jobNew'}}"> Post a Job</a>
-		  </p>
-</div>
+		<div class="jumbotron">
+			<h1>Welcome to We Work Meteor</h1>
+			<p>
+				We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire. The site is not all the way there yet, but the plan is in motion , so bear with us as new features are added.  In the meantime, join the community.
+			</p>
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<a class="btn btn-primary btn-lg" role="button" href="{{pathFor 'jobNew'}}">I'm looking for a developer to hire</a>
+				</div>
+				<div class="col-xs-6 text-center">
+					<a class="btn btn-info btn-lg" role="button" href="{{pathFor 'jobNew'}}">I found a job posting I want to share</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<br><br>
+					<a class="btn btn-warning btn-lg" role="button" href="{{pathFor 'expertNew'}}">I'm a meteor developer and I want to offer expert services</a>
+				</div>
+			</div>
+		</div>
 	{{/if}}
-	{{>jobsRecent}}
-	<!-- <div class="row">
+	<div class="row">
 		<div class="col-xs-6">
-			
+			{{>jobsRecent}}
 		</div>
 		<div class="col-xs-6">
-			>expertsRecent
+			{{>expertsRecent}}
 		</div>
-	</div> -->
+	</div>
 </template>
