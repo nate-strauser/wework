@@ -10,7 +10,9 @@
       "handlebar-helpers": {},
       "moment": {},
       "accounts-entry": {},
-      "collection2": {}
+      "collection2": {},
+      "iron-router-progress": {},
+      "autoform": {}
     },
     "packages": {
       "voltage": {
@@ -57,6 +59,16 @@
         "git": "https://github.com/aldeed/meteor-collection2.git",
         "tag": "v0.3.8",
         "commit": "69aff2a21ba3c382f915e1f9dbcca2ad38edb6d5"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "autoform": {
+        "git": "https://github.com/aldeed/meteor-autoform.git",
+        "tag": "v0.4.16",
+        "commit": "314a85e982e228e35d193019441f208a95645189"
       },
       "minimongoid": {
         "git": "https://github.com/Exygy/minimongoid.git",

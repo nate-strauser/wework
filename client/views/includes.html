@@ -16,27 +16,15 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	      	<li><a href="/jobs">Jobs</a></li>
-	      	<li><a href="/experts">Experts</a></li>
-	      	<li><a href="/job/post">Post a Job</a></li>
-	      	<li><a href="/expert/post">Offer expert services</a></li>
-	      		{{#if currentUser}}
-	      		<li><a href="/dashboard">Dashboard</a></li>
-	      		<li><a href="/submit">Submit Testing</a></li>
-	      		<li><a href="/sessions">Sessions</a></li>
-	      		<li><a href="/achievements">Achievements</a></li>
-	      		<li><a href="/submissions">Submissions</a></li>
+	      	<li><a href="{{pathFor 'jobs'}}">Jobs</a></li>
+	      	<!-- <li><a href="{{pathFor 'experts'}}">Experts</a></li> -->
+	      	{{#if currentUser}}
+		      	<li><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
+		      	<!-- <li><a href="{{pathFor 'expertNew'}}">Become an Expert</a></li> -->
 	      	{{/if}}
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-
-
-	        {{#if currentUser}}
-				<li><a href="/sign-out"><i class="fa fa-sign-out"></i> Sign Out</a></li>
-			{{else}}
-				<li><a href="/sign-in"><i class="fa fa-sign-in"></i> Sign In</a></li>
-				<li><a href="/sign-up"><i class="fa fa-user"></i> Sign Up</a></li>
-			{{/if}}
+	      	{{accountButtons}}
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -48,7 +36,7 @@
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<br><hr><br>
-				<small>by <a href="http://www.natestrauser.com">Nate Strauser</a></small>
+				<small>by <a href="http://www.natestrauser.com">Nate Strauser</a> - <a href="https://github.com/nate-strauser/wework"><i class="fa fa-github"></i></a></small>
 			</div>
 		</div>
 	</div>

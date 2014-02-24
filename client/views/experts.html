@@ -1,0 +1,14 @@
+<template name="expertsRecent">
+	<h4>Recent Experts</h4>
+	{{#each experts}}
+		<div class="well">
+			Name: {{name}}
+			<br>
+			Description: {{{htmlDescription}}}
+			<br>
+			Created On: {{getPrettyDateAndTime createdAt}}
+			<br>
+			<a href="{{pathFor 'expert'}}">Details</a>
+		</div>
+	{{/each}}
+</template>

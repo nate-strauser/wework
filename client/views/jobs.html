@@ -1,0 +1,116 @@
+<template name="jobs">
+	{{#ifNotEmpty jobs}}
+		{{#each jobs}}
+			<div class="well">
+				{{>jobEmbedLarge}}
+			</div>
+		{{/each}}
+	{{else}}
+		No Current Jobs
+	{{/ifNotEmpty}}
+</template>
+
+<template name="job">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="well">
+				{{#with job}}
+					{{>jobEmbedLarge}}
+				{{/with}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobsRecent">
+	<h4>Recent Jobs</h4>
+	{{#each jobs}}
+		<div class="well">
+			{{>jobEmbedSmall}}
+		</div>
+	{{/each}}
+</template>
+
+<template name="jobEmbedSmall">
+	<h4><a href="{{pathFor 'job'}}">{{title}}</a>{{#if found}} <span class="label label-info pull-right"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}</h4>
+	{{#if company}}{{company}} - {{/if}}{{getPrettyDateAndTime createdAt}}
+</template>
+
+<template name="jobEmbedLarge">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3><a href="{{pathFor 'job'}}">{{title}}</a>{{#if found}} <span class="label label-info pull-right"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}</h3>
+			{{#if company}}
+				<br>
+				Company: {{company}}
+			{{/if}}
+			{{#if url}}
+				<br>
+				URL: <a href="{{url}}" target="_blank">{{url}}</a>
+			{{/if}}
+			{{#if htmlDescription}}
+				<br>
+				Description: {{{htmlDescription}}}
+			{{/if}}
+			<!-- <br>
+			By: userName -->
+			<br>
+			Created On: {{getPrettyDateAndTime createdAt}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			{{#if $eq userId $.Meteor.userId}}
+				<div class="pull-right">
+					&nbsp;
+					<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+				</div>
+				<div class="pull-right">
+					{{#autoForm schema=jobsForm doc=this}}
+						<button type="submit" class="btn btn-danger remove"><i class="fa fa-trash-o"></i> Delete</button>
+					{{/autoForm}}
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name="jobNew">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="well">
+				<h4>Post New Job</h4>
+				{{#autoForm schema=jobsForm}}
+				    {{>jobFields}}
+				    <div>
+				    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Post</button>
+				    </div>
+				{{/autoForm}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobEdit">
+    <div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<div class="well">
+				<h4>Edit Job Post</h4>
+				{{#autoForm schema=jobsForm doc=job}}
+				    {{>jobFields}}
+				    <div>
+				    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
+				    </div>
+				{{/autoForm}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobFields">
+	{{afQuickField 'title'}}
+    {{afQuickField 'company'}}
+    {{afQuickField 'url'}}
+    {{afQuickField 'description' rows=8}}
+    {{afQuickField 'found'}}
+</template>

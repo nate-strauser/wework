@@ -8,6 +8,8 @@
     "handlebar-helpers": {},
     "moment": {},
     "accounts-entry": {},
-    "collection2": {}
+    "collection2": {},
+    "iron-router-progress": {},
+    "autoform": {}
   }
 }

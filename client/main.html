@@ -11,40 +11,34 @@
 </template>
 
 <template name="home">
-	{{#unless currentUser}}
-		Please sign in...
+	{{#if currentUser}}
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- TBD - DASHBOARD
+				<br>
+				You are currently listed as an expert, edit profile
+				<br> -->
+				You currently have {{myJobsCount}} job postings
+			</div>
+		</div>
 	{{else}}
-		<a href="{{pathFor 'dashboard'}}">Go to Dashboard</a>
-	{{/unless}}
-	
-</template>
+	<div class="jumbotron">
+		<h1>Welcome to We Work Meteor</h1>
+		  <p>We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire. The site is not all the way there yet, but the plan is in motion , so bear with us as new features are added.  In the meantime, join the community.</p>
 
-<template name="dashboard">
-	<a href="{{pathFor 'submit'}}" class="btn btn-info"><i class="fa fa-chevron-right"></i> Submit Testing</a>
-	<div class="row">
-		<div class="col-md-4">
-			<h4>Sessions</h4>
-			{{#each recentSessions}}
-				<div>
-					{{count}} - {{getPrettyDateAndTime timestamp}} - {{getPrettyDateAndTime endTimestamp}}
-				</div>
-			{{/each}}
+		  <p>
+		  	If you are hiring or just found something you'd like to add
+		  	<a class="btn btn-primary btn-md" role="button" href="{{pathFor 'jobNew'}}"> Post a Job</a>
+		  </p>
+</div>
+	{{/if}}
+	{{>jobsRecent}}
+	<!-- <div class="row">
+		<div class="col-xs-6">
+			
 		</div>
-		<div class="col-md-2">
-			<h4>Submissions</h4>
-			{{#each recentSubmissions}}
-				<div>
-					{{getPrettyDateAndTime timestamp}}
-				</div>
-			{{/each}}
+		<div class="col-xs-6">
+			>expertsRecent
 		</div>
-		<div class="col-md-6">
-			<h4>Achievements</h4>
-			{{#each recentAchievements}}
-				<div>
-					{{title}} - {{message}} - {{getPrettyDateAndTime timestamp}}
-				</div>
-			{{/each}}
-		</div>
-	</div>
+	</div> -->
 </template>
