@@ -25,6 +25,8 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * job equity
 * type of need or offering - one-off help, hourly, term contract, full time employment
 * sample data loading for testing (fire on empty collection startup)
+* add license - MIT ? CC ?
+* split up subscriptions, send down less fields
 
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.

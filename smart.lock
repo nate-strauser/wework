@@ -12,7 +12,8 @@
       "collection2": {},
       "iron-router-progress": {},
       "autoform": {},
-      "accounts-linkedin": {}
+      "accounts-linkedin": {},
+      "GAnalytics": {}
     },
     "packages": {
       "iron-router": {
@@ -62,13 +63,18 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.4.17",
-        "commit": "8e2da64cbc682ad5111a3bdcf70af07878a51ab2"
+        "tag": "v0.4.18",
+        "commit": "991efc809b959e77d94796f47ca6c5b1e5c2c6e2"
       },
       "accounts-linkedin": {
         "git": "https://github.com/yefim/meteor-accounts-linkedin.git",
         "tag": "v0.0.5",
         "commit": "0ccf12b93f5cd6f487caa68a12a640099e358ffd"
+      },
+      "GAnalytics": {
+        "git": "https://github.com/datariot/meteor-ganalytics.git",
+        "tag": "v0.1.1",
+        "commit": "91b19d37687bb2cd7976fb43b482143a53509d7e"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

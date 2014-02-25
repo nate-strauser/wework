@@ -7,6 +7,7 @@ expertsForm.hooks({
 				console.log("Insert Error:", error);
 			} else {
 				//console.log("Insert Result:", result);
+				GAnalytics.event("expert","insert",getUserName(Meteor.user()));
 				Router.go('expert', {_id:result});
 			}
 		},
@@ -15,6 +16,7 @@ expertsForm.hooks({
 				console.log("Update Error:", error);
 			} else {
 				//console.log("Update Result:", result);
+				GAnalytics.event("expert","update",getUserName(Meteor.user()));
 				Router.go('expert', {_id: Session.get('editingExpertId')});
 			}
 		},
@@ -23,6 +25,7 @@ expertsForm.hooks({
 				console.log("Remove Error:", error);
 			} else {
 				//console.log("Insert Result:", result);
+				GAnalytics.event("expert","remove",getUserName(Meteor.user()));
 				Router.go('experts');
 			}
 		}

@@ -120,6 +120,7 @@ Router.before(function(){
 },{only:['expertEdit','expertNew','jobEdit','jobNew']});
 
 Router.load(function(){
+	GAnalytics.pageview();
 	$("html, body").animate({ scrollTop: 0 }, "slow");
 });
 

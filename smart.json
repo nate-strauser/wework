@@ -10,6 +10,7 @@
     "collection2": {},
     "iron-router-progress": {},
     "autoform": {},
-    "accounts-linkedin": {}
+    "accounts-linkedin": {},
+    "GAnalytics": {}
   }
 }

@@ -7,6 +7,8 @@ jobsForm.hooks({
 				console.log("Insert Error:", error);
 			} else {
 				//console.log("Insert Result:", result);
+				GAnalytics.event("expert","inserte",getUserName(Meteor.user()));
+
 				Router.go('job', {_id:result});
 			}
 		},
@@ -15,6 +17,8 @@ jobsForm.hooks({
 				console.log("Update Error:", error);
 			} else {
 				//console.log("Update Result:", result);
+				GAnalytics.event("job","update",getUserName(Meteor.user()));
+
 				Router.go('job', {_id: Session.get('editingJobId')});
 			}
 		},
@@ -23,6 +27,8 @@ jobsForm.hooks({
 				console.log("Remove Error:", error);
 			} else {
 				//console.log("Insert Result:", result);
+				GAnalytics.event("job","remove",getUserName(Meteor.user()));
+
 				Router.go('jobs');
 			}
 		}
