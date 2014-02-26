@@ -12,6 +12,8 @@
     "autoform": {},
     "accounts-linkedin": {},
     "GAnalytics": {},
-    "apm": {}
+    "apm": {},
+    "connection-banner": {},
+    "marked": {}
   }
 }

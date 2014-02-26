@@ -29,6 +29,10 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * split up subscriptions, send down less fields
 * https://github.com/XpressiveCode/iron-router-active for nav menu
 
+
+## Settings
+This app does need a settings file to run - see `settings-example.json` for the supoprted values.  The actual settings used for wework.meteor.com are kept private
+
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.
 

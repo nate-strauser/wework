@@ -14,7 +14,9 @@
       "autoform": {},
       "accounts-linkedin": {},
       "GAnalytics": {},
-      "apm": {}
+      "apm": {},
+      "connection-banner": {},
+      "marked": {}
     },
     "packages": {
       "iron-router": {
@@ -81,6 +83,16 @@
         "git": "https://github.com/arunoda/meteor-apm-client.git",
         "tag": "v0.2.4",
         "commit": "0958a97a6d67960b40ba8db804e7230dd1cf9d98"
+      },
+      "connection-banner": {
+        "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
+        "tag": "v0.1.1",
+        "commit": "111dd29669c2e39dda222bbc4f87fd8e66e286a8"
+      },
+      "marked": {
+        "git": "https://github.com/chuangbo/meteor-marked.git",
+        "tag": "v0.3.1",
+        "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

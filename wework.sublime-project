@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "../wework-config"
 		}
 	],
 	"settings":
