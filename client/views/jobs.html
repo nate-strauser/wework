@@ -1,8 +1,10 @@
 <template name="jobs">
 	{{#ifNotEmpty jobs}}
 		{{#each jobs}}
-			<div class="well">
-				{{>jobEmbedLarge}}
+			<div class="panel panel-default">
+				<div class="panel-body">
+    				{{>jobEmbedLarge}}
+				</div>
 			</div>
 		{{/each}}
 	{{else}}
@@ -13,10 +15,12 @@
 <template name="job">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				{{#with job}}
-					{{>jobEmbedLarge}}
-				{{/with}}
+			<div class="panel panel-default">
+				<div class="panel-body">
+    				{{#with job}}
+						{{>jobEmbedLarge}}
+					{{/with}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -25,17 +29,21 @@
 <template name="jobsRecent">
 	<h4>Recent Jobs</h4>
 	{{#each jobs}}
-		<div class="well">
-			{{>jobEmbedSmall}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>jobEmbedSmall}}
+			</div>
 		</div>
 	{{/each}}
 </template>
 
 <template name="jobLabels">
-	<span class="pull-right">
-		{{#if found}}<span class="label label-info"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}
-		{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
-	</span>
+	<small>
+		<span class="pull-right">
+			{{#if found}}<span class="label label-info"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}
+			{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
+		</span>
+	</small>
 </template>
 
 <template name="jobEmbedSmall">
@@ -49,10 +57,10 @@
 <template name="jobEmbedLarge">
 	<div class="row">
 		<div class="col-xs-12">
-			<h3>
+			<h2>
 				<a href="{{pathFor 'job'}}">{{title}}</a>
 				{{>jobLabels}}
-			</h3>
+			</h2>
 			{{#if company}}
 				<br>
 				{{company}}
@@ -95,14 +103,18 @@
 <template name="jobNew">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				<h4>Post New Job</h4>
-				{{#autoForm schema=jobsForm}}
-				    {{>jobFields}}
-				    <div>
-				    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Post</button>
-				    </div>
-				{{/autoForm}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Post New Job</h4>
+				</div>
+  				<div class="panel-body">
+    				{{#autoForm schema=jobsForm}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Post</button>
+					    </div>
+					{{/autoForm}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -111,14 +123,18 @@
 <template name="jobEdit">
     <div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				<h4>Edit Job Post</h4>
-				{{#autoForm schema=jobsForm doc=job}}
-				    {{>jobFields}}
-				    <div>
-				    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
-				    </div>
-				{{/autoForm}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Edit Job Post</h4>
+				</div>
+  				<div class="panel-body">
+    				{{#autoForm schema=jobsForm doc=job}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
+					    </div>
+					{{/autoForm}}
+				</div>
 			</div>
 		</div>
 	</div>

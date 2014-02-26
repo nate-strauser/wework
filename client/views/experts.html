@@ -1,8 +1,10 @@
 <template name="experts">
 	{{#ifNotEmpty experts}}
 		{{#each experts}}
-			<div class="well">
-				{{>expertEmbedLarge}}
+			<div class="panel panel-default">
+  				<div class="panel-body">
+    				{{>expertEmbedLarge}}
+				</div>
 			</div>
 		{{/each}}
 	{{else}}
@@ -13,10 +15,12 @@
 <template name="expert">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				{{#with expert}}
-					{{>expertEmbedLarge}}
-				{{/with}}
+			<div class="panel panel-default">
+  				<div class="panel-body">
+    				{{#with expert}}
+						{{>expertEmbedLarge}}
+					{{/with}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -25,8 +29,10 @@
 <template name="expertsRecent">
 	<h4>Recent Experts</h4>
 	{{#each experts}}
-		<div class="well">
-			{{>expertEmbedSmall}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>expertEmbedSmall}}
+			</div>
 		</div>
 	{{/each}}
 </template>
@@ -39,7 +45,7 @@
 <template name="expertEmbedLarge">
 	<div class="row">
 		<div class="col-xs-12">
-			<h3><a href="{{pathFor 'expert'}}">{{title}}</a></h3>
+			<h2><a href="{{pathFor 'expert'}}">{{title}}</a></h2>
 			<br>
 			{{userName}}
 			<hr>
@@ -88,14 +94,18 @@
 <template name="expertNew">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				<h4>Offer Expert Services</h4>
-				{{#autoForm schema=expertsForm}}
-				    {{>expertFields}}
-				    <div>
-				    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Save</button>
-				    </div>
-				{{/autoForm}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Offer Expert Services</h4>
+				</div>
+				<div class="panel-body">
+					{{#autoForm schema=expertsForm}}
+					    {{>expertFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Save</button>
+					    </div>
+					{{/autoForm}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -104,14 +114,18 @@
 <template name="expertEdit">
     <div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<div class="well">
-				<h4>Edit Expert Profile</h4>
-				{{#autoForm schema=expertsForm doc=expert}}
-				    {{>expertFields}}
-				    <div>
-				    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
-				    </div>
-				{{/autoForm}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Edit Expert Profile</h4>
+				</div>
+				<div class="panel-body">
+					{{#autoForm schema=expertsForm doc=expert}}
+					    {{>expertFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
+					    </div>
+					{{/autoForm}}
+				</div>
 			</div>
 		</div>
 	</div>
