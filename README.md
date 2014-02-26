@@ -27,6 +27,7 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * sample data loading for testing (fire on empty collection startup)
 * add license - MIT ? CC ?
 * split up subscriptions, send down less fields
+* https://github.com/XpressiveCode/iron-router-active for nav menu
 
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.

@@ -63,6 +63,10 @@ Router.map(function () {
 		},
 		waitOn: function(){
 			return subscriptionHandles.jobs;
+		},
+		unload: function () {
+			// This is called when you navigate to a new route
+			Session.set('editingJobId', null);
 		}
 	});
 
@@ -110,13 +114,20 @@ Router.map(function () {
 		},
 		waitOn: function(){
 			return subscriptionHandles.experts;
+		},
+		unload: function () {
+			// This is called when you navigate to a new route
+			Session.set('editingExpertId', null);
 		}
 	});
 });
 
 
 Router.before(function(){
-	return AccountsEntry.signInRequired(this);
+	if (!Meteor.user()) {
+		AccountsEntry.signInRequired(this, true);
+    }
+
 },{only:['expertEdit','expertNew','jobEdit','jobNew']});
 
 Router.load(function(){
