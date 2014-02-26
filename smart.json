@@ -11,6 +11,7 @@
     "iron-router-progress": {},
     "autoform": {},
     "accounts-linkedin": {},
-    "GAnalytics": {}
+    "GAnalytics": {},
+    "apm": {}
   }
 }

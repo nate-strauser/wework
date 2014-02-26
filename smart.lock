@@ -13,7 +13,8 @@
       "iron-router-progress": {},
       "autoform": {},
       "accounts-linkedin": {},
-      "GAnalytics": {}
+      "GAnalytics": {},
+      "apm": {}
     },
     "packages": {
       "iron-router": {
@@ -75,6 +76,11 @@
         "git": "https://github.com/datariot/meteor-ganalytics.git",
         "tag": "v0.1.1",
         "commit": "91b19d37687bb2cd7976fb43b482143a53509d7e"
+      },
+      "apm": {
+        "git": "https://github.com/arunoda/meteor-apm-client.git",
+        "tag": "v0.2.4",
+        "commit": "0958a97a6d67960b40ba8db804e7230dd1cf9d98"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",
