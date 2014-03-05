@@ -1,5 +1,5 @@
-## We Work [Meteor]
-wework.meteor.com
+## We Work Meteor
+http://wework.meteor.com
 
 # Meteor Job Board and Expert Directory
 
@@ -35,5 +35,3 @@ This app does need a settings file to run - see `settings-example.json` for the 
 
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.
-
-
