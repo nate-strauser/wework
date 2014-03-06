@@ -31,8 +31,8 @@
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v3.1.0-1",
-        "commit": "329dccb08bfc18c635676dea600ac9953162cda9"
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
       },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
@@ -51,8 +51,8 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.6.1",
-        "commit": "8e42d4abca33d6a00d236d198589fe4924729d09"
+        "tag": "v0.6.2",
+        "commit": "56c9b6c064cc0d92a97aa9b53a8f4da050f54c29"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
@@ -66,8 +66,8 @@
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.4.18",
-        "commit": "991efc809b959e77d94796f47ca6c5b1e5c2c6e2"
+        "tag": "v0.4.20",
+        "commit": "d4d40a5356f9577a7d95d3526045035f3f1135af"
       },
       "accounts-linkedin": {
         "git": "https://github.com/yefim/meteor-accounts-linkedin.git",
@@ -81,8 +81,8 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v0.2.4",
-        "commit": "0958a97a6d67960b40ba8db804e7230dd1cf9d98"
+        "tag": "v0.2.11",
+        "commit": "4ee1a31248e45cbf98dfbdacd2daa82f0be7748b"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
@@ -106,8 +106,8 @@
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.38",
-        "commit": "2deec0041fc6cb2666df8cd6a51914e499e95683"
+        "tag": "v0.2.40",
+        "commit": "d22892daa943e3567916effeaafd794ca6af5cd2"
       },
       "linkedin": {
         "git": "https://github.com/yefim/meteor-linkedin.git",

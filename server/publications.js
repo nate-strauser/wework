@@ -5,6 +5,7 @@ Meteor.publish("userData", function () {
 			Users.find({_id: this.userId})
 		];
 	}
+	this.ready();
 });
 
 Meteor.publish("jobs", function(){
