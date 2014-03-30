@@ -14,7 +14,7 @@
 
 <template name="job">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-body">
     				{{#with job}}
@@ -38,12 +38,12 @@
 </template>
 
 <template name="jobLabels">
-	<small>
+	<div>
 		<span class="pull-right">
 			{{#if found}}<span class="label label-info"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}
 			{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
 		</span>
-	</small>
+	</div>
 </template>
 
 <template name="jobEmbedSmall">
@@ -56,27 +56,28 @@
 
 <template name="jobEmbedLarge">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-sm-12">
+			{{>jobLabels}}
 			<h2>
 				<a href="{{pathFor 'job'}}">{{title}}</a>
-				{{>jobLabels}}
 			</h2>
 			{{#if company}}
-				<br>
+				<p>
 				{{company}}
-				<hr>
+				</p>
 			{{/if}}
 			{{#if location}}
-				<br>
+				<p>
 				{{location}}
-				<hr>
+				</p>
 			{{/if}}
 			{{#if url}}
-				<br>
-				<i class="fa fa-external-link fa-lg"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+				<p>
+				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+				</p>
 			{{/if}}
+			<hr>
 			{{#if htmlDescription}}
-				<hr><br>
 				{{{htmlDescription}}}
 			{{/if}}
 			<br>
@@ -102,7 +103,7 @@
 
 <template name="jobNew">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Post New Job</h4>
@@ -122,7 +123,7 @@
 
 <template name="jobEdit">
     <div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 sol-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Edit Job Post</h4>
