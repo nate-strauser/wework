@@ -47,9 +47,9 @@
 </template>
 
 <template name="jobEmbedSmall">
+	{{>jobLabels}}
 	<h4>
 		<a href="{{pathFor 'job'}}">{{title}}</a>
-		{{>jobLabels}}
 	</h4>
 	{{#if company}}{{company}} - {{/if}}{{getPrettyDateAndTime createdAt}}
 </template>
