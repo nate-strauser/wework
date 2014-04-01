@@ -34,3 +34,39 @@ RssFeed.publish('jobs', function(query) {
     });
   });
 });
+
+RssFeed.publish('experts', function(query) {
+  var self = this;
+  // We got 3 helpers:
+  // 1. self.setValue
+  // 2. self.addItem
+  // 3. self.cdata
+
+
+  // query is the parsed querystring as an object
+  // eg. foo=latest would be query.foo === 'latest'
+
+  // feed handler helpers
+  // this.cdata, this.setValue, this.addItem
+  self.setValue('title', self.cdata('Recent Experts'));
+  self.setValue('description', self.cdata('This is a feed of recent experts listed on We Work Meteor.'));
+  self.setValue('link', 'http://wework.meteor.com');
+  self.setValue('lastBuildDate', new Date());
+  self.setValue('pubDate', new Date());
+  self.setValue('ttl', 1);
+  // managingEditor, webMaster, language, docs, generator
+
+  Experts.find({}).forEach(function(expert) {
+    self.addItem({
+      title: expert.title,
+      description: expert.description,
+      link: 'http://wework.meteor.com/experts/'+expert._id,
+      githubURL: expert.githubUrl,
+      linkedinURL: expert.linkedinUrl,
+      stackoverflowURL: expert.stackoverflowUrl,
+      personalURL: expert.url,
+      pubDate: new Date()
+      // title, description, link, guid, pubDate
+    });
+  });
+});
