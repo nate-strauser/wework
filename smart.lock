@@ -21,8 +21,8 @@
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.4",
-        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "sugarjs": {
         "git": "https://github.com/crapthings/meteor-sugarjs.git",
@@ -41,8 +41,8 @@
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
-        "tag": "v0.0.9",
-        "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
+        "tag": "v0.1.1",
+        "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -50,24 +50,24 @@
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       },
       "accounts-entry": {
-        "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.6.2",
-        "commit": "56c9b6c064cc0d92a97aa9b53a8f4da050f54c29"
+        "git": "https://github.com/Differential/accounts-entry.git",
+        "tag": "v0.7.1",
+        "commit": "7d6b92335f4c6e730c383324e5d340b3a241cad3"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.8",
-        "commit": "69aff2a21ba3c382f915e1f9dbcca2ad38edb6d5"
+        "tag": "v0.3.11",
+        "commit": "7e970671305657678e8508d8107d5e6c5e158559"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.2.0",
-        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+        "tag": "v0.3.1",
+        "commit": "3f7900feb4bb70a1289b39a1fdcd1f438c0335b3"
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.4.20",
-        "commit": "d4d40a5356f9577a7d95d3526045035f3f1135af"
+        "tag": "v0.5.1",
+        "commit": "7f2c33b0adafc4a8cc57e882b9391dd6ff2a82a7"
       },
       "accounts-linkedin": {
         "git": "https://github.com/yefim/meteor-accounts-linkedin.git",
@@ -81,33 +81,38 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v0.2.11",
-        "commit": "4ee1a31248e45cbf98dfbdacd2daa82f0be7748b"
+        "tag": "v0.2.14",
+        "commit": "3727371164f28d4fbf50efb12a9c75617198b596"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
-        "tag": "v0.1.1",
-        "commit": "111dd29669c2e39dda222bbc4f87fd8e66e286a8"
+        "tag": "v0.2.1",
+        "commit": "aeb866f75e626262a97e9c913ac7dd5425e5c118"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",
-        "tag": "v0.3.1",
-        "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
+        "tag": "v0.3.2",
+        "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",
-        "tag": "v0.1.1",
-        "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
+        "tag": "v0.2.4",
+        "commit": "91decfcf5b3b5e67f202a67658350b862330bf3d"
       },
       "accounts-t9n": {
-        "git": "https://github.com/softwarerero/meteor-accounts-t9n.git",
-        "tag": "v0.0.2",
-        "commit": "408e3a037114cb72163073110e2121e3d548c1a2"
+        "git": "https://github.com/Differential/meteor-accounts-t9n.git",
+        "branch": "fix-just-i18n",
+        "commit": "0e3f96d189b8cac3813b1f5a20a59115881f628d"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.40",
-        "commit": "d22892daa943e3567916effeaafd794ca6af5cd2"
+        "tag": "v0.2.45",
+        "commit": "27a5a943a70a7376c90f18d2e2a4a122c6fc73fb"
       },
       "linkedin": {
         "git": "https://github.com/yefim/meteor-linkedin.git",

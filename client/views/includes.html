@@ -1,5 +1,5 @@
 <template name="header">
-	{{connectionBanner}}
+	{{>connectionBanner}}
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -30,7 +30,7 @@
 					{{/if}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					{{accountButtons}}
+					{{>accountButtons}}
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

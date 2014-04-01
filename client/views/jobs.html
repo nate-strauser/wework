@@ -1,5 +1,5 @@
 <template name="jobs">
-	{{#ifNotEmpty jobs}}
+	{{#if $gt jobCount 0}}
 		{{#each jobs}}
 			<div class="panel panel-default">
 				<div class="panel-body">
@@ -9,7 +9,7 @@
 		{{/each}}
 	{{else}}
 		No Current Jobs
-	{{/ifNotEmpty}}
+	{{/if}}
 </template>
 
 <template name="job">
@@ -92,7 +92,7 @@
 					<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 				</div>
 				<div class="pull-right">
-					{{#autoForm schema=jobsForm doc=this}}
+					{{#autoForm id="jobDelete" collection="Jobs" doc=this type="remove"}}
 						<button type="submit" class="btn btn-danger remove"><i class="fa fa-trash-o"></i> Delete</button>
 					{{/autoForm}}
 				</div>
@@ -109,10 +109,10 @@
 					<h4>Post New Job</h4>
 				</div>
   				<div class="panel-body">
-    				{{#autoForm schema=jobsForm}}
+    				{{#autoForm id="jobNew" collection="Jobs" type="insert"}}
 					    {{>jobFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Post</button>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Post</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -129,10 +129,10 @@
 					<h4>Edit Job Post</h4>
 				</div>
   				<div class="panel-body">
-    				{{#autoForm schema=jobsForm doc=job}}
+    				{{#autoForm id="jobEdit" collection="Jobs" doc=job type="update"}}
 					    {{>jobFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -142,11 +142,11 @@
 </template>
 
 <template name="jobFields">
-	{{afQuickField 'title'}}
-    {{afQuickField 'company'}}
-    {{afQuickField 'location'}}
-    {{afQuickField 'remote'}}
-    {{afQuickField 'url' type="url"}}
-    {{afQuickField 'description' rows=8}}
-    {{afQuickField 'found'}}
+	{{>afQuickField name='title'}}
+    {{>afQuickField name='company'}}
+    {{>afQuickField name='location'}}
+    {{>afQuickField name='remote'}}
+    {{>afQuickField name='url'}}
+    {{>afQuickField name='description' rows=8}}
+    {{>afQuickField name='found'}}
 </template>

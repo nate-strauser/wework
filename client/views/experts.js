@@ -1,6 +1,4 @@
-var expertsForm = new AutoForm(Experts);
-
-expertsForm.hooks({
+AutoForm.addHooks(['expertNew', 'expertEdit', 'expertDelete'], {
 	after: {
 		insert: function(error, result) {
 			if (error) {
@@ -31,13 +29,3 @@ expertsForm.hooks({
 		}
 	}
 });
-
-var baseHelpers = {
-	expertsForm:function(){
-		return expertsForm;
-	}
-};
-
-Template.expertNew.helpers(baseHelpers);
-Template.expertEdit.helpers(baseHelpers);
-Template.expertEmbedLarge.helpers(baseHelpers);
