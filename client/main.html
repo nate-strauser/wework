@@ -2,6 +2,7 @@
   <title>We Work Meteor - Job board and developer listing just for Meteor</title>
   <meta name="description" content="We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire.">
 	<meta name="keywords" content="Meteor,Jobs,Developers,Contracts,Freelance,Remote,Telecommute,Consultants">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 
 <template name="layout">
@@ -15,10 +16,10 @@
 <template name="home">
 	{{#if currentUser}}
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				You currently have {{myJobsCount}} job postings - <a href="{{pathFor 'jobNew'}}">Post a New Job</a>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				{{#if $.Session.equals 'isExpert' true}}
 					You are currently listed as an expert - {{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
 				{{else}}
@@ -34,20 +35,16 @@
 				We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire. The site is not all the way there yet, but the plan is in motion, so bear with us as new features are added.
 			</p>
 			<div class="row">
-				<div class="col-xs-6 text-center">
-					<a class="btn btn-primary btn-lg btn-block" role="button" href="{{pathFor 'jobNew'}}">I'm looking for a developer to hire</a>
-				</div>
-				<div class="col-xs-6 text-center">
-					<a class="btn btn-success btn-lg btn-block" role="button" href="{{pathFor 'expertNew'}}">I'm a meteor developer and I want to offer expert services</a>
-				</div>
+				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-lg" role="button" href="{{pathFor 'jobNew'}}">I need a Meteor developer</a>
+				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-lg" role="button" href="{{pathFor 'expertNew'}}">I am a Meteor developer</a>
 			</div>
 		</div>
 	{{/if}}
 	<div class="row">
-		<div class="col-xs-6">
+		<div class="col-sm-6">
 			{{>jobsRecent}}
 		</div>
-		<div class="col-xs-6">
+		<div class="col-sm-6">
 			{{>expertsRecent}}
 		</div>
 	</div>
