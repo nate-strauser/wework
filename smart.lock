@@ -16,7 +16,8 @@
       "GAnalytics": {},
       "apm": {},
       "connection-banner": {},
-      "marked": {}
+      "marked": {},
+      "rssfeed": {}
     },
     "packages": {
       "iron-router": {
@@ -93,6 +94,11 @@
         "git": "https://github.com/chuangbo/meteor-marked.git",
         "tag": "v0.3.2",
         "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
+      },
+      "rssfeed": {
+        "git": "https://github.com/raix/Meteor-rssfeed.git",
+        "tag": "v0.0.4",
+        "commit": "e592cda10c553209491aa08c74096fc4ddefe3d7"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
