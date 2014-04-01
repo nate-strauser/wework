@@ -14,7 +14,7 @@
 
 <template name="expert">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
   				<div class="panel-body">
     				{{#with expert}}
@@ -44,26 +44,26 @@
 
 <template name="expertEmbedLarge">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-sm-12">
 			<h2><a href="{{pathFor 'expert'}}">{{title}}</a></h2>
 			<br>
 			{{userName}}
 			<hr>
 			{{#if url}}
 				<br>
-				<i class="fa fa-external-link fa-lg"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
 			{{/if}}
 			{{#if githubUrl}}
 				<br>
-				<i class="fa fa-github fa-lg"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">{{githubUrl}}</a>
+				<i class="fa fa-github fa-m"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">{{githubUrl}}</a>
 			{{/if}}
 			{{#if linkedinUrl}}
 				<br>
-				<i class="fa fa-linkedin fa-lg"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">{{linkedinUrl}}</a>
+				<i class="fa fa-linkedin fa-m"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">{{linkedinUrl}}</a>
 			{{/if}}
 			{{#if stackoverflowUrl}}
 				<br>
-				<i class="fa fa-stack-overflow fa-lg"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">{{stackoverflowUrl}}</a>
+				<i class="fa fa-stack-overflow fa-m"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">{{stackoverflowUrl}}</a>
 			{{/if}}
 
 			{{#if htmlDescription}}
@@ -75,7 +75,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-sm-12">
 			{{#if $eq userId $.Meteor.userId}}
 				<div class="pull-right">
 					&nbsp;
@@ -93,7 +93,7 @@
 
 <template name="expertNew">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Offer Expert Services</h4>
@@ -113,7 +113,7 @@
 
 <template name="expertEdit">
     <div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Edit Expert Profile</h4>
