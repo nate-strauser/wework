@@ -6,11 +6,11 @@
 </head>
 
 <template name="layout">
-	{{yield 'header'}}
+	{{>yield 'header'}}
 	<div id="content-wrapper" class="container-fluid">
-		{{yield}}
+		{{>yield}}
 	</div>
-	{{yield 'footer'}}
+	{{>yield 'footer'}}
 </template>
 
 <template name="home">
