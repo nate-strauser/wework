@@ -29,7 +29,7 @@ RssFeed.publish('jobs', function(query) {
       companyURL: job.url,
       remote: job.remote,
       found: job.found,
-      pubDate: new Date()
+      pubDate: job.createdAt
       // title, description, link, guid, pubDate
     });
   });
@@ -65,7 +65,7 @@ RssFeed.publish('experts', function(query) {
       linkedinURL: expert.linkedinUrl,
       stackoverflowURL: expert.stackoverflowUrl,
       personalURL: expert.url,
-      pubDate: new Date()
+      pubDate: expert.createdAt
       // title, description, link, guid, pubDate
     });
   });
