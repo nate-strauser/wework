@@ -6,11 +6,11 @@
 </head>
 
 <template name="layout">
-	{{>yield 'header'}}
+	{{>yield region='header'}}
 	<div id="content-wrapper" class="container-fluid">
 		{{>yield}}
 	</div>
-	{{>yield 'footer'}}
+	{{>yield region='footer'}}
 </template>
 
 <template name="home">
@@ -34,7 +34,7 @@
 			<p>
 				We are a new job board and community space for users of the Meteor framework.  The goal of this site is to provide a complete listing of positions requiring the Meteor skill set, as well as to provide contact info for technology subject matter experts for hire. The site is not all the way there yet, but the plan is in motion, so bear with us as new features are added.
 			</p>
-			<div class="row">
+			<div id="callToAction" class="row">
 				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-lg" role="button" href="{{pathFor 'jobNew'}}">I need a Meteor developer</a>
 				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-lg" role="button" href="{{pathFor 'expertNew'}}">I am a Meteor developer</a>
 			</div>

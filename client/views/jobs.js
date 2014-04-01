@@ -1,13 +1,11 @@
-var jobsForm = new AutoForm(Jobs);
-
-jobsForm.hooks({
+AutoForm.addHooks(['jobDelete', 'jobNew', 'jobEdit'], {
 	after: {
 		insert: function(error, result) {
 			if (error) {
 				console.log("Insert Error:", error);
 			} else {
 				//console.log("Insert Result:", result);
-				GAnalytics.event("expert","inserte",getUserName(Meteor.user()));
+				GAnalytics.event("expert","insert",getUserName(Meteor.user()));
 
 				Router.go('job', {_id:result});
 			}
@@ -34,13 +32,3 @@ jobsForm.hooks({
 		}
 	}
 });
-
-var baseHelpers = {
-	jobsForm:function(){
-		return jobsForm;
-	}
-};
-
-Template.jobNew.helpers(baseHelpers);
-Template.jobEdit.helpers(baseHelpers);
-Template.jobEmbedLarge.helpers(baseHelpers);

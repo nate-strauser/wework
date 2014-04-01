@@ -29,7 +29,8 @@ Router.map(function () {
 		path: '/jobs',
 		data: function () {
 			return {
-				jobs:Jobs.find({},{sort:{createdAt:-1}})
+				jobs:Jobs.find({},{sort:{createdAt:-1}}),
+				jobCount:Jobs.find({}).count()
 			};
 		},
 		waitOn: function(){
@@ -64,7 +65,7 @@ Router.map(function () {
 		waitOn: function(){
 			return subscriptionHandles.jobs;
 		},
-		unload: function () {
+		onStop: function () {
 			// This is called when you navigate to a new route
 			Session.set('editingJobId', null);
 		}
@@ -74,7 +75,8 @@ Router.map(function () {
 		path: '/experts',
 		data: function () {
 			return {
-				experts:Experts.find({},{sort:{createdAt:-1}})
+				experts:Experts.find({},{sort:{createdAt:-1}}),
+				expertCount:Experts.find({}).count()
 			};
 		},
 		waitOn: function(){
@@ -96,7 +98,7 @@ Router.map(function () {
 
 	this.route('expertNew', {
 		path: '/expert',
-		before: function(){
+		onBeforeAction: function(){
 			if (Session.equals('isExpert', true)) {
 				this.stop();
 				Router.go('expert', Experts.findOne({userId:Meteor.userId()}));
@@ -115,7 +117,7 @@ Router.map(function () {
 		waitOn: function(){
 			return subscriptionHandles.experts;
 		},
-		unload: function () {
+		onStop: function () {
 			// This is called when you navigate to a new route
 			Session.set('editingExpertId', null);
 		}
@@ -123,14 +125,14 @@ Router.map(function () {
 });
 
 
-Router.before(function(){
-	if (!Meteor.user()) {
+Router.onBeforeAction(function(){
+	if (!Meteor.user() && !Meteor.loggingIn()) {
 		AccountsEntry.signInRequired(this, true);
     }
 
 },{only:['expertEdit','expertNew','jobEdit','jobNew']});
 
-Router.load(function(){
+Router.onRun(function(){
 	GAnalytics.pageview();
 	$("html, body").animate({ scrollTop: 0 }, "slow");
 });

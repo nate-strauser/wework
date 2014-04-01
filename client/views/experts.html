@@ -1,5 +1,5 @@
 <template name="experts">
-	{{#ifNotEmpty experts}}
+	{{#if $gt expertCount 0}}
 		{{#each experts}}
 			<div class="panel panel-default">
   				<div class="panel-body">
@@ -9,7 +9,7 @@
 		{{/each}}
 	{{else}}
 		No Current Experts
-	{{/ifNotEmpty}}
+	{{/if}}
 </template>
 
 <template name="expert">
@@ -82,7 +82,7 @@
 					<a href="{{pathFor 'expertEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 				</div>
 				<div class="pull-right">
-					{{#autoForm schema=expertsForm doc=this}}
+					{{#autoForm collection="Experts" id="expertDelete" type="remove" doc=this}}
 						<button type="submit" class="btn btn-danger remove"><i class="fa fa-trash-o"></i> Delete</button>
 					{{/autoForm}}
 				</div>
@@ -99,10 +99,10 @@
 					<h4>Offer Expert Services</h4>
 				</div>
 				<div class="panel-body">
-					{{#autoForm schema=expertsForm}}
+					{{#autoForm collection="Experts" id="expertNew" type="insert"}}
 					    {{>expertFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary insert"><i class="fa fa-floppy-o"></i> Save</button>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -119,10 +119,10 @@
 					<h4>Edit Expert Profile</h4>
 				</div>
 				<div class="panel-body">
-					{{#autoForm schema=expertsForm doc=expert}}
+					{{#autoForm collection="Experts" id="expertEdit" type="update" doc=expert}}
 					    {{>expertFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary update"><i class="fa fa-floppy-o"></i> Update</button>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -132,10 +132,10 @@
 </template>
 
 <template name="expertFields">
-	{{afQuickField 'title'}}
-    {{afQuickField 'url' type="url"}}
-    {{afQuickField 'githubUrl' type="url"}}
-    {{afQuickField 'linkedinUrl' type="url"}}
-    {{afQuickField 'stackoverflowUrl' type="url"}}
-    {{afQuickField 'description' rows=8}}
+	{{>afQuickField name='title'}}
+    {{>afQuickField name='url'}}
+    {{>afQuickField name='githubUrl'}}
+    {{>afQuickField name='linkedinUrl'}}
+    {{>afQuickField name='stackoverflowUrl'}}
+    {{>afQuickField name='description' rows=8}}
 </template>
