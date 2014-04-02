@@ -9,9 +9,11 @@ Meteor.publish("userData", function () {
 });
 
 Meteor.publish("jobs", function(){
+	var daysAgo = new Date();
+	daysAgo.setDate(daysAgo.getDate()-90);
 	check(arguments, [Match.Any]);
 	return [
-		Jobs.find({})
+		Jobs.find({"createdAt": { $gte: daysAgo }})
 	];
 });
 
