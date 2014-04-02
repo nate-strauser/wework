@@ -15,6 +15,7 @@
     "apm": {},
     "connection-banner": {},
     "marked": {},
-    "phantomjs": {}
+    "phantomjs": {},
+    "rssfeed": {}
   }
 }
