@@ -9,9 +9,9 @@ RssFeed.publish('jobs', function(query) {
   if(secondMostRecent)
     lastBuildDate = secondMostRecent.createdAt;
 
-  self.setValue('title', self.cdata('Recent Jobs'));
+  self.setValue('title', self.cdata('We Work Meteor - Recent Jobs'));
   self.setValue('description', self.cdata('This is a feed of recent jobs posted to We Work Meteor.'));
-  self.setValue('link', 'http://wework.meteor.com');
+  self.setValue('link', Meteor.absoluteUrl());
   self.setValue('lastBuildDate', lastBuildDate);
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
@@ -20,8 +20,8 @@ RssFeed.publish('jobs', function(query) {
     self.addItem({
       title: job.title,
       description: job.description,
-      link: 'http://wework.meteor.com/jobs/'+job._id,
-      guid: 'http://wework.meteor.com/jobs/'+job._id,
+      link: Meteor.absoluteUrl('jobs/'+job._id),
+      guid: Meteor.absoluteUrl('jobs/'+job._id),
       pubDate: job.createdAt
     });
   });
@@ -38,9 +38,9 @@ RssFeed.publish('experts', function(query) {
   if(secondMostRecent)
     lastBuildDate = secondMostRecent.createdAt;
 
-  self.setValue('title', self.cdata('Recent Experts'));
+  self.setValue('title', self.cdata('We Work Meteor - Recent Experts'));
   self.setValue('description', self.cdata('This is a feed of recent experts listed on We Work Meteor.'));
-  self.setValue('link', 'http://wework.meteor.com');
+  self.setValue('link', Meteor.absoluteUrl());
   self.setValue('lastBuildDate', lastBuildDate);
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
@@ -49,8 +49,8 @@ RssFeed.publish('experts', function(query) {
     self.addItem({
       title: expert.title,
       description: expert.description,
-      link: 'http://wework.meteor.com/experts/'+expert._id,
-      guid: 'http://wework.meteor.com/experts/'+expert._id,
+      link: Meteor.absoluteUrl('experts/'+expert._id),
+      guid: Meteor.absoluteUrl('experts/'+expert._id),
       pubDate: expert.createdAt
     });
   });
