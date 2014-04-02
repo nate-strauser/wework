@@ -1,21 +1,11 @@
 RssFeed.publish('jobs', function(query) {
   var self = this;
-  var pubDate = new Date();
-  var lastBuildDate = new Date();
-  var mostRecent = Jobs.findOne({}, {sort:{createdAt:-1}});
-  var secondMostRecent = Jobs.findOne({}, {sort:{createdAt:-1}, skip: 1});
-  if(mostRecent)
-    pubDate = mostRecent.createdAt;
-  if(secondMostRecent)
-    lastBuildDate = secondMostRecent.createdAt;
-
-
 
   self.setValue('title', self.cdata('Recent Jobs'));
   self.setValue('description', self.cdata('This is a feed of recent jobs posted to We Work Meteor.'));
   self.setValue('link', 'http://wework.meteor.com');
-  self.setValue('lastBuildDate', lastBuildDate);
-  self.setValue('pubDate', pubDate);
+  self.setValue('lastBuildDate', Jobs.findOne({}, {sort:{createdAt:-1}, skip: 1}).createdAt);
+  self.setValue('pubDate', Jobs.findOne({}, {sort:{createdAt:-1}}).createdAt);
   self.setValue('ttl', 1);
 
   Jobs.find({}, {sort:{createdAt:-1}}).forEach(function(job) {
@@ -31,20 +21,12 @@ RssFeed.publish('jobs', function(query) {
 
 RssFeed.publish('experts', function(query) {
   var self = this;
-  var pubDate = new Date();
-  var lastBuildDate = new Date();
-  var mostRecent = Experts.findOne({}, {sort:{createdAt:-1}});
-  var secondMostRecent = Experts.findOne({}, {sort:{createdAt:-1}, skip: 1});
-  if(mostRecent)
-    pubDate = mostRecent.createdAt;
-  if(secondMostRecent)
-    lastBuildDate = secondMostRecent.createdAt;
 
   self.setValue('title', self.cdata('Recent Experts'));
   self.setValue('description', self.cdata('This is a feed of recent experts listed on We Work Meteor.'));
   self.setValue('link', 'http://wework.meteor.com');
-  self.setValue('lastBuildDate', lastBuildDate);
-  self.setValue('pubDate', pubDate);
+  self.setValue('lastBuildDate', Experts.findOne({}, {sort:{createdAt:-1}, skip: 1}).createdAt);
+  self.setValue('pubDate', Experts.findOne({}, {sort:{createdAt:-1}}).createdAt);
   self.setValue('ttl', 1);
 
   Experts.find({}, {sort:{createdAt:-1}}).forEach(function(expert) {
