@@ -1,25 +1,14 @@
 RssFeed.publish('jobs', function(query) {
   var self = this;
-  // We got 3 helpers:
-  // 1. self.setValue
-  // 2. self.addItem
-  // 3. self.cdata
 
-
-  // query is the parsed querystring as an object
-  // eg. foo=latest would be query.foo === 'latest'
-
-  // feed handler helpers
-  // this.cdata, this.setValue, this.addItem
   self.setValue('title', self.cdata('Recent Jobs'));
   self.setValue('description', self.cdata('This is a feed of recent jobs posted to We Work Meteor.'));
   self.setValue('link', 'http://wework.meteor.com');
-  self.setValue('lastBuildDate', new Date());
-  self.setValue('pubDate', new Date());
+  self.setValue('lastBuildDate', Jobs.findOne({}, {sort:{createdAt:-1}, skip: 1}).createdAt);
+  self.setValue('pubDate', Jobs.findOne({}, {sort:{createdAt:-1}}).createdAt);
   self.setValue('ttl', 1);
-  // managingEditor, webMaster, language, docs, generator
 
-  Jobs.find({}).forEach(function(job) {
+  Jobs.find({}, {sort:{createdAt:-1}}).forEach(function(job) {
     self.addItem({
       title: job.title,
       description: job.description,
@@ -30,33 +19,21 @@ RssFeed.publish('jobs', function(query) {
       remote: job.remote,
       found: job.found,
       pubDate: job.createdAt
-      // title, description, link, guid, pubDate
     });
   });
 });
 
 RssFeed.publish('experts', function(query) {
   var self = this;
-  // We got 3 helpers:
-  // 1. self.setValue
-  // 2. self.addItem
-  // 3. self.cdata
 
-
-  // query is the parsed querystring as an object
-  // eg. foo=latest would be query.foo === 'latest'
-
-  // feed handler helpers
-  // this.cdata, this.setValue, this.addItem
   self.setValue('title', self.cdata('Recent Experts'));
   self.setValue('description', self.cdata('This is a feed of recent experts listed on We Work Meteor.'));
   self.setValue('link', 'http://wework.meteor.com');
-  self.setValue('lastBuildDate', new Date());
-  self.setValue('pubDate', new Date());
+  self.setValue('lastBuildDate', Experts.findOne({}, {sort:{createdAt:-1}, skip: 1}).createdAt);
+  self.setValue('pubDate', Experts.findOne({}, {sort:{createdAt:-1}}).createdAt);
   self.setValue('ttl', 1);
-  // managingEditor, webMaster, language, docs, generator
 
-  Experts.find({}).forEach(function(expert) {
+  Experts.find({}, {sort:{createdAt:-1}}).forEach(function(expert) {
     self.addItem({
       title: expert.title,
       description: expert.description,
@@ -66,7 +43,6 @@ RssFeed.publish('experts', function(query) {
       stackoverflowURL: expert.stackoverflowUrl,
       personalURL: expert.url,
       pubDate: expert.createdAt
-      // title, description, link, guid, pubDate
     });
   });
 });
