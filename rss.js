@@ -13,11 +13,7 @@ RssFeed.publish('jobs', function(query) {
       title: job.title,
       description: job.description,
       link: 'http://wework.meteor.com/jobs/'+job._id,
-      company: job.company,
-      location: job.location,
-      companyURL: job.url,
-      remote: job.remote,
-      found: job.found,
+      guid: 'http://wework.meteor.com/jobs/'+job._id,
       pubDate: job.createdAt
     });
   });
@@ -38,10 +34,7 @@ RssFeed.publish('experts', function(query) {
       title: expert.title,
       description: expert.description,
       link: 'http://wework.meteor.com/experts/'+expert._id,
-      githubURL: expert.githubUrl,
-      linkedinURL: expert.linkedinUrl,
-      stackoverflowURL: expert.stackoverflowUrl,
-      personalURL: expert.url,
+      guid: 'http://wework.meteor.com/experts/'+expert._id,
       pubDate: expert.createdAt
     });
   });
