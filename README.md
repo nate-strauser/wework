@@ -1,5 +1,5 @@
 ## We Work Meteor
-http://wework.meteor.com
+http://www.weworkmeteor.com/
 
 # Meteor Job Board and Expert Directory
 

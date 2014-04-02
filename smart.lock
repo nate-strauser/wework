@@ -16,7 +16,8 @@
       "GAnalytics": {},
       "apm": {},
       "connection-banner": {},
-      "marked": {}
+      "marked": {},
+      "phantomjs": {}
     },
     "packages": {
       "iron-router": {
@@ -51,8 +52,8 @@
       },
       "accounts-entry": {
         "git": "https://github.com/Differential/accounts-entry.git",
-        "tag": "v0.7.1",
-        "commit": "7d6b92335f4c6e730c383324e5d340b3a241cad3"
+        "tag": "v0.7.2",
+        "commit": "cda8617139b5edd79a52023986bfecb48e4b9dc4"
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
@@ -94,6 +95,11 @@
         "tag": "v0.3.2",
         "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
       },
+      "phantomjs": {
+        "git": "https://github.com/gadicohen/meteor-phantomjs.git",
+        "tag": "v0.0.2",
+        "commit": "a72eb79af068dd5d5d617ac71a42bd74e0cb52a4"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.2",
@@ -105,9 +111,9 @@
         "commit": "91decfcf5b3b5e67f202a67658350b862330bf3d"
       },
       "accounts-t9n": {
-        "git": "https://github.com/Differential/meteor-accounts-t9n.git",
-        "branch": "fix-just-i18n",
-        "commit": "0e3f96d189b8cac3813b1f5a20a59115881f628d"
+        "git": "https://github.com/softwarerero/meteor-accounts-t9n.git",
+        "tag": "v0.0.3",
+        "commit": "d1710f979d6955459d9ce0374df81d22c3c6a6ab"
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",

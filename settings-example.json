@@ -4,7 +4,7 @@
       "account":"GA ID"
     }
   },
-  "apm:":{
+  "apm":{
   	"id":"APM ID",
   	"secret":"APM Secret"
   }
