@@ -18,9 +18,7 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * add logging
 * add metrics
 * add filtering / sorting
-* prettier / less plain interface
 * alerts / subscriptions
-* rss feed
 * job salary
 * job equity
 * type of need or offering - one-off help, hourly, term contract, full time employment
@@ -28,6 +26,7 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * add license - MIT ? CC ?
 * split up subscriptions, send down less fields
 * https://github.com/XpressiveCode/iron-router-active for nav menu
+* item not found page for deleted experts/jobs
 
 
 ## Settings
