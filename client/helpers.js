@@ -9,9 +9,9 @@ UI.registerHelper("getCurrentUserDisplayName", function() {
 
 Template.expiredAlert.expired = function() {
     if (this.userId == Meteor.userId()) {
-        if (this.createdAt < daysUntilExpiration() && this.updatedAt < daysUntilExpiration()) {
+        if ((this.createdAt < daysUntilExpiration()) && (this.updatedAt < daysUntilExpiration())) {
             return true
-        } else if (this.createdAt < daysUntilExpiration()) {
+        } else if ((this.createdAt < daysUntilExpiration()) && (this.updatedAt == undefined)) {
             return true
         } else {
             return false;
