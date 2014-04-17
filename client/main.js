@@ -20,7 +20,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return [subscriptionHandles.jobs, subscriptionHandles.experts];
+			return [subscriptionHandles.jobs, subscriptionHandles.my_jobs, subscriptionHandles.experts];
 		},
 		disableProgress : true
 	});
@@ -34,19 +34,22 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.jobs;
+			return [subscriptionHandles.jobs, subscriptionHandles.my_jobs];
 		}
 	});
 
 	this.route('job', {
 		path: '/jobs/:_id',
+		onRun: function() {
+			Session.set('jobId', this.params._id);
+		},
 		data: function () {
 			return {
 				job:Jobs.findOne({_id:this.params._id})
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.jobs;
+			return subscriptionHandles.job;
 		}
 	});
 

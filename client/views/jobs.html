@@ -47,6 +47,17 @@
 	</div>
 </template>
 
+<template name="expiredAlert">
+	{{#if expired}}
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Uh oh!</strong> This job post expired. <a href="{{pathFor 'jobEdit'}}">Update now to keep it in the public Jobs list.</a>
+			</div>
+		</div>
+	{{/if}}
+</template>
+
 <template name="jobEmbedSmall">
 	{{>jobLabels}}
 	<h4>
@@ -58,6 +69,7 @@
 <template name="jobEmbedLarge">
 	<div class="row">
 		<div class="col-sm-12">
+			{{>expiredAlert}}
 			{{>jobLabels}}
 			<h2>
 				<a href="{{pathFor 'job'}}">{{title}}</a>
