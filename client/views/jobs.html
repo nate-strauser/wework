@@ -148,18 +148,7 @@
     {{>afQuickField name='location'}}
     {{>afQuickField name='remote'}}
     {{>afQuickField name='url'}}
-    <div class="form-group">
-        {{>afFieldLabel name="jobtype"}}
-        {{#afFieldSelect name="jobtype"}}
-    	  	<option></option>
-    	    <option value="Full Time">Full Time</option>
-    	    <option value="Hourly Contract">Hourly Contract</option>
-    	    <option value="Term Contract">Term Contract</option>
-    	    <option value="Mentoring">Mentoring</option>
-    	    <option value="Open Source">Open Source</option>
-    	    <option value="Volunteer">Volunteer</option>
-    	{{/afFieldSelect}}
-    </div>
+    {{> afQuickField name="jobtype" firstOption="" options="allowed"}}
     {{>afQuickField name='description' rows=8}}
     {{>afQuickField name='found'}}
 </template>
