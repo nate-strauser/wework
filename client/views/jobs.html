@@ -47,7 +47,7 @@
 	</div>
 </template>
 
-<template name="expiredAlert">
+<template name="jobExpiredAlert">
 	{{#if expired}}
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 alert alert-danger alert-dismissable">
@@ -69,7 +69,7 @@
 <template name="jobEmbedLarge">
 	<div class="row">
 		<div class="col-sm-12">
-			{{>expiredAlert}}
+			{{>jobExpiredAlert}}
 			{{>jobLabels}}
 			<h2>
 				<a href="{{pathFor 'job'}}">{{title}}</a>
@@ -155,12 +155,12 @@
 </template>
 
 <template name="jobFields">
-	{{>afQuickField name='title'}}
-    {{>afQuickField name='company'}}
-    {{>afQuickField name='location'}}
-    {{>afQuickField name='remote'}}
-    {{>afQuickField name='url'}}
+	{{> afQuickField name='title'}}
+    {{> afQuickField name='company'}}
+    {{> afQuickField name='location'}}
+    {{> afQuickField name='remote'}}
+    {{> afQuickField name='url'}}
     {{> afQuickField name="jobtype" firstOption="" options="allowed"}}
-    {{>afQuickField name='description' rows=8}}
-    {{>afQuickField name='found'}}
+    {{> afQuickField name='description' rows=8}}
+    {{> afQuickField name='found'}}
 </template>
