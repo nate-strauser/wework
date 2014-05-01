@@ -45,13 +45,19 @@
 <template name="expertEmbedLarge">
 	<div class="row">
 		<div class="col-sm-12">
-			<h2><a href="{{pathFor 'expert'}}">{{title}}</a></h2>
+			<h2>
+				<a href="{{pathFor 'expert'}}">{{title}}</a>
+			</h2>
 			<br>
 			{{userName}}
 			<hr>
 			{{#if url}}
 				<br>
 				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+			{{/if}}
+			{{#if resumeUrl}}
+				<br>
+				<a href="{{resumeUrl}}" target="_blank"><i class="fa fa-file-text"></i> View Resume </a>
 			{{/if}}
 			{{#if githubUrl}}
 				<br>
@@ -132,10 +138,11 @@
 </template>
 
 <template name="expertFields">
-	{{>afQuickField name='title'}}
-    {{>afQuickField name='url'}}
-    {{>afQuickField name='githubUrl'}}
-    {{>afQuickField name='linkedinUrl'}}
-    {{>afQuickField name='stackoverflowUrl'}}
-    {{>afQuickField name='description' rows=8}}
+	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
+    {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
+    {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}
+    {{>afQuickField name='githubUrl' placeholder="Your github public profile"}}
+    {{>afQuickField name='linkedinUrl' placeholder="Your linkeding public profile"}}
+    {{>afQuickField name='stackoverflowUrl' placeholder="Your stackoverflow public profile"}}
+    {{>afQuickField name='description' rows=8  placeholder="Tell us about what you've done with meteor, how long you've been programming, things like that"}}
 </template>
