@@ -5,7 +5,9 @@ Router.configure({
 		header:{to:'header'},
 		footer:{to:'footer'}
 	},
-	disableProgressSpinner:true
+	progress: {
+		spinner:false
+	}
 });
 
 Router.map(function () {
@@ -21,8 +23,7 @@ Router.map(function () {
 		},
 		waitOn: function(){
 			return [subscriptionHandles.jobs, subscriptionHandles.my_jobs, subscriptionHandles.experts];
-		},
-		disableProgress : true
+		}
 	});
 
 	this.route('jobs', {

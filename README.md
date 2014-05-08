@@ -27,6 +27,17 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * split up subscriptions, send down less fields
 * https://github.com/XpressiveCode/iron-router-active for nav menu
 * item not found page for deleted experts/jobs
+* rework away from session vars for view/edit - use iron router context instead (eg Router.current().params._id)
+* add remove confirmation via hooks
+```
+AutoForm.addHooks(['ID'], {
+    before:{
+    	remove:function(docId){
+    		return confirm('Are you sure?');
+    	}
+    }
+  });
+```
 
 
 ## Settings
