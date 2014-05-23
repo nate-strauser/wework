@@ -1,3 +1,7 @@
+IronRouterProgress.configure({
+    spinner : false
+});
+
 Router.configure({
 	layoutTemplate: 'layout',
 	loadingTemplate: 'loading',
