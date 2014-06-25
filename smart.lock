@@ -3,7 +3,6 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "sugarjs": {},
       "bootstrap-3": {},
       "font-awesome": {},
       "handlebar-helpers": {},
@@ -14,22 +13,17 @@
       "autoform": {},
       "accounts-linkedin": {},
       "GAnalytics": {},
-      "apm": {},
       "connection-banner": {},
       "marked": {},
       "phantomjs": {},
-      "rssfeed": {}
+      "rssfeed": {},
+      "kadira": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.1",
         "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
-      },
-      "sugarjs": {
-        "git": "https://github.com/crapthings/meteor-sugarjs.git",
-        "tag": "v1.4.0.1",
-        "commit": "2841738b2c28d2d97c6cf3c41c4558f59f93db0e"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
@@ -58,18 +52,18 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.11",
-        "commit": "7e970671305657678e8508d8107d5e6c5e158559"
+        "tag": "v0.4.1",
+        "commit": "a9ffc9b285c3af8ad631f9cda4851b0ffc30c5ce"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.3.1",
-        "commit": "3f7900feb4bb70a1289b39a1fdcd1f438c0335b3"
+        "tag": "v0.4.0",
+        "commit": "02f78bdaca4c13d59f548d5a0ce83408c34b56d1"
       },
       "autoform": {
         "git": "https://github.com/aldeed/meteor-autoform.git",
-        "tag": "v0.9.0",
-        "commit": "0841eb4ed0f7dd9801d9c234921647609cad44ba"
+        "tag": "v0.13.3",
+        "commit": "23a7ba0754f353513fda44f666b600e69c62a208"
       },
       "accounts-linkedin": {
         "git": "https://github.com/yefim/meteor-accounts-linkedin.git",
@@ -81,15 +75,10 @@
         "tag": "v0.2.0",
         "commit": "2d5e48d5cc4c2f88edd40c0b2341d378bd4a702b"
       },
-      "apm": {
-        "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v1.4.2",
-        "commit": "ea3fdb8b65f7988ccb78ffa3c72cd7a7d0c36360"
-      },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
-        "tag": "v0.2.2",
-        "commit": "f82217d8fca950ce55269c749b3da4c31e7240df"
+        "tag": "v0.4.0",
+        "commit": "2652cd4ee4d863651c4b5298aebcf2c5710d2971"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",
@@ -105,6 +94,11 @@
         "git": "https://github.com/raix/Meteor-rssfeed.git",
         "tag": "v0.0.4",
         "commit": "e592cda10c553209491aa08c74096fc4ddefe3d7"
+      },
+      "kadira": {
+        "git": "https://github.com/meteorhacks/kadira.git",
+        "tag": "v2.4.4",
+        "commit": "6073fa5bdfb36478165977804f922796b6fc82de"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

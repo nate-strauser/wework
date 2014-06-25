@@ -5,7 +5,6 @@
 
 standard-app-packages
 iron-router
-sugarjs
 bootstrap-3
 font-awesome
 handlebar-helpers
@@ -24,8 +23,8 @@ accounts-twitter
 accounts-linkedin
 accounts-ui
 GAnalytics
-apm
 connection-banner
 spiderable
 phantomjs
 rssfeed
+kadira

@@ -1,7 +1,6 @@
 {
   "packages": {
     "iron-router": {},
-    "sugarjs": {},
     "bootstrap-3": {},
     "font-awesome": {},
     "handlebar-helpers": {},
@@ -12,10 +11,10 @@
     "autoform": {},
     "accounts-linkedin": {},
     "GAnalytics": {},
-    "apm": {},
     "connection-banner": {},
     "marked": {},
     "phantomjs": {},
-    "rssfeed": {}
+    "rssfeed": {},
+    "kadira": {}
   }
 }
