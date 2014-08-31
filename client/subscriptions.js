@@ -15,15 +15,15 @@ Meteor.startup(function(){
         }
     });
 
-    Deps.autorun(function(){
-        if(!Session.equals('jobId',undefined)){
-            if(subscriptionHandles.job)
-                subscriptionHandles.job.stop();
-                subscriptionHandles.job = Meteor.subscribe("job", Session.get('jobId'));
-        }else{
-            if(subscriptionHandles.job)
-                subscriptionHandles.job.stop();
-                subscriptionHandles.job = undefined;
-        }
-    });
+    // Deps.autorun(function(){
+    //     if(!Session.equals('jobId',undefined)){
+    //         if(subscriptionHandles.job)
+    //             subscriptionHandles.job.stop();
+    //         subscriptionHandles.job = Meteor.subscribe("job", Session.get('jobId'));
+    //     }else{
+    //         if(subscriptionHandles.job)
+    //             subscriptionHandles.job.stop();
+    //         subscriptionHandles.job = undefined;
+    //     }
+    // });
 });

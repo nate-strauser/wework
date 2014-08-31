@@ -45,7 +45,7 @@ Router.map(function () {
 
 	this.route('job', {
 		path: '/jobs/:_id',
-		onRun: function() {
+		onBeforeAction: function() {
 			Session.set('jobId', this.params._id);
 		},
 		data: function () {
@@ -54,7 +54,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.job;
+			return Meteor.subscribe("job", this.params._id);
 		}
 	});
 
@@ -71,7 +71,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.jobs;
+			return Meteor.subscribe("job", this.params._id);
 		},
 		onStop: function () {
 			// This is called when you navigate to a new route

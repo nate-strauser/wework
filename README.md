@@ -11,6 +11,8 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 
 
 ## Features / Plans
+* upgrade to 0.9.0
+* use subsmanager
 * Charge for posting
 * Pull in postings from other sites (elance, stackoverflow, angellist, twitter 'meteorjs hiring', authentic jobs, etc)
 * expire postings after 90? days, only send down non-expired to client
