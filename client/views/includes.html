@@ -30,7 +30,13 @@
 					{{/if}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					{{>accountButtons}}
+					{{#if currentUser}}
+						<li><a>{{getCurrentUserDisplayName}}</a></li>
+						<li><a href="#" id="signOut">Sign Out</a></li>
+					{{else}}
+						<li class="{{isActiveRoute 'signIn'}}"><a href="{{pathFor 'signIn'}}">Sign In</a></li>
+						<li class="{{isActiveRoute 'signUp'}}"><a href="{{pathFor 'signUp'}}">Register</a></li>
+					{{/if}}
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->

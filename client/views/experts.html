@@ -55,6 +55,10 @@
 				<br>
 				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
 			{{/if}}
+			{{#if contact}}
+				<br>
+				{{contact}}
+			{{/if}}
 			{{#if resumeUrl}}
 				<br>
 				<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
@@ -88,9 +92,9 @@
 					<a href="{{pathFor 'expertEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 				</div>
 				<div class="pull-right">
-					{{#autoForm collection="Experts" id="expertDelete" type="remove" doc=this}}
-						<button type="submit" class="btn btn-danger remove"><i class="fa fa-trash-o"></i> Delete</button>
-					{{/autoForm}}
+					{{#quickRemoveButton collection="Experts" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
+						<i class="fa fa-trash-o"></i> Delete
+					{{/quickRemoveButton}}
 				</div>
 			{{/if}}
 		</div>
@@ -139,6 +143,7 @@
 
 <template name="expertFields">
 	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
+    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
     {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
     {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}
     {{>afQuickField name='githubUrl' placeholder="Your github public profile"}}

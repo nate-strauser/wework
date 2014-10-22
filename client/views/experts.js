@@ -1,4 +1,4 @@
-AutoForm.addHooks(['expertNew', 'expertEdit', 'expertDelete'], {
+AutoForm.addHooks(['expertNew', 'expertEdit'], {
 	after: {
 		insert: function(error, result) {
 			if (error) {
@@ -15,17 +15,21 @@ AutoForm.addHooks(['expertNew', 'expertEdit', 'expertDelete'], {
 			} else {
 				//console.log("Update Result:", result);
 				GAnalytics.event("expert","update",getUserName(Meteor.user()));
-				Router.go('expert', {_id: Session.get('editingExpertId')});
-			}
-		},
-		remove: function(error, result) {
-			if (error) {
-				console.log("Remove Error:", error);
-			} else {
-				//console.log("Insert Result:", result);
-				GAnalytics.event("expert","remove",getUserName(Meteor.user()));
-				Router.go('experts');
+				Router.go('expert', {_id: Router.current().params._id});
 			}
 		}
 	}
+});
+
+Template.expertEmbedLarge.helpers({
+	beforeRemove: function () {
+      return function (collection, id) {
+        var doc = collection.findOne(id);
+        if (confirm('Really delete "' + doc.title + '"?')) {
+          this.remove();
+          GAnalytics.event("expert","remove",getUserName(Meteor.user()));
+		  Router.go('experts');
+        }
+      };
+    }
 });

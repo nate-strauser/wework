@@ -14,6 +14,16 @@ Router.configure({
 	}
 });
 
+var subs = new SubsManager({
+  // will be cached only 20 recently used subscriptions
+  cacheLimit: 20,
+  // any subscription will be expired after 5 minutes of inactivity
+  expireIn: 5
+});
+
+
+Meteor.subscribe("userData");
+
 Router.map(function () {
 	this.route('home', {
 		path: '/',
@@ -26,7 +36,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return [subscriptionHandles.jobs, subscriptionHandles.my_jobs, subscriptionHandles.experts];
+			return [subs.subscribe('jobs'),subs.subscribe('my_jobs'),subs.subscribe('experts')];
 		}
 	});
 
@@ -39,22 +49,19 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return [subscriptionHandles.jobs, subscriptionHandles.my_jobs];
+			return [subs.subscribe('jobs'),subs.subscribe('my_jobs')];
 		}
 	});
 
 	this.route('job', {
 		path: '/jobs/:_id',
-		onBeforeAction: function() {
-			Session.set('jobId', this.params._id);
-		},
 		data: function () {
 			return {
 				job:Jobs.findOne({_id:this.params._id})
 			};
 		},
 		waitOn: function(){
-			return Meteor.subscribe("job", this.params._id);
+			return subs.subscribe("job", this.params._id);
 		}
 	});
 
@@ -65,17 +72,12 @@ Router.map(function () {
 	this.route('jobEdit', {
 		path: '/jobs/:_id/edit',
 		data: function () {
-			Session.set('editingJobId', this.params._id);
 			return {
 				job:Jobs.findOne({_id:this.params._id})
 			};
 		},
 		waitOn: function(){
-			return Meteor.subscribe("job", this.params._id);
-		},
-		onStop: function () {
-			// This is called when you navigate to a new route
-			Session.set('editingJobId', null);
+			return subs.subscribe("job", this.params._id);
 		}
 	});
 
@@ -88,7 +90,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.experts;
+			return subs.subscribe('experts');
 		}
 	});
 
@@ -100,7 +102,7 @@ Router.map(function () {
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.experts;
+			return subs.subscribe('experts');
 		}
 	});
 
@@ -117,36 +119,20 @@ Router.map(function () {
 	this.route('expertEdit', {
 		path: '/experts/:_id/edit',
 		data: function () {
-			Session.set('editingExpertId', this.params._id);
 			return {
 				expert:Experts.findOne({_id:this.params._id})
 			};
 		},
 		waitOn: function(){
-			return subscriptionHandles.experts;
-		},
-		onStop: function () {
-			// This is called when you navigate to a new route
-			Session.set('editingExpertId', null);
+			return subs.subscribe('experts');
 		}
 	});
 });
 
 
-Router.onBeforeAction(function(){
-	if (!Meteor.user() && !Meteor.loggingIn()) {
-		AccountsEntry.signInRequired(this, true);
-    }
-
-},{only:['expertEdit','expertNew','jobEdit','jobNew']});
+Router.onBeforeAction(AccountsTemplates.ensureSignedIn,{only:['expertEdit','expertNew','jobEdit','jobNew']});
 
 Router.onRun(function(){
 	GAnalytics.pageview();
 	$("html, body").animate({ scrollTop: 0 }, "slow");
-});
-
-AccountsEntry.config({
-	homeRoute: '/',
-	dashboardRoute: '/',
-	passwordSignupFields: 'USERNAME_AND_EMAIL'
 });

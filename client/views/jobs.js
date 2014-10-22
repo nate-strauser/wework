@@ -1,4 +1,4 @@
-AutoForm.addHooks(['jobDelete', 'jobNew', 'jobEdit'], {
+AutoForm.addHooks(['jobNew', 'jobEdit'], {
 	after: {
 		insert: function(error, result) {
 			if (error) {
@@ -17,17 +17,7 @@ AutoForm.addHooks(['jobDelete', 'jobNew', 'jobEdit'], {
 				//console.log("Update Result:", result);
 				GAnalytics.event("job","update",getUserName(Meteor.user()));
 
-				Router.go('job', {_id: Session.get('editingJobId')});
-			}
-		},
-		remove: function(error, result) {
-			if (error) {
-				console.log("Remove Error:", error);
-			} else {
-				//console.log("Insert Result:", result);
-				GAnalytics.event("job","remove",getUserName(Meteor.user()));
-
-				Router.go('jobs');
+				Router.go('job', {_id: Router.current().params._id});
 			}
 		}
 	}
@@ -47,4 +37,18 @@ Template.jobExpiredAlert.helpers({
 			return false;
 		}
 	}
+});
+
+
+Template.jobEmbedLarge.helpers({
+	beforeRemove: function () {
+      return function (collection, id) {
+        var doc = collection.findOne(id);
+        if (confirm('Really delete "' + doc.title + '"?')) {
+          this.remove();
+          GAnalytics.event("job","remove",getUserName(Meteor.user()));
+		  Router.go('jobs');
+        }
+      };
+    }
 });

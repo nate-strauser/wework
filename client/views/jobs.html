@@ -84,6 +84,11 @@
 				{{location}}
 				</p>
 			{{/if}}
+			{{#if contact}}
+				<p>
+				{{contact}}
+				</p>
+			{{/if}}
 			{{#if url}}
 				<p>
 				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
@@ -105,9 +110,9 @@
 					<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 				</div>
 				<div class="pull-right">
-					{{#autoForm id="jobDelete" collection="Jobs" doc=this type="remove"}}
-						<button type="submit" class="btn btn-danger remove"><i class="fa fa-trash-o"></i> Delete</button>
-					{{/autoForm}}
+					{{#quickRemoveButton collection="Jobs" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
+						<i class="fa fa-trash-o"></i> Delete
+					{{/quickRemoveButton}}
 				</div>
 			{{/if}}
 		</div>
@@ -155,12 +160,13 @@
 </template>
 
 <template name="jobFields">
-	{{> afQuickField name='title'}}
-    {{> afQuickField name='company'}}
-    {{> afQuickField name='location'}}
+	{{> afQuickField name='title' placeholder="Title displayed for your listing"}}
+    {{> afQuickField name='company' placeholder="Name of the hiring company"}}
+    {{> afQuickField name='location' placeholder="Where is this job located?"}}
     {{> afQuickField name='remote'}}
-    {{> afQuickField name='url'}}
-    {{> afQuickField name="jobtype" firstOption="" options="allowed"}}
-    {{> afQuickField name='description' rows=8}}
+    {{> afQuickField name='url' placeholder="External URL of job posting"}}
+    {{> afQuickField name="jobtype" firstOption="(Select a Job Type)" options="allowed"}}
+    {{> afQuickField name='description' rows=8  placeholder="Tell prospective developers about this position.  What is the project? What will you expect them to know beforehand? Things like that."}}
+    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
     {{> afQuickField name='found'}}
 </template>
