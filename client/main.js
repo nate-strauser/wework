@@ -28,6 +28,7 @@ Router.map(function () {
 	this.route('home', {
 		path: '/',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				jobs:Jobs.find({},{sort:{createdAt:-1},limit:5}),
 				experts:Experts.find({},{sort:{createdAt:-1},limit:5}),
@@ -43,6 +44,7 @@ Router.map(function () {
 	this.route('jobs', {
 		path: '/jobs',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				jobs:Jobs.find({},{sort:{createdAt:-1}}),
 				jobCount:Jobs.find({}).count()
@@ -56,6 +58,7 @@ Router.map(function () {
 	this.route('job', {
 		path: '/jobs/:_id',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				job:Jobs.findOne({_id:this.params._id})
 			};
@@ -72,6 +75,7 @@ Router.map(function () {
 	this.route('jobEdit', {
 		path: '/jobs/:_id/edit',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				job:Jobs.findOne({_id:this.params._id})
 			};
@@ -84,6 +88,7 @@ Router.map(function () {
 	this.route('experts', {
 		path: '/experts',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				experts:Experts.find({},{sort:{createdAt:-1}}),
 				expertCount:Experts.find({}).count()
@@ -97,6 +102,7 @@ Router.map(function () {
 	this.route('expert', {
 		path: '/experts/:_id',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				expert:Experts.findOne({_id:this.params._id})
 			};
@@ -119,6 +125,7 @@ Router.map(function () {
 	this.route('expertEdit', {
 		path: '/experts/:_id/edit',
 		data: function () {
+			if (!this.ready()) return;
 			return {
 				expert:Experts.findOne({_id:this.params._id})
 			};
