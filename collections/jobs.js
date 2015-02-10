@@ -39,10 +39,6 @@ Jobs.attachSchema(
             optional: true,
             allowedValues: ["Full Time", "Hourly Contract", "Term Contract", "Mentoring", "Open Source", "Volunteer", "Other"]
         },
-        found: {
-            type: Boolean,
-            label: "I just found this and am reposting it.  I am not actually affliated with the need."
-        },
         remote: {
             type: Boolean,
             label: "This is a remote position."

@@ -21,15 +21,15 @@ raix:handlebar-helpers
 mrt:moment
 aldeed:autoform
 aldeed:collection2
-mrt:iron-router-progress
+multiply:iron-router-progress
 pauli:accounts-linkedin
 datariot:ganalytics
 natestrauser:connection-banner
-gadicohen:phantomjs
+dfischer:phantomjs
 lampe:rssfeed
 meteorhacks:kadira
 chuangbo:marked
 aldeed:delete-button
-splendido:accounts-templates-bootstrap
+useraccounts:bootstrap
 meteorhacks:subs-manager
 

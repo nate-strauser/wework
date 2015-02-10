@@ -40,7 +40,6 @@
 <template name="jobLabels">
 	<div>
 		<span class="pull-right">
-			{{#if found}}<span class="label label-info"><i class="fa fa-bullhorn"></i> Repost</span>{{/if}}
 			{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
 			{{#if jobtype}}<span class="label label-default"><i class="fa fa-info-circle"></i> {{jobtype}}</span>{{/if}}
 		</span>
@@ -168,5 +167,4 @@
     {{> afQuickField name="jobtype" firstOption="(Select a Job Type)" options="allowed"}}
     {{> afQuickField name='description' rows=8  placeholder="Tell prospective developers about this position.  What is the project? What will you expect them to know beforehand? Things like that."}}
     {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
-    {{> afQuickField name='found'}}
 </template>
