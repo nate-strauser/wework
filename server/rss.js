@@ -18,7 +18,7 @@ RssFeed.publish('jobs', function(query) {
 
   Jobs.find({}, {sort:{createdAt:-1}}).forEach(function(job) {
     self.addItem({
-      title: job.title,
+      title: self.cdata(job.title),
       description: self.cdata(job.htmlDescription),
       link: Meteor.absoluteUrl('jobs/'+job._id),
       guid: Meteor.absoluteUrl('jobs/'+job._id),
@@ -47,7 +47,7 @@ RssFeed.publish('experts', function(query) {
 
   Experts.find({}, {sort:{createdAt:-1}}).forEach(function(expert) {
     self.addItem({
-      title: expert.title,
+      title: self.cdata(expert.title),
       description: self.cdata(expert.htmlDescription),
       link: Meteor.absoluteUrl('experts/'+expert._id),
       guid: Meteor.absoluteUrl('experts/'+expert._id),

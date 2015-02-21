@@ -23,6 +23,7 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * add license - MIT ? CC ?
 * split up subscriptions, send down less fields
 * item not found page for deleted experts/jobs
+* switch to journal theme - http://bootswatch.com/journal/
 
 
 ## Settings
