@@ -42,7 +42,9 @@ Router.map(function() {
         }).count(),
         expert: Experts.findOne({
           userId: Meteor.userId()
-        })
+        }),
+        jobsCount: Jobs.find({}).count(),
+        expertsCount: Experts.find({}).count()
       };
     },
     waitOn: function() {
