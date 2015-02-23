@@ -17,14 +17,14 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-					<li><a href="{{pathFor 'experts'}}">Experts</a></li>
+					<li><a href="{{pathFor 'experts'}}">Developers</a></li>
 					{{#if currentUser}}
 					<li><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
 					<li>
 						{{#if $.Session.equals 'isExpert' true}}
-							{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
+							{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Developer Profile</a>{{/with}}
 						{{else}}
-							<a href="{{pathFor 'expertNew'}}">Offer Expert Services</a>
+							<a href="{{pathFor 'expertNew'}}">Create Your Developer Profile</a>
 						{{/if}}
 					</li>
 					{{/if}}

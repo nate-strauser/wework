@@ -4,7 +4,6 @@ Experts.attachSchema(
 	new SimpleSchema({
         userId: {
             type: String,
-            label: "User Id",
             autoValue: function() {
 				if (this.isInsert) {
 					return Meteor.userId();
@@ -20,17 +19,37 @@ Experts.attachSchema(
             type: String,
             label: "User Name",
             autoValue: function() {
+                if (this.isUpsert) {
+                    return {$setOnInsert: getUserName(Meteor.user())};
+                } else {
+                    return getUserName(Meteor.user());
+                }
+            }
+        },
+        avatarHash: {
+            type: String,
+            autoValue: function() {
 				if (this.isUpsert) {
-					return {$setOnInsert: getUserName(Meteor.user())};
+					return {$setOnInsert: Gravatar.hash(getUserEmail(Meteor.user()))};
 				} else {
-					return getUserName(Meteor.user());
+					return Gravatar.hash(getUserEmail(Meteor.user()));
 				}
 			}
+        },
+        name: {
+            type: String,
+            label: "Name",
+            max: 128
         },
         title: {
             type: String,
             label: "Title",
             max: 128
+        },
+        location: {
+            type: String,
+            label: "Location",
+            max: 256
         },
         description: {
             type: String,
@@ -119,6 +138,18 @@ Experts.attachSchema(
 		}
     })
 );
+
+Experts.helpers({
+  displayName: function() {
+    return this.name || this.userName;
+  },
+  avatarUrl: function(size){
+    return Gravatar.imageUrl(this.avatarHash || "example@example.com", {
+        size: size || 80,
+        default: 'mm'
+    });
+  }
+});
 
 Experts.allow({
   insert: function(userId, doc) {

@@ -27,7 +27,7 @@
 </template>
 
 <template name="expertsRecent">
-	<h4>Recent Experts <a href="/rss/experts" target="_blank"><i class="fa fa-rss-square"></i></a></h4>
+	<h4>Recent Developers <a href="/rss/experts" target="_blank"><i class="fa fa-rss-square"></i></a></h4>
 	{{#each experts}}
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -38,8 +38,9 @@
 </template>
 
 <template name="expertEmbedSmall">
+	<img src="{{avatarUrl}}"/>
 	<h4><a href="{{pathFor 'expert'}}">{{title}}</a></h4>
-	{{userName}} - {{getPrettyDateAndTime createdAt}}
+	{{displayName}} - {{getPrettyDateAndTime createdAt}}
 </template>
 
 <template name="expertEmbedLarge">
@@ -48,9 +49,14 @@
 			<h2>
 				<a href="{{pathFor 'expert'}}">{{title}}</a>
 			</h2>
+			<img src="{{avatarUrl 200}}"/>
 			<br>
-			{{userName}}
+			{{displayName}}
 			<hr>
+			{{#if location}}
+				<br>
+				<i class="fa fa-map fa-m"></i>&nbsp;&nbsp;{{location}}
+			{{/if}}
 			{{#if url}}
 				<br>
 				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
@@ -106,7 +112,7 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Offer Expert Services</h4>
+					<h4>Create Your Developer Profile</h4>
 				</div>
 				<div class="panel-body">
 					{{#autoForm collection="Experts" id="expertNew" type="insert"}}
@@ -126,9 +132,11 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Edit Expert Profile</h4>
+					<h4>Edit Developer Profile</h4>
 				</div>
 				<div class="panel-body">
+					<a href="https://gravatar.com/">Gravatar</a><br><img src="{{expert.avatarUrl}}"/>
+					<br>
 					{{#autoForm collection="Experts" id="expertEdit" type="update" doc=expert}}
 					    {{>expertFields}}
 					    <div>
@@ -142,7 +150,9 @@
 </template>
 
 <template name="expertFields">
+	{{>afQuickField name='name' placeholder="Your Name"}}
 	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
+	{{>afQuickField name='location' placeholder="Where are you located"}}
     {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
     {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
     {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}

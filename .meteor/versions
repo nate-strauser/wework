@@ -8,10 +8,13 @@ accounts-password@1.0.6
 accounts-twitter@1.0.3
 accounts-ui@1.1.4
 accounts-ui-unstyled@1.1.6
+alanning:roles@1.2.13
 aldeed:autoform@4.2.2
 aldeed:collection2@2.3.2
 aldeed:delete-button@1.0.0
 aldeed:simple-schema@1.3.0
+aldeed:template-extension@3.1.1
+alethes:pages@1.7.2
 application-configuration@1.0.4
 autoupdate@1.1.5
 base64@1.0.2
@@ -24,6 +27,7 @@ check@1.0.4
 chuangbo:marked@0.3.5
 coffeescript@1.0.5
 datariot:ganalytics@0.2.1
+dburles:collection-helpers@1.0.2
 ddp@1.0.14
 deps@1.0.6
 dfischer:phantomjs@1.0.4
@@ -47,6 +51,9 @@ iron:location@1.0.7
 iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
+jparker:crypto-core@0.1.0
+jparker:crypto-md5@0.1.1
+jparker:gravatar@0.3.1
 jquery@1.11.3
 json@1.0.2
 lampe:rssfeed@0.1.1
@@ -105,3 +112,4 @@ useraccounts:bootstrap@1.6.1
 useraccounts:core@1.6.1
 webapp@1.1.6
 webapp-hashing@1.0.2
+yogiben:admin@1.0.9
