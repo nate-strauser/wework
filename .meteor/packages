@@ -15,7 +15,6 @@ accounts-twitter
 accounts-meteor-developer
 spiderable
 iron:router
-mizzao:bootstrap-3
 natestrauser:font-awesome
 raix:handlebar-helpers
 mrt:moment
@@ -32,4 +31,15 @@ chuangbo:marked
 aldeed:delete-button
 useraccounts:bootstrap
 meteorhacks:subs-manager
-
+dburles:collection-helpers
+yogiben:admin
+alanning:roles
+nemo64:bootstrap
+zimme:iron-router-active
+percolate:migrations
+jparker:crypto-md5
+tmeasday:publish-counts
+bengott:avatar
+matb33:collection-hooks
+percolatestudio:synced-cron
+reywood:publish-composite

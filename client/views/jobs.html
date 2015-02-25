@@ -1,20 +1,18 @@
 <template name="jobs">
-	{{#if $gt jobCount 0}}
-		{{#each jobs}}
-			<div class="panel panel-default">
-				<div class="panel-body">
-    				{{>jobEmbedLarge}}
-				</div>
+	{{#each jobs}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>jobEmbedSmall}}
 			</div>
-		{{/each}}
+		</div>
 	{{else}}
 		No Current Jobs
-	{{/if}}
+	{{/each}}
 </template>
 
 <template name="job">
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
     				{{#with job}}
@@ -27,23 +25,36 @@
 </template>
 
 <template name="jobsRecent">
-	<h4>Recent Jobs <a href="/rss/jobs" target="_blank"><i class="fa fa-rss-square"></i></a></h4>
-	{{#each jobs}}
-		<div class="panel panel-default">
-			<div class="panel-body">
-				{{>jobEmbedSmall}}
+	<section id="jobsRecent">
+		<div class="row">
+			<div class="col-sm-4">
+				<h2>Recent Jobs</h2> 
+			</div>
+			<div class="col-sm-4 text-center">
+				Last post about {{timeFromLastJob}}
+			</div>
+			<div class="col-sm-4 text-right">
+				<a href="/rss/jobs" target="_blank"><i class="fa fa-rss fa-2x"></i></a>
 			</div>
 		</div>
-	{{/each}}
+		{{#each jobs}}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{>jobEmbedSmall}}
+				</div>
+			</div>
+		{{/each}}
+		<div class="panel panel-default">
+			<div class="panel-body text-center">
+				<h4><a href="{{pathFor 'jobs'}}">View All {{getPublishedCount 'jobs'}} Jobs&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a></h4>
+			</div>
+		</div>
+	</section>
 </template>
 
 <template name="jobLabels">
-	<div>
-		<span class="pull-right">
-			{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
-			{{#if jobtype}}<span class="label label-default"><i class="fa fa-info-circle"></i> {{jobtype}}</span>{{/if}}
-		</span>
-	</div>
+	{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
+	{{#if jobtype}}<span class="label label-default"><i class="fa fa-clock-o"></i> {{jobtype}}</span>{{/if}}
 </template>
 
 <template name="jobExpiredAlert">
@@ -58,47 +69,64 @@
 </template>
 
 <template name="jobEmbedSmall">
-	{{>jobLabels}}
+	<div>
+		<span class="pull-right">
+			{{>jobLabels}}
+		</span>
+	</div>
 	<h4>
 		<a href="{{pathFor 'job'}}">{{title}}</a>
 	</h4>
-	{{#if company}}{{company}} - {{/if}}{{getPrettyDateAndTime createdAt}}
+	{{#if company}}<i class="fa fa-building"></i> {{company}} - {{/if}}{{#if location}}<i class="fa fa-map-marker"></i> {{location}} - {{/if}}<i class="fa fa-calendar"></i> {{getPrettyDateAndTime createdAt}}
 </template>
 
 <template name="jobEmbedLarge">
+	{{>jobExpiredAlert}}
 	<div class="row">
 		<div class="col-sm-12">
-			{{>jobExpiredAlert}}
-			{{>jobLabels}}
 			<h2>
-				<a href="{{pathFor 'job'}}">{{title}}</a>
+				{{title}}
 			</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
 			{{#if company}}
-				<p>
-				{{company}}
-				</p>
+				<i class="fa fa-building"></i> {{company}}
 			{{/if}}
+		</div>
+		<div class="col-sm-3">
 			{{#if location}}
-				<p>
-				{{location}}
-				</p>
+				<i class="fa fa-map-marker"></i> {{location}}
+			{{/if}}
+		</div>
+		<div class="col-sm-6 text-right">
+			{{#if url}}
+				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+			{{/if}}
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-3">
+			{{>jobLabels}}
+			{{#if remote}}
+				<hr>
+			{{else}}
+				{{#if jobtype}}
+					<hr>
+				{{/if}}
 			{{/if}}
 			{{#if contact}}
-				<p>
-				{{contact}}
-				</p>
+				<i class="fa fa-envelope"></i> {{contact}}
+				<hr>
 			{{/if}}
-			{{#if url}}
-				<p>
-				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
-				</p>
-			{{/if}}
-			<hr>
+			<i class="fa fa-calendar"></i> Posted on {{getPrettyDateAndTime createdAt}}
+		</div>
+		<div class="col-sm-9">
 			{{#if htmlDescription}}
 				{{{htmlDescription}}}
 			{{/if}}
-			<br>
-			{{getPrettyDateAndTime createdAt}}
 		</div>
 	</div>
 	<div class="row">

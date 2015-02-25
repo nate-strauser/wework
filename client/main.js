@@ -1,6 +1,5 @@
 Router.configure({
   layoutTemplate: 'layout',
-  loadingTemplate: 'loading',
   yieldTemplates: {
     header: {
       to: 'header'
@@ -19,36 +18,34 @@ var subs = new SubsManager({
 
 
 Meteor.subscribe("userData");
+Meteor.subscribe("jobCount");
+Meteor.subscribe("developerCount");
 
 Router.map(function() {
   this.route('home', {
     path: '/',
+    layoutTemplate:'layoutNoContainer',
     data: function() {
       return {
         jobs: Jobs.find({}, {
           sort: {
             createdAt: -1
           },
-          limit: 5
+          limit: 15
         }),
         experts: Experts.find({}, {
           sort: {
-            createdAt: -1
+            randomSorter: 1
           },
-          limit: 5
+          limit: 8
         }),
-        myJobsCount: Jobs.find({
-          userId: Meteor.userId()
-        }).count(),
         expert: Experts.findOne({
           userId: Meteor.userId()
-        }),
-        jobsCount: Jobs.find({}).count(),
-        expertsCount: Experts.find({}).count()
+        })
       };
     },
-    waitOn: function() {
-      return [subs.subscribe('jobs'), subs.subscribe('my_jobs'), subs.subscribe('experts')];
+    subscriptions: function() {
+      return [subs.subscribe('homeJobs'), subs.subscribe('homeDevelopers')];
     }
   });
 
@@ -60,11 +57,10 @@ Router.map(function() {
           sort: {
             createdAt: -1
           }
-        }),
-        jobCount: Jobs.find({}).count()
+        })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return [subs.subscribe('jobs'), subs.subscribe('my_jobs')];
     }
   });
@@ -78,7 +74,7 @@ Router.map(function() {
         })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return subs.subscribe("job", this.params._id);
     }
   });
@@ -96,7 +92,7 @@ Router.map(function() {
         })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return subs.subscribe("job", this.params._id);
     }
   });
@@ -107,13 +103,12 @@ Router.map(function() {
       return {
         experts: Experts.find({}, {
           sort: {
-            createdAt: -1
+            randomSorter: 1
           }
-        }),
-        expertCount: Experts.find({}).count()
+        })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return subs.subscribe('experts');
     }
   });
@@ -127,7 +122,7 @@ Router.map(function() {
         })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return subs.subscribe('experts');
     }
   });
@@ -154,20 +149,16 @@ Router.map(function() {
         })
       };
     },
-    waitOn: function() {
+    subscriptions: function() {
       return subs.subscribe('experts');
     }
   });
 });
 
-
-Router.onBeforeAction(AccountsTemplates.ensureSignedIn, {
+Router.plugin('ensureSignedIn', {
   only: ['expertEdit', 'expertNew', 'jobEdit', 'jobNew']
 });
 
 Router.onRun(function() {
   GAnalytics.pageview();
-  $("html, body").animate({
-    scrollTop: 0
-  }, "slow");
 });

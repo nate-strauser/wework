@@ -1,20 +1,16 @@
 <template name="experts">
-	{{#if $gt expertCount 0}}
+	<div class="row">
 		{{#each experts}}
-			<div class="panel panel-default">
-  				<div class="panel-body">
-    				{{>expertEmbedLarge}}
-				</div>
-			</div>
+			{{>expertEmbedSmall}}
+		{{else}}
+			No Current Developers
 		{{/each}}
-	{{else}}
-		No Current Experts
-	{{/if}}
+	</div>
 </template>
 
 <template name="expert">
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-sm-12">
 			<div class="panel panel-default">
   				<div class="panel-body">
     				{{#with expert}}
@@ -27,61 +23,118 @@
 </template>
 
 <template name="expertsRecent">
-	<h4>Recent Experts <a href="/rss/experts" target="_blank"><i class="fa fa-rss-square"></i></a></h4>
-	{{#each experts}}
-		<div class="panel panel-default">
-			<div class="panel-body">
-				{{>expertEmbedSmall}}
+	<section id="expertsRecent">
+		<div class="row">
+			<div class="col-sm-4">
+				<h2>Featured Developers</h2> 
+			</div>
+			<div class="col-sm-4 col-sm-offset-4 text-right">
+				<a href="/rss/experts" target="_blank"><i class="fa fa-rss fa-2x"></i></a>
 			</div>
 		</div>
-	{{/each}}
+		<div class="row">
+			{{#each experts}}
+				{{>expertEmbedSmall}}			
+			{{/each}}
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body text-center">
+				<h4><a href="{{pathFor 'experts'}}">View All {{getPublishedCount 'developers'}} Developers&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a></h4>
+			</div>
+		</div>
+	</section>
 </template>
 
+
 <template name="expertEmbedSmall">
-	<h4><a href="{{pathFor 'expert'}}">{{title}}</a></h4>
-	{{userName}} - {{getPrettyDateAndTime createdAt}}
+	<div class="col-md-3">
+		<div class="developer-grid panel panel-default text-center">
+			<div class="panel-body">
+				<a href="{{pathFor 'expert'}}">{{> avatar userId=userId size="large" class="center-block"}}</a>
+				<h4><a href="{{pathFor 'expert'}}">{{displayName}}</a></h4>
+				{{title}}
+				{{#if location}}
+					<br>
+					<i class="fa fa-map-marker"></i>&nbsp;{{location}}
+				{{/if}}
+				{{#if availableForHire}}
+					<br>
+					<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+				{{/if}}
+			</div>
+		</div>
+	</div>
 </template>
 
 <template name="expertEmbedLarge">
+	
 	<div class="row">
-		<div class="col-sm-12">
-			<h2>
-				<a href="{{pathFor 'expert'}}">{{title}}</a>
-			</h2>
-			<br>
-			{{userName}}
+		<div class="col-sm-3">
+			<div class="text-center">
+				{{> avatar userId=userId size="large" class="center-block"}}
+				{{#if availableForHire}}
+					<br>
+					<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+				{{/if}}
+			</div>
 			<hr>
-			{{#if url}}
-				<br>
-				<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
-			{{/if}}
-			{{#if contact}}
-				<br>
-				{{contact}}
-			{{/if}}
-			{{#if resumeUrl}}
-				<br>
-				<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
-			{{/if}}
-			{{#if githubUrl}}
-				<br>
-				<i class="fa fa-github fa-m"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">{{githubUrl}}</a>
-			{{/if}}
-			{{#if linkedinUrl}}
-				<br>
-				<i class="fa fa-linkedin fa-m"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">{{linkedinUrl}}</a>
-			{{/if}}
-			{{#if stackoverflowUrl}}
-				<br>
-				<i class="fa fa-stack-overflow fa-m"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">{{stackoverflowUrl}}</a>
-			{{/if}}
-
-			{{#if htmlDescription}}
-				<hr>
-				{{{htmlDescription}}}
-			{{/if}}
-			<br>
-			{{getPrettyDateAndTime createdAt}}
+			<small>
+				{{#if location}}
+					<i class="fa fa-map-marker"></i>&nbsp;{{location}}
+				{{/if}}
+				{{#if interestedIn}}
+					<hr>
+					<b>Interested In</b>
+					{{#each interestedIn}}
+						<br>
+						{{this}}
+					{{/each}}
+					<hr>
+				{{/if}}
+				{{#if url}}
+					<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank">Web Site</a>
+				{{/if}}
+				{{#if contact}}
+					<br>
+					<i class="fa fa-envelope"></i>&nbsp;{{contact}}
+				{{/if}}
+				{{#if resumeUrl}}
+					<br>
+					<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
+				{{/if}}
+				{{#if githubUrl}}
+					<br>
+					<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">Github</a>
+				{{/if}}
+				{{#if linkedinUrl}}
+					<br>
+					<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">LinkedIn</a>
+				{{/if}}
+				{{#if stackoverflowUrl}}
+					<br>
+					<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">Stackoverflow</a>
+				{{/if}}
+			</small>
+			
+			<hr>
+			<i class="fa fa-calendar"></i> Created on {{getPrettyDateAndTime createdAt}}
+	</div>
+		<div class="col-sm-9">
+			<div class="row">
+				<h2>
+					{{displayName}}
+				</h2>
+			</div>
+			<div class="row">
+				<h4>
+					{{title}}
+				</h4>
+			</div>
+			<div class="row">
+				{{#if htmlDescription}}
+					{{{htmlDescription}}}
+				{{/if}}
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -106,7 +159,7 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Offer Expert Services</h4>
+					<h4>Create Your Developer Profile</h4>
 				</div>
 				<div class="panel-body">
 					{{#autoForm collection="Experts" id="expertNew" type="insert"}}
@@ -126,9 +179,11 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Edit Expert Profile</h4>
+					<h4>Edit Developer Profile</h4>
 				</div>
 				<div class="panel-body">
+					{{> avatar userId=expert.userId size="large"}}
+					<br>
 					{{#autoForm collection="Experts" id="expertEdit" type="update" doc=expert}}
 					    {{>expertFields}}
 					    <div>
@@ -142,7 +197,12 @@
 </template>
 
 <template name="expertFields">
+	{{>afQuickField name='name' placeholder="Your Name"}}
 	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
+	{{>afQuickField name='availableForHire'}}
+	{{>afQuickField name='type' noselect="true" options="allowed"}}
+	{{>afQuickField name='interestedIn' noselect="true" options="allowed"}}
+	{{>afQuickField name='location' placeholder="Where are you located"}}
     {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
     {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
     {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}

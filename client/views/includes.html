@@ -16,26 +16,31 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-					<li><a href="{{pathFor 'experts'}}">Experts</a></li>
+					<li class="{{isActiveRoute regex='jobs'}}"><a href="{{pathFor 'jobs'}}">Jobs</a></li>
+					<li class="{{isActiveRoute regex='experts'}}"><a href="{{pathFor 'experts'}}">Developers</a></li>
 					{{#if currentUser}}
-					<li><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
-					<li>
+					<li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
+					
+
 						{{#if $.Session.equals 'isExpert' true}}
-							{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
+							<li class="{{isActiveRoute regex='expertEdit'}}">
+								{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Developer Profile</a>{{/with}}
+							</li>
 						{{else}}
-							<a href="{{pathFor 'expertNew'}}">Offer Expert Services</a>
+							<li class="{{isActiveRoute regex='^expert$'}}">
+								<a href="{{pathFor 'expertNew'}}">Create Your Developer Profile</a>
+							</li>
 						{{/if}}
-					</li>
+					
 					{{/if}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					{{#if currentUser}}
-						<li><a>{{getCurrentUserDisplayName}}</a></li>
+						<li><p class="navbar-text">{{getCurrentUserDisplayName}}</p></li>
 						<li><a href="#" id="signOut">Sign Out</a></li>
 					{{else}}
-						<li class="{{isActiveRoute 'signIn'}}"><a href="{{pathFor 'signIn'}}">Sign In</a></li>
-						<li class="{{isActiveRoute 'signUp'}}"><a href="{{pathFor 'signUp'}}">Register</a></li>
+						<li class="{{isActiveRoute regex='signIn'}}"><a href="{{pathFor 'signIn'}}">Sign In</a></li>
+						<li class="{{isActiveRoute regex='signUp'}}"><a href="{{pathFor 'signUp'}}">Sign Up</a></li>
 					{{/if}}
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -44,20 +49,19 @@
 </template>
 
 <template name="footer">
-	<div class="container-fluid">
+	<footer class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<br><hr><br>
 				<small>
-					<i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<a href="http://www.natestrauser.com" target="_blank">Nate Strauser</a>
-					&nbsp;-&nbsp;
-					<i class="fa fa-btc fa-lg"></i>&nbsp;&nbsp;18jyU8zbA3HxLhRgfBLhgs4isXvAQd6Jos
+					Made By <a href="http://www.natestrauser.com" target="_blank">Nate Strauser</a>
 					&nbsp;-&nbsp;
 					<i class="fa fa-github fa-lg"></i>&nbsp;&nbsp;<a href="https://github.com/nate-strauser/wework" target="_blank">Fork me on GitHub</a>
+					&nbsp;-&nbsp;
+					<i class="fa fa-rss"></i> RSS Feeds <a href="/rss/jobs" target="_blank">Jobs</a> <a href="/rss/experts" target="_blank">Developers</a> 
 				</small>
 			</div>
 		</div>
-	</div>
+	</footer>
 </template>
 
 <template name="loading">

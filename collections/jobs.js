@@ -22,21 +22,18 @@ Jobs.attachSchema(
         url: {
             type: String,
             label: "URL",
-            max: 1024,
+            max: 256,
 			optional: true,
             regEx:SimpleSchema.RegEx.Url
         },
         contact: {
             type: String,
             label: "Contact Info",
-            max: 1024,
-			optional: true
+            max: 128
         },
         jobtype: {
             type: String,
             label: "Job Type",
-            max: 1024,
-            optional: true,
             allowedValues: ["Full Time", "Hourly Contract", "Term Contract", "Mentoring", "Open Source", "Volunteer", "Other"]
         },
         remote: {
