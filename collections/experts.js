@@ -107,7 +107,7 @@ Experts.attachSchema(
         },
         randomSorter: {
             type: Number,
-            optional: true
+            defaultValue: Math.floor(Math.random()*10000)
         },
         // Force value to be current date (on server) upon insert
 		// and prevent updates thereafter.

@@ -52,7 +52,7 @@
 			<div class="panel-body">
 				<a href="{{pathFor 'expert'}}">{{> avatar userId=userId size="large" class="center-block"}}</a>
 				<h4><a href="{{pathFor 'expert'}}">{{displayName}}</a></h4>
-				{{title}}
+				<small>{{title}}</small>
 				{{#if location}}
 					<br>
 					<i class="fa fa-map-marker"></i>&nbsp;{{location}}
