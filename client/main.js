@@ -155,7 +155,7 @@ Router.map(function() {
   });
 });
 
-Router.plugin('ensureSignedIn', {
+Router.onBeforeAction(AccountsTemplates.ensureSignedIn, {
   only: ['expertEdit', 'expertNew', 'jobEdit', 'jobNew']
 });
 
