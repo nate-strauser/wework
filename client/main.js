@@ -16,11 +16,10 @@ var subs = new SubsManager({
   expireIn: 5
 });
 
-if(Meteor.isClient){
-  Meteor.subscribe("userData");
-  Meteor.subscribe("jobCount");
-  Meteor.subscribe("developerCount");  
-}
+
+Meteor.subscribe("userData");
+Meteor.subscribe("jobCount");
+Meteor.subscribe("developerCount");
 
 Router.map(function() {
   this.route('home', {
