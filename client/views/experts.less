@@ -1,3 +1,24 @@
+@import "../lib/journal.variables.import.less";
+
 .developer-grid.panel{
-	height:275px;
+	
+	@media only screen and (max-width : @screen-md-max) { height:310px; }
+    @media only screen and (min-width : @screen-md-max) { height:275px; }
+
+	.name{
+		margin-top: 5px;
+		margin-bottom: 5px;
+		height:20px;
+		@media only screen and (max-width : @screen-md-max) { height:40px; }
+	}
+	.labels{
+		height:30px;
+	}
+	.title{
+		height:70px;
+		@media only screen and (max-width : @screen-md-max) { height:90px; }
+	}
+	.location{
+		height:30px;
+	}
 }

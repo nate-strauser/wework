@@ -51,16 +51,25 @@
 		<div class="developer-grid panel panel-default text-center">
 			<div class="panel-body">
 				<a href="{{pathFor 'expert'}}">{{> avatar userId=userId size="large" class="center-block"}}</a>
-				<h4><a href="{{pathFor 'expert'}}">{{displayName}}</a></h4>
-				<small>{{title}}</small>
-				{{#if location}}
-					<br>
-					<i class="fa fa-map-marker"></i>&nbsp;{{location}}
-				{{/if}}
-				{{#if availableForHire}}
-					<br>
-					<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
-				{{/if}}
+				<h4 class="name"><a href="{{pathFor 'expert'}}">{{displayName}}</a></h4>
+				<div class="labels">
+					{{#if availableForHire}}
+						<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+					{{/if}}
+					{{#if $eq type 'Company'}}
+						<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
+					{{/if}}
+
+				</div>
+				<div class="title">
+					<small>{{title}}</small>
+				</div>
+				<div class="location">
+					{{#if location}}
+						<small><i class="fa fa-map-marker"></i>&nbsp;{{location}}</small>
+					{{/if}}
+				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -75,6 +84,9 @@
 				{{#if availableForHire}}
 					<br>
 					<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+				{{/if}}
+				{{#if $eq type 'Company'}}
+					<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
 				{{/if}}
 			</div>
 			<hr>
