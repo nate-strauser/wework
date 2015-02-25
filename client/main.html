@@ -14,52 +14,10 @@
 	{{>yield region='footer'}}
 </template>
 
-<<<<<<< HEAD
-<template name="home">
-	{{#if currentUser}}
-		<div class="row">
-			<div class="col-sm-6">
-				You currently have {{myJobsCount}} job postings - <a href="{{pathFor 'jobNew'}}">Post a New Job</a>
-			</div>
-			<div class="col-sm-6">
-				{{#if $.Session.equals 'isExpert' true}}
-					You are currently listed as an expert - {{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Expert Profile</a>{{/with}}
-				{{else}}
-					You are not currently offering your services as an expert - <a href="{{pathFor 'expertNew'}}">Offer Expert Services</a>
-				{{/if}}
-			</div>
-
-		</div>
-	{{else}}
-		<div class="jumbotron">
-			<h1>We Work Meteor</h1>
-			<p>
-				We Work Meteor is a job board and community space specifically for <a href="http://www.meteor.com/">Meteor</a>.
-				<br><br>
-				Follow us on Twitter <a href="https://twitter.com/weworkmeteor">@weworkmeteor</a> for new job notifications.
-				<br><br>
-				Browse the <a href="{{pathFor 'jobs'}}">{{jobsCount}} active job postings</a> or <a href="{{pathFor 'expertNew'}}">create your profile</a> to join the <a href="{{pathFor 'experts'}}>">{{expertsCount}} registered developers</a>.
-				<br><br>
-			</p>
-			<div id="callToAction" class="row">
-				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-lg" role="button" href="{{pathFor 'jobNew'}}">I need a Meteor developer</a>
-				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-lg" role="button" href="{{pathFor 'expertNew'}}">I am a Meteor developer</a>
-			</div>
-		</div>
-	{{/if}}
-	<div class="row">
-		<div class="col-sm-6">
-			{{>jobsRecent}}
-		</div>
-		<div class="col-sm-6">
-			{{>expertsRecent}}
-		</div>
-=======
 <template name="layoutNoContainer">
 	{{>yield region='header'}}
 	<div id="content-wrapper">
 		{{>yield}}
->>>>>>> refactor
 	</div>
 	{{>yield region='footer'}}
 </template>
