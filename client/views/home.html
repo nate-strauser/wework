@@ -1,0 +1,38 @@
+<template name="home">
+	<div class="jumbotron container-fluid">
+		<div class="container">
+			<h1>We Work Meteor</h1>
+			<p>
+				The premier job board and developer community space specifically for <a href="http://www.meteor.com/">Meteor</a>.
+				<br><br>
+				Browse the <a href="{{pathFor 'jobs'}}">{{getPublishedCount 'jobs'}} active job postings</a> or <a href="{{pathFor 'expertNew'}}">create your profile</a> to join the <a href="{{pathFor 'experts'}}>">{{getPublishedCount 'developers'}} registered developers</a>.
+				<br><br>
+				<iframe
+				  src="//platform.twitter.com/widgets/follow_button.html?screen_name=weworkmeteor&size=large&show_count=false"
+				  style="width: 300px; height: 20px;"
+				  allowtransparency="true"
+				  frameborder="0"
+				  scrolling="no">
+				</iframe>
+				
+			</p>
+			<div id="callToAction" class="row">
+				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-md" role="button" href="{{pathFor 'jobNew'}}">Post A Job</a>
+				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-md" role="button" href="{{pathFor 'expertNew'}}">Create a Profile</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				{{>jobsRecent}}
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				{{>expertsRecent}}
+			</div>
+		</div>
+	</div>
+</template>

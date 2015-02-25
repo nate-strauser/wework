@@ -19,27 +19,24 @@ Experts.attachSchema(
             type: String,
             label: "User Name",
             autoValue: function() {
-                if (this.isUpsert) {
+                if (this.isInsert) {
+                    return getUserName(Meteor.user());
+                } else if (this.isUpsert) {
                     return {$setOnInsert: getUserName(Meteor.user())};
                 } else {
-                    return getUserName(Meteor.user());
+                    this.unset();
                 }
             }
-        },
-        avatarHash: {
-            type: String,
-            autoValue: function() {
-				if (this.isUpsert) {
-					return {$setOnInsert: Gravatar.hash(getUserEmail(Meteor.user()))};
-				} else {
-					return Gravatar.hash(getUserEmail(Meteor.user()));
-				}
-			}
         },
         name: {
             type: String,
             label: "Name",
             max: 128
+        },
+        type: {
+            type: String,
+            label: "Individual or Company",
+            allowedValues: ["Individual", "Company"]
         },
         title: {
             type: String,
@@ -53,8 +50,19 @@ Experts.attachSchema(
         },
         description: {
             type: String,
-            label: "Expert Description",
+            label: "Description",
             max: 4096
+        },
+        availableForHire: {
+            type: Boolean,
+            label: "Currently Available For Hire",
+            defaultValue:false
+        },
+        interestedIn: {
+            type: [String],
+            label: "Interested In",
+            allowedValues:["Full Time", "Hourly Contract", "Term Contract", "Mentoring", "Open Source", "Volunteer"],
+            optional:true
         },
         contact: {
             type: String,
@@ -96,6 +104,10 @@ Experts.attachSchema(
             max: 1024,
 			optional: true,
             regEx:SimpleSchema.RegEx.Url
+        },
+        randomSorter: {
+            type: Number,
+            optional: true
         },
         // Force value to be current date (on server) upon insert
 		// and prevent updates thereafter.
@@ -142,12 +154,6 @@ Experts.attachSchema(
 Experts.helpers({
   displayName: function() {
     return this.name || this.userName;
-  },
-  avatarUrl: function(size){
-    return Gravatar.imageUrl(this.avatarHash || "example@example.com", {
-        size: size || 80,
-        default: 'mm'
-    });
   }
 });
 

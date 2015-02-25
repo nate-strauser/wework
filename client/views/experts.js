@@ -31,5 +31,10 @@ Template.expertEmbedLarge.helpers({
 		  Router.go('experts');
         }
       };
+    },
+    splitInterestedIn: function () {
+      console.log(this);
+      if(interestedIn)
+      	return interestedIn.split(",");
     }
 });

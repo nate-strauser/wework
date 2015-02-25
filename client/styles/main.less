@@ -1,10 +1,12 @@
+@import "../lib/journal.variables.import.less";
+
 #content-wrapper{
 	min-height: 800px;
 }
 
 #iron-router-progress {
-    background-color : #FFE11A;
-    box-shadow       : 0 0 5px #FFE11A;
+    background-color : @brand-primary;
+    box-shadow       : 0 0 5px @brand-primary;
 }
 
 .nav > li > p {
@@ -26,14 +28,86 @@
     }
 }
 
-#callToAction a{
-    font-size: 125%;
-}
+#callToAction{
+    margin-top: 20px;
+    a{
+       font-size: 125%;
+    }
+} 
 
 #connection-lost-banner{
     text-align: center;
 }
 
-nav.navbar{
-    border-radius: 0px;
+nav.navbar, .btn, li a, .input-group-addon, .jumbotron, .panel, .label{
+  border-radius: 0px !important; 
+}
+
+.form-control{
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+   &:focus {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+  }
+}
+
+.btn {
+  outline: none !important;
+}
+
+.label{
+    padding-top:0.5rem;
+}
+
+footer{
+    border-top: 2px solid @brand-primary;
+    margin-top:20px;
+    padding: 20px 0px 20px 0px;    
+}
+
+footer, .jumbotron{
+    background-color: #27272b;
+    color:white;
+}
+
+.jumbotron{
+    margin-top:-20px;
+}
+
+nav.navbar {
+    .navbar-brand{
+        margin-right:15px;
+        &:hover{
+            background:none;
+        }
+    }
+    .nav.navbar-nav li{
+        
+        p.navbar-text{
+           font-size: 12px;
+            font-weight: normal;
+            padding-top:19.5px;
+            line-height: 21px;
+        }
+        &.active a{
+             background:none;
+             color:@brand-primary;
+        }
+
+            a {
+            font-size: 12px;
+            font-weight: normal;
+            &:hover{
+                background:none;
+                color:@brand-primary;
+            }
+            
+        } 
+    }
 }

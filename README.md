@@ -18,12 +18,10 @@ If you are a developer, you can apply to jobs or offer your services for hire.
 * alerts / subscriptions
 * job salary
 * job equity
-* type of need or offering - one-off help, hourly, term contract, full time employment
 * sample data loading for testing (fire on empty collection startup)
 * add license - MIT ? CC ?
-* split up subscriptions, send down less fields
 * item not found page for deleted experts/jobs
-* switch to journal theme - http://bootswatch.com/journal/
+* add 'new' badge to newly posted jobs/devs
 
 
 ## Settings
