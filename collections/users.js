@@ -4,7 +4,8 @@ UserProfileSchema = new SimpleSchema({
     name:{
       type:String,
       label:"Full Name",
-      max:64
+      max:64,
+      optional:true
     }
 });
 
