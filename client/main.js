@@ -21,6 +21,8 @@ Meteor.subscribe("userData");
 Meteor.subscribe("jobCount");
 Meteor.subscribe("developerCount");
 
+var randomSorterDirection = Random.choice([1,-1]);
+
 Router.map(function() {
   this.route('home', {
     path: '/',
@@ -35,7 +37,7 @@ Router.map(function() {
         }),
         experts: Experts.find({}, {
           sort: {
-            randomSorter: 1
+            randomSorter: randomSorterDirection
           },
           limit: 8
         }),
@@ -103,7 +105,7 @@ Router.map(function() {
       return {
         experts: Experts.find({}, {
           sort: {
-            randomSorter: 1
+            randomSorter: randomSorterDirection
           }
         })
       };
