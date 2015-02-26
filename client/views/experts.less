@@ -9,7 +9,11 @@
 		margin-top: 5px;
 		margin-bottom: 5px;
 		height:20px;
-		@media only screen and (max-width : @screen-md-max) { height:40px; }
+		overflow: hidden;
+		@media only screen and (max-width : @screen-md-max) { 
+			height:40px; 
+			overflow: visible;
+		}
 	}
 	.labels{
 		height:30px;
