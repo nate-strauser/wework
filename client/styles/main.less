@@ -78,9 +78,16 @@ footer, .jumbotron{
 
 .jumbotron{
     margin-top:-20px;
+    #buttons{
+         @media only screen and (min-width : @screen-md-max) { padding-top:50px; }
+    }
 }
 
 nav.navbar {
+    .open .dropdown-toggle{
+        background:none;
+        color:@brand-primary;
+    }
     .navbar-brand{
         margin-right:15px;
         &:hover{
@@ -109,5 +116,12 @@ nav.navbar {
             }
             
         } 
+    }
+}
+
+footer {
+    #disclaimer{
+        font-size: 50%;
+        padding-top: 15px;
     }
 }

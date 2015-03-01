@@ -18,3 +18,6 @@ If anyone wants to improve on this, please submit a pull request w/ your changes
 Forking for unique communities is quite welcome and encouraged, but please alter the colors or appearance at least a little bit so all forks don't look exactly the same.
 
 This application is covered by the GPL v2 license, which requires that all forked instances that are publicly accessible are also open source. See http://www.gnu.org/licenses/old-licenses/gpl-2.0-faq.html#GPLRequireSourcePostedPublic
+
+#### Forks for other communities 
+[Ethereum Jobs](http://jobs.ethercasts.com/)

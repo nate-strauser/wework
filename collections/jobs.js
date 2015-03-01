@@ -34,7 +34,7 @@ Jobs.attachSchema(
         jobtype: {
             type: String,
             label: "Job Type",
-            allowedValues: ["Full Time", "Hourly Contract", "Term Contract", "Mentoring", "Open Source", "Volunteer", "Other"]
+            allowedValues: ["Full Time", "Hourly Contract", "Term Contract", "Mentoring", "Bounty", "Open Source", "Volunteer", "Other"]
         },
         remote: {
             type: Boolean,

@@ -82,6 +82,7 @@ natestrauser:connection-banner@0.4.3
 natestrauser:font-awesome@4.3.0
 nemo64:bootstrap@3.3.1_1
 nemo64:bootstrap-data@3.3.1_1
+nimble:restivus@0.6.1
 npm-bcrypt@0.7.7
 oauth@1.1.3
 oauth1@1.1.3

@@ -19,27 +19,40 @@
 					<li class="{{isActiveRoute regex='jobs'}}"><a href="{{pathFor 'jobs'}}">Jobs</a></li>
 					<li class="{{isActiveRoute regex='experts'}}"><a href="{{pathFor 'experts'}}">Developers</a></li>
 					{{#if currentUser}}
-					<li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
-					
-
-						{{#if $.Session.equals 'isExpert' true}}
-							<li class="{{isActiveRoute regex='expertEdit'}}">
-								{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Developer Profile</a>{{/with}}
-							</li>
-						{{else}}
-							<li class="{{isActiveRoute regex='^expert$'}}">
-								<a href="{{pathFor 'expertNew'}}">Create Your Developer Profile</a>
-							</li>
-						{{/if}}
-					
+						<li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
+					{{/if}}
+					{{#if $.Session.equals 'isExpert' true}}
+						<li class="{{isActiveRoute regex='expertEdit'}}">
+							{{#with expert}}<a href="{{pathFor 'expertEdit'}}">Edit Developer Profile</a>{{/with}}
+						</li>
+					{{else}}
+						<li class="{{isActiveRoute regex='^expert$'}}">
+							<a href="{{pathFor 'expertNew'}}">Create Your Developer Profile</a>
+						</li>
 					{{/if}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					{{#if currentUser}}
-						<li><p class="navbar-text">{{getCurrentUserDisplayName}}</p></li>
-						<li><a href="#" id="signOut">Sign Out</a></li>
+						<li id="user-drop-down" class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								{{> avatar user=currentUser size="small"}}{{getCurrentUserDisplayName}} <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								{{#if isInRole 'admin'}}
+									<li><a href="/admin"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
+									<li class="divider"></li>
+								{{/if}}
+								<!-- <li>
+									<a href="/profile"><i class="fa fa-user fa-fw"></i> Profile</a>
+								 </li>
+									<li class="divider"></li>
+								 -->
+								
+								<li><a href="#" id="signOut"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a></li>
+							</ul>
+						</li>
 					{{else}}
-						<li class="{{isActiveRoute regex='signIn'}}"><a href="{{pathFor 'signIn'}}">Sign In</a></li>
+						<li class="{{isActiveRoute regex='signIn'}}"><a href="{{pathFor 'signIn'}}">Log In</a></li>
 						<li class="{{isActiveRoute regex='signUp'}}"><a href="{{pathFor 'signUp'}}">Sign Up</a></li>
 					{{/if}}
 				</ul>
@@ -56,9 +69,23 @@
 					Made By <a href="http://www.natestrauser.com" target="_blank">Nate Strauser</a>
 					&nbsp;-&nbsp;
 					<i class="fa fa-github fa-lg"></i>&nbsp;&nbsp;<a href="https://github.com/nate-strauser/wework" target="_blank">Fork me on GitHub</a>
-					&nbsp;-&nbsp;
-					<i class="fa fa-rss"></i> RSS Feeds <a href="/rss/jobs" target="_blank">Jobs</a> <a href="/rss/experts" target="_blank">Developers</a> 
 				</small>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<br>
+				<small>
+					<i class="fa fa-rss"></i> RSS <a href="/rss/jobs" target="_blank">Jobs</a> <a href="/rss/experts" target="_blank">Developers</a>
+					&nbsp;-&nbsp;
+					<i class="fa fa-code"></i> JSON <a href="/api/jobs" target="_blank">Jobs</a> <a href="/api/profiles" target="_blank">Developers</a> 
+				</small>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center" id="disclaimer">
+				We Work Meteor is an independent entity and has not been authorized, sponsored, or otherwise approved by <a href="http://www.meteor.com/">Meteor Development Group</a>.
 			</div>
 		</div>
 	</footer>
