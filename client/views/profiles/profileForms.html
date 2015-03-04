@@ -1,0 +1,68 @@
+<template name="profileNew">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Create Your Developer Profile</h4>
+				</div>
+				<div class="panel-body">
+					{{>profileAvatarPreview}}
+					{{#autoForm collection="Profiles" id="profileNew" type="insert"}}
+					    {{>profileFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="profileEdit">
+    <div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Edit Developer Profile</h4>
+				</div>
+				<div class="panel-body">
+					{{>profileAvatarPreview}}
+					{{#autoForm collection="Profiles" id="profileEdit" type="update" doc=profile}}
+					    {{>profileFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="profileAvatarPreview">
+	<section id="profileAvatarPreview">
+		<h5>Avatar</h5>
+		<div class="row">
+			<div class="col-md-4">
+				{{> avatar userId=profile.userId size="large"}}
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="profileFields">
+	{{>afQuickField name='name' placeholder="Your Name"}}
+	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
+	{{>afQuickField name='availableForHire'}}
+	{{>afQuickField name='type' noselect="true" options="allowed"}}
+	{{>afQuickField name='interestedIn' noselect="true" options="allowed"}}
+	{{>afQuickField name='location' placeholder="Where are you located"}}
+    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
+    {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
+    {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}
+    {{>afQuickField name='githubUrl' placeholder="Your github public profile"}}
+    {{>afQuickField name='linkedinUrl' placeholder="Your linkeding public profile"}}
+    {{>afQuickField name='stackoverflowUrl' placeholder="Your stackoverflow public profile"}}
+    {{>afQuickField name='description' rows=8  placeholder="Tell us about what you've done with meteor, how long you've been programming, things like that"}}
+</template>

@@ -1,0 +1,27 @@
+<template name="userProfile">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Your Profile</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{#autoForm id="userProfileEdit" collection="Users" doc=currentUser type="update"}}
+                                {{> afQuickField name='profile.name' placeholder="John Doe"}}
+                                <br><br>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button id="cancel" class="btn btn-default">Cancel</button>
+                                </div>
+                            {{/autoForm}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

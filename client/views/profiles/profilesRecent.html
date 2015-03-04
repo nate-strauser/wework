@@ -1,0 +1,22 @@
+<template name="profilesRecent">
+	<section id="profilesRecent">
+		<div class="row">
+			<div class="col-sm-4">
+				<h2>Featured Developers</h2> 
+			</div>
+			<div class="col-sm-4 col-sm-offset-4 text-right">
+				<a href="/rss/profiles" target="_blank"><i class="fa fa-rss fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="row">
+			{{#each profiles}}
+				{{>profileSmall}}			
+			{{/each}}
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body text-center">
+				<h4><a href="{{pathFor 'profiles'}}">View All {{getPublishedCount 'developers'}} Developers&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a></h4>
+			</div>
+		</div>
+	</section>
+</template>

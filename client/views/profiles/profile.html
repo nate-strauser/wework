@@ -1,0 +1,95 @@
+<template name="profile">
+	<div id="profile" class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+  				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-3">
+							{{> avatar userId=userId size="large"}}
+							{{#if availableForHire}}
+								<br>
+								<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+							{{/if}}
+							{{#if $eq type 'Company'}}
+								<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
+							{{/if}}
+							<hr>
+							<small>
+								{{#if location}}
+									<i class="fa fa-map-marker"></i>&nbsp;{{location}}
+								{{/if}}
+								{{#if interestedIn}}
+									<hr>
+									<b>Interested In</b>
+									{{#each interestedIn}}
+										<br>
+										{{this}}
+									{{/each}}
+									<hr>
+								{{/if}}
+								{{#if url}}
+									<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank">Web Site</a>
+								{{/if}}
+								{{#if contact}}
+									<br>
+									<i class="fa fa-envelope"></i>&nbsp;{{contact}}
+								{{/if}}
+								{{#if resumeUrl}}
+									<br>
+									<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
+								{{/if}}
+								{{#if githubUrl}}
+									<br>
+									<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">Github</a>
+								{{/if}}
+								{{#if linkedinUrl}}
+									<br>
+									<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">LinkedIn</a>
+								{{/if}}
+								{{#if stackoverflowUrl}}
+									<br>
+									<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">Stackoverflow</a>
+								{{/if}}
+							</small>
+							<hr>
+							<i class="fa fa-calendar"></i> Created on {{formatDate createdAt}}
+						</div>
+						<div class="col-sm-9">
+							<div class="row">
+								<h2 class="top-flush">
+									{{displayName}}
+								</h2>
+							</div>
+							<div class="row">
+								<h4>
+									{{title}}
+								</h4>
+							</div>
+							<div class="row">
+								{{#if htmlDescription}}
+									<hr>
+									{{{htmlDescription}}}
+								{{/if}}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							{{#if $eq userId $.Meteor.userId}}
+								<div class="pull-right">
+									&nbsp;
+									<a href="{{pathFor 'profileEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+								</div>
+								<div class="pull-right">
+									{{#quickRemoveButton collection="Profiles" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
+										<i class="fa fa-trash-o"></i> Delete
+									{{/quickRemoveButton}}
+								</div>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,73 @@
+<template name="job">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{>jobExpiredAlert}}
+					<div class="row">
+						<div class="col-sm-12">
+							<h2>
+								{{title}}
+							</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3">
+							{{#if company}}
+								<i class="fa fa-building"></i> {{company}}
+							{{/if}}
+						</div>
+						<div class="col-sm-3">
+							{{#if location}}
+								<i class="fa fa-map-marker"></i> {{location}}
+							{{/if}}
+						</div>
+						<div class="col-sm-6 text-right">
+							{{#if url}}
+								<i class="fa fa-external-link fa-m"></i>&nbsp;&nbsp;<a href="{{url}}" target="_blank">{{url}}</a>
+							{{/if}}
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-3">
+							{{>jobLabels}}
+							{{#if remote}}
+								<hr>
+							{{else}}
+								{{#if jobtype}}
+									<hr>
+								{{/if}}
+							{{/if}}
+							{{#if contact}}
+								<i class="fa fa-envelope"></i> {{contact}}
+								<hr>
+							{{/if}}
+							<i class="fa fa-calendar"></i> Posted on {{formatDate createdAt}}
+						</div>
+						<div class="col-sm-9">
+							{{#if htmlDescription}}
+								{{{htmlDescription}}}
+							{{/if}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							{{#if $eq userId $.Meteor.userId}}
+								<div class="pull-right">
+									&nbsp;
+									<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+								</div>
+								<div class="pull-right">
+									{{#quickRemoveButton collection="Jobs" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
+										<i class="fa fa-trash-o"></i> Delete
+									{{/quickRemoveButton}}
+								</div>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

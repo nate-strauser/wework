@@ -19,13 +19,13 @@
 				<p>
 					The premier job board and developer community space specifically for <a href="http://www.meteor.com/">Meteor</a>.
 					<br><br>
-					Browse the <a href="{{pathFor 'jobs'}}">{{getPublishedCount 'jobs'}} active job postings</a> or <a href="{{pathFor 'expertNew'}}">create your profile</a> to join the <a href="{{pathFor 'experts'}}">{{getPublishedCount 'developers'}} registered developers</a>.
+					Browse the <a href="{{pathFor 'jobs'}}">{{getPublishedCount 'jobs'}} active job postings</a> or <a href="{{pathFor 'profileNew'}}">create your profile</a> to join the <a href="{{pathFor 'profiles'}}">{{getPublishedCount 'developers'}} registered developers</a>.
 				</p>
 			</div>
 			
 			<div id="callToAction" class="row">
 				<a class="col-sm-4 col-sm-offset-1 col-xs-12 text-center btn btn-primary btn-md" role="button" href="{{pathFor 'jobNew'}}">Post A Job</a>
-				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-md" role="button" href="{{pathFor 'expertNew'}}">Create a Profile</a>
+				<a class="col-sm-4 col-sm-offset-2 col-xs-12 text-center btn btn-success btn-md" role="button" href="{{pathFor 'profileNew'}}">Create a Profile</a>
 			</div>
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
-				{{>expertsRecent}}
+				{{>profilesRecent}}
 			</div>
 		</div>
 	</div>

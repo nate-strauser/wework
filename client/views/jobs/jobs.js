@@ -39,24 +39,3 @@ Template.jobExpiredAlert.helpers({
 	}
 });
 
-
-Template.jobEmbedLarge.helpers({
-	beforeRemove: function () {
-      return function (collection, id) {
-        var doc = collection.findOne(id);
-        if (confirm('Really delete "' + doc.title + '"?')) {
-          this.remove();
-          GAnalytics.event("job","remove",getUserName(Meteor.user()));
-		  Router.go('jobs');
-        }
-      };
-    }
-});
-
-Template.jobsRecent.helpers({
-	'timeFromLastJob':function(){
-		var mostRecentJob = _.first(Jobs.find({},{sort:{createdAt:-1},limit:1}).fetch());
-		if(mostRecentJob)
-			return moment(mostRecentJob.createdAt).fromNow();
-	}
-});

@@ -1,5 +1,6 @@
 Router.configure({
   layoutTemplate: 'layout',
+  loadingTemplate: 'loading',
   yieldTemplates: {
     header: {
       to: 'header'
@@ -21,8 +22,6 @@ Meteor.subscribe("userData");
 Meteor.subscribe("jobCount");
 Meteor.subscribe("developerCount");
 
-var randomSorterDirection = Random.choice([1,-1]);
-
 Router.map(function() {
   this.route('home', {
     path: '/',
@@ -33,15 +32,15 @@ Router.map(function() {
           sort: {
             createdAt: -1
           },
-          limit: 15
+          limit: 10
         }),
-        experts: Experts.find({}, {
+        profiles: Profiles.find({}, {
           sort: {
-            randomSorter: randomSorterDirection
+            randomSorter: 1
           },
           limit: 8
         }),
-        expert: Experts.findOne({
+        profile: Profiles.findOne({
           userId: Meteor.userId()
         })
       };
@@ -62,7 +61,7 @@ Router.map(function() {
         })
       };
     },
-    subscriptions: function() {
+    waitOn: function() {
       return [subs.subscribe('jobs'), subs.subscribe('my_jobs')];
     }
   });
@@ -70,13 +69,11 @@ Router.map(function() {
   this.route('job', {
     path: '/jobs/:_id',
     data: function() {
-      return {
-        job: Jobs.findOne({
-          _id: this.params._id
-        })
-      };
+      return Jobs.findOne({
+        _id: this.params._id
+      });
     },
-    subscriptions: function() {
+    waitOn: function() {
       return subs.subscribe("job", this.params._id);
     }
   });
@@ -94,46 +91,44 @@ Router.map(function() {
         })
       };
     },
-    subscriptions: function() {
+    waitOn: function() {
       return subs.subscribe("job", this.params._id);
     }
   });
 
-  this.route('experts', {
-    path: '/experts',
+  this.route('profiles', {
+    path: '/profiles',
     data: function() {
       return {
-        experts: Experts.find({}, {
+        profiles: Profiles.find({}, {
           sort: {
-            randomSorter: randomSorterDirection
+            randomSorter: 1
           }
         })
       };
     },
-    subscriptions: function() {
-      return subs.subscribe('experts');
+    waitOn: function() {
+      return subs.subscribe('profiles');
     }
   });
 
-  this.route('expert', {
-    path: '/experts/:_id',
+  this.route('profile', {
+    path: '/profiles/:_id',
     data: function() {
-      return {
-        expert: Experts.findOne({
+      return Profiles.findOne({
           _id: this.params._id
-        })
-      };
+        });
     },
-    subscriptions: function() {
-      return subs.subscribe('experts');
+    waitOn: function() {
+      return subs.subscribe('profiles');
     }
   });
 
-  this.route('expertNew', {
-    path: '/expert',
+  this.route('profileNew', {
+    path: '/profile',
     onBeforeAction: function() {
-      if (Session.equals('isExpert', true)) {
-        Router.go('expert', Experts.findOne({
+      if (Meteor.user().isDeveloper) {
+        Router.go('profile', Profiles.findOne({
           userId: Meteor.userId()
         }));
       } else {
@@ -142,24 +137,31 @@ Router.map(function() {
     }
   });
 
-  this.route('expertEdit', {
-    path: '/experts/:_id/edit',
+  this.route('profileEdit', {
+    path: '/profiles/:_id/edit',
     data: function() {
       return {
-        expert: Experts.findOne({
+        profile: Profiles.findOne({
           _id: this.params._id
         })
       };
-    },
-    subscriptions: function() {
-      return subs.subscribe('experts');
     }
+  });
+
+  //legacy url redirects
+  this.route('experts', function(){
+    this.redirect("profiles");
+  });
+  this.route('experts/:_id', function(){
+    this.redirect("profile", {_id:this.params._id});
   });
 });
 
 Router.onBeforeAction(AccountsTemplates.ensureSignedIn, {
-  only: ['expertEdit', 'expertNew', 'jobEdit', 'jobNew']
+  only: ['profileEdit', 'profileNew', 'jobEdit', 'jobNew']
 });
+
+Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
 Router.onRun(function() {
   GAnalytics.pageview();

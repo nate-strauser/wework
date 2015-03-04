@@ -27,31 +27,35 @@ RssFeed.publish('jobs', function(query) {
   });
 });
 
-RssFeed.publish('experts', function(query) {
+var profileRss = function(query) {
   var self = this;
   var pubDate = new Date();
   var lastBuildDate = new Date();
-  var mostRecent = Experts.findOne({}, {sort:{createdAt:-1}});
-  var secondMostRecent = Experts.findOne({}, {sort:{createdAt:-1}, skip: 1});
+  var mostRecent = Profiles.findOne({}, {sort:{createdAt:-1}});
+  var secondMostRecent = Profiles.findOne({}, {sort:{createdAt:-1}, skip: 1});
   if(mostRecent)
     pubDate = mostRecent.createdAt;
   if(secondMostRecent)
     lastBuildDate = secondMostRecent.createdAt;
 
-  self.setValue('title', self.cdata('We Work Meteor - Recent Experts'));
-  self.setValue('description', self.cdata('This is a feed of recent experts listed on We Work Meteor.'));
+  self.setValue('title', self.cdata('We Work Meteor - Recent Profiles'));
+  self.setValue('description', self.cdata('This is a feed of recent profiles listed on We Work Meteor.'));
   self.setValue('link', Meteor.absoluteUrl());
   self.setValue('lastBuildDate', lastBuildDate);
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
 
-  Experts.find({}, {sort:{createdAt:-1}}).forEach(function(expert) {
+  Profiles.find({}, {sort:{createdAt:-1}}).forEach(function(profile) {
     self.addItem({
-      title: self.cdata(expert.title),
-      description: self.cdata(expert.htmlDescription),
-      link: Meteor.absoluteUrl('experts/'+expert._id),
-      guid: Meteor.absoluteUrl('experts/'+expert._id),
-      pubDate: expert.createdAt
+      title: self.cdata(profile.title),
+      description: self.cdata(profile.htmlDescription),
+      link: Meteor.absoluteUrl('profiles/'+profile._id),
+      guid: Meteor.absoluteUrl('profiles/'+profile._id),
+      pubDate: profile.createdAt
     });
   });
-});
+};
+
+RssFeed.publish('profiles', profileRss)
+
+RssFeed.publish('experts', profileRss);

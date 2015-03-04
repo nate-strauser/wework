@@ -1,12 +1,12 @@
 SyncedCron.add({
-  name: 'Randomize Developers',
+  name: 'Randomize Profile Random Sorter',
   schedule: function(parser) {
     // parser is a later.parse object
     return parser.text('every 2 hours');
   }, 
   job: function() {
-    Experts.find({}).forEach(function(expert){
-      Experts.update({_id:expert._id},{$set:{
+    Profiles.find({}).forEach(function(profile){
+      Profiles.update({_id:profile._id},{$set:{
             randomSorter:Math.floor(Math.random()*10000)
         }});
     });

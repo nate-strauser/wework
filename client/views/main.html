@@ -5,19 +5,3 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
 	<link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
-
-<template name="layout">
-	{{>yield region='header'}}
-	<div id="content-wrapper" class="container">
-		{{>yield}}
-	</div>
-	{{>yield region='footer'}}
-</template>
-
-<template name="layoutNoContainer">
-	{{>yield region='header'}}
-	<div id="content-wrapper">
-		{{>yield}}
-	</div>
-	{{>yield region='footer'}}
-</template>

@@ -1,12 +1,18 @@
 Migrations.add({
   version: 1,
   name: 'Adds emailHash for all existing users',
-  up: function(){
-  	Users.find({}).forEach(function(user){
-  		var email = getUserEmail(user);
-		if(email)
-		  Users.update({_id:user._id},{$set:{emailHash:CryptoJS.MD5(email.trim().toLowerCase()).toString()}});
-  	});
+  up: function() {
+    Users.find({}).forEach(function(user) {
+      var email = getUserEmail(user);
+      if (email)
+        Users.update({
+          _id: user._id
+        }, {
+          $set: {
+            emailHash: CryptoJS.MD5(email.trim().toLowerCase()).toString()
+          }
+        });
+    });
   },
   down: function() {}
 });
@@ -14,10 +20,30 @@ Migrations.add({
 Migrations.add({
   version: 2,
   name: 'Adds isDeveloper for all existing users',
-  up: function(){
-  	var expertUserIds = _.pluck(Experts.find().fetch(),'userId');
-  	Users.update({_id:{$in:expertUserIds}},{$set:{isDeveloper:true}},{multi:true});
-  	Users.update({_id:{$nin:expertUserIds}},{$set:{isDeveloper:false}},{multi:true});
+  up: function() {
+    var profileUserIds = _.pluck(Profiles.find().fetch(), 'userId');
+    Users.update({
+      _id: {
+        $in: profileUserIds
+      }
+    }, {
+      $set: {
+        isDeveloper: true
+      }
+    }, {
+      multi: true
+    });
+    Users.update({
+      _id: {
+        $nin: profileUserIds
+      }
+    }, {
+      $set: {
+        isDeveloper: false
+      }
+    }, {
+      multi: true
+    });
   },
   down: function() {}
 });
@@ -25,12 +51,48 @@ Migrations.add({
 Migrations.add({
   version: 3,
   name: 'Adds randomSorter for all developers',
-  up: function(){
-  	Experts.find({}).forEach(function(expert){
-      Experts.update({_id:expert._id},{$set:{
-            randomSorter:Math.floor(Math.random()*10000)
-        }});
+  up: function() {
+    Profiles.find({}).forEach(function(profile) {
+      Profiles.update({
+        _id: profile._id
+      }, {
+        $set: {
+          randomSorter: Math.floor(Math.random() * 10000)
+        }
+      });
     });
+  },
+  down: function() {}
+});
+
+Migrations.add({
+  version: 4,
+  name: 'Copy htmlDescription over to description',
+  up: function() {
+    Profiles.find({}).forEach(function(profile) {
+      if(profile.htmlDescription)
+        Profiles.update({
+          _id: profile._id
+        }, {
+          $set: {
+            description: profile.htmlDescription,
+            htmlDescription: cleanHtml(profile.htmlDescription)
+          }
+        });
+    });
+
+    Jobs.find({}).forEach(function(job) {
+      if(job.htmlDescription)
+        Jobs.update({
+          _id: job._id
+        }, {
+          $set: {
+            description: job.htmlDescription,
+            htmlDescription: cleanHtml(job.htmlDescription)
+          }
+        });
+    });
+
   },
   down: function() {}
 });

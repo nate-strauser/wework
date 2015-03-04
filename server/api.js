@@ -4,7 +4,7 @@ Meteor.startup(function() {
   // Global configuration
   Restivus.configure({
     useAuth: false,
-    prettyJson: true
+    prettyJson: false
   });
 
   Restivus.addRoute('jobs', {
@@ -42,7 +42,7 @@ Meteor.startup(function() {
     get: function() {
       return {
         status: "success",
-        data: Experts.find({}, {
+        data: Profiles.find({}, {
           sort: {
             createdAt: -1
           },
@@ -51,7 +51,7 @@ Meteor.startup(function() {
             userName:false
           },
           transform:function(doc){
-            doc.siteUrl = Meteor.absoluteUrl("experts/"+doc._id);
+            doc.siteUrl = Meteor.absoluteUrl("profiles/"+doc._id);
             return doc;
           }
         }).fetch()

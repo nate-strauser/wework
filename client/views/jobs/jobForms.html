@@ -1,0 +1,53 @@
+<template name="jobNew">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Post New Job</h4>
+				</div>
+  				<div class="panel-body">
+  					<div class="alert alert-warning">
+  						<i class="fa fa-exclamation-triangle fa-3x pull-left"></i> This job board is specifically for jobs using the <a href="http://www.meteor.com/">Meteor platform</a>.  If you position does involve working with Meteor, do not post it here.  Any postings not involving Meteor will be deleted without warning.
+  					</div>
+    				{{#autoForm id="jobNew" collection="Jobs" type="insert"}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Post</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobEdit">
+    <div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Edit Job Post</h4>
+				</div>
+  				<div class="panel-body">
+    				{{#autoForm id="jobEdit" collection="Jobs" doc=job type="update"}}
+					    {{>jobFields}}
+					    <div>
+					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
+					    </div>
+					{{/autoForm}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="jobFields">
+	{{> afQuickField name='title' placeholder="Title displayed for your listing"}}
+    {{> afQuickField name='company' placeholder="Name of the hiring company"}}
+    {{> afQuickField name='location' placeholder="Where is this job located?"}}
+    {{> afQuickField name='remote'}}
+    {{> afQuickField name='url' placeholder="External URL of job posting"}}
+    {{> afQuickField name="jobtype" firstOption="(Select a Job Type)" options="allowed"}}
+    {{> afQuickField name='description' rows=8  placeholder="Tell prospective developers about this position.  What is the project? What will you expect them to know beforehand? Things like that."}}
+    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
+</template>
