@@ -79,6 +79,11 @@ Jobs.attachSchema(
         afFieldInput: SUMMERNOTE_OPTIONS
       }
     },
+    status: {
+      type: String,
+      allowedValues: STATUSES,
+      defaultValue: "pending"
+    },
     // Automatically set HTML content based on markdown content
     // whenever the markdown content is set.
     htmlDescription: {
@@ -128,7 +133,7 @@ Jobs.allow({
     return userId && doc && userId === doc.userId;
   },
   update: function(userId, doc, fieldNames, modifier) {
-    return userId && doc && userId === doc.userId;
+    return !_.contains(fieldNames, 'htmlDescription') && !_.contains(fieldNames, 'status') && userId && doc && userId === doc.userId;
   },
   remove: function(userId, doc) {
     return userId && doc && userId === doc.userId;

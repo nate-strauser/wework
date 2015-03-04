@@ -97,4 +97,14 @@ Migrations.add({
   down: function() {}
 });
 
+Migrations.add({
+  version: 5,
+  name: 'Set status for all profiles/jobs',
+  up: function() {
+    Profiles.update({},{$set:{status:"active"}}, {multi:true});
+    Jobs.update({},{$set:{status:"active"}}, {multi:true});
+  },
+  down: function() {}
+});
+
 Migrations.migrateTo('latest');

@@ -128,6 +128,11 @@ Profiles.attachSchema(
       type: Number,
       defaultValue: Math.floor(Math.random() * 10000)
     },
+    status: {
+      type: String,
+      allowedValues: STATUSES,
+      defaultValue:"active"
+    },
     // Force value to be current date (on server) upon insert
     // and prevent updates thereafter.
     createdAt: {
@@ -171,7 +176,7 @@ Profiles.allow({
     return userId && doc && userId === doc.userId;
   },
   update: function(userId, doc, fieldNames, modifier) {
-    return !_.contains(fieldNames, 'randomSorter') && userId && doc && userId === doc.userId;
+    return !_.contains(fieldNames, 'randomSorter') && !_.contains(fieldNames, 'htmlDescription') && !_.contains(fieldNames, 'status') && userId && doc && userId === doc.userId;
   },
   remove: function(userId, doc) {
     return userId && doc && userId === doc.userId;

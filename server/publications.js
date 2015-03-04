@@ -121,7 +121,6 @@ Meteor.publish("my_jobs", function() {
   this.ready();
 });
 
-// Used for returning single job at permalink
 Meteor.publish("job", function(jobId) {
   check(arguments, [Match.Any]);
   return [
@@ -129,6 +128,32 @@ Meteor.publish("job", function(jobId) {
       _id: jobId
     })
   ];
+});
+
+Meteor.publishComposite('profile', function(profileId) {
+  return {
+    find: function() {
+      return Profiles.find({
+        _id: profileId
+      })
+    },
+    children: [{
+      find: function(profile) {
+        return Users.find({
+          _id: profile.userId
+        }, {
+          fields: {
+            "emailHash": true,
+            "services.facebook.id": true,
+            "services.twitter.profile_image_url": true,
+            "services.facebook.id": true,
+            "services.google.picture": true,
+            "services.github.username": true
+          }
+        });
+      }
+    }]
+  }
 });
 
 Meteor.publish("profiles", function() {

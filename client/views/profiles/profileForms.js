@@ -24,10 +24,3 @@ AutoForm.addHooks(['profileNew', 'profileEdit'], {
     }
   }
 });
-
-Template.profileAvatarPreview.events({
-  'click .editUserProfile': function(event, template) {
-    event.preventDefault();
-    Modal.show('userProfile');
-  }
-});

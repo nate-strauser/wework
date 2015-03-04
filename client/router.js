@@ -36,6 +36,7 @@ Router.map(function() {
         }),
         profiles: Profiles.find({}, {
           sort: {
+            availableForHire: -1,
             randomSorter: 1
           },
           limit: 8
@@ -120,7 +121,7 @@ Router.map(function() {
         });
     },
     waitOn: function() {
-      return subs.subscribe('profiles');
+      return subs.subscribe('profile', this.params._id);
     }
   });
 
@@ -145,6 +146,9 @@ Router.map(function() {
           _id: this.params._id
         })
       };
+    },
+    waitOn: function() {
+      return subs.subscribe('profile', this.params._id);
     }
   });
 
