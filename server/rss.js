@@ -69,7 +69,9 @@ var profileRss = function(query) {
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
 
-  Profiles.find({}, {
+  Profiles.find({
+    status: "active"
+  }, {
     sort: {
       createdAt: -1
     }

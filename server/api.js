@@ -37,7 +37,9 @@ Meteor.startup(function() {
     get: function() {
       return {
         status: "success",
-        data: Profiles.find({}, {
+        data: Profiles.find({
+          status: "active"
+        }, {
           sort: {
             createdAt: -1
           },

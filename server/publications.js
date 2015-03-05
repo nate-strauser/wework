@@ -23,7 +23,9 @@ Meteor.publish('jobCount', function() {
 });
 
 Meteor.publish('developerCount', function() {
-  Counts.publish(this, 'developers', Profiles.find());
+  Counts.publish(this, 'developers', Profiles.find({
+    status: "active"
+  }));
 });
 
 Meteor.publish("homeJobs", function() {
@@ -54,7 +56,9 @@ Meteor.publish("homeJobs", function() {
 
 Meteor.publishComposite('homeDevelopers', {
   find: function() {
-    return Profiles.find({}, {
+    return Profiles.find({
+    	status: "active"
+    }, {
       sort: {
         randomSorter: 1
       },
@@ -160,7 +164,9 @@ Meteor.publishComposite('profile', function(profileId) {
 Meteor.publish("profiles", function() {
   check(arguments, [Match.Any]);
   return [
-    Profiles.find({}, {
+    Profiles.find({
+    	status: "active"
+    }, {
       fields: {
         userId: true,
         title: true,
@@ -171,7 +177,7 @@ Meteor.publish("profiles", function() {
         name: true
       }
     }),
-    Users.find({
+    Users.find({  //this may publish users for not active status profiles - could be resolved with publish composite, but performance is slow with so many children lookups
       isDeveloper: true
     }, {
       fields: {
