@@ -1,0 +1,12 @@
+<template name="myJobs">
+	<h3>My Posted Jobs</h3>
+	{{#each jobs}}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{{>jobSmall}}
+			</div>
+		</div>
+	{{else}}
+		You haven't posted any jobs.  <a href="{{pathFor 'jobNew'}}">Post a Job</a> if you have one to offer.
+	{{/each}}
+</template>

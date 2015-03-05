@@ -1,5 +1,5 @@
 Accounts.emailTemplates.siteName = "We Work Meteor";
-Accounts.emailTemplates.from = "We Work Meteor <postmaster@weworkmeteor.com>";
+Accounts.emailTemplates.from = FROM_EMAIL;
 
 Accounts.onCreateUser(function(options, user) {
   if (options.profile)

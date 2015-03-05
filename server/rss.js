@@ -2,11 +2,20 @@ RssFeed.publish('jobs', function(query) {
   var self = this;
   var pubDate = new Date();
   var lastBuildDate = new Date();
-  var mostRecent = Jobs.findOne({}, {sort:{createdAt:-1}});
-  var secondMostRecent = Jobs.findOne({}, {sort:{createdAt:-1}, skip: 1});
-  if(mostRecent)
+  var mostRecent = Jobs.findOne({}, {
+    sort: {
+      createdAt: -1
+    }
+  });
+  var secondMostRecent = Jobs.findOne({}, {
+    sort: {
+      createdAt: -1
+    },
+    skip: 1
+  });
+  if (mostRecent)
     pubDate = mostRecent.createdAt;
-  if(secondMostRecent)
+  if (secondMostRecent)
     lastBuildDate = secondMostRecent.createdAt;
 
   self.setValue('title', self.cdata('We Work Meteor - Recent Jobs'));
@@ -16,12 +25,18 @@ RssFeed.publish('jobs', function(query) {
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
 
-  Jobs.find({}, {sort:{createdAt:-1}}).forEach(function(job) {
+  Jobs.find({
+    status: "active"
+  }, {
+    sort: {
+      createdAt: -1
+    }
+  }).forEach(function(job) {
     self.addItem({
       title: self.cdata(job.title),
       description: self.cdata(job.htmlDescription),
-      link: Meteor.absoluteUrl('jobs/'+job._id),
-      guid: Meteor.absoluteUrl('jobs/'+job._id),
+      link: Meteor.absoluteUrl('jobs/' + job._id),
+      guid: Meteor.absoluteUrl('jobs/' + job._id),
       pubDate: job.createdAt
     });
   });
@@ -31,11 +46,20 @@ var profileRss = function(query) {
   var self = this;
   var pubDate = new Date();
   var lastBuildDate = new Date();
-  var mostRecent = Profiles.findOne({}, {sort:{createdAt:-1}});
-  var secondMostRecent = Profiles.findOne({}, {sort:{createdAt:-1}, skip: 1});
-  if(mostRecent)
+  var mostRecent = Profiles.findOne({}, {
+    sort: {
+      createdAt: -1
+    }
+  });
+  var secondMostRecent = Profiles.findOne({}, {
+    sort: {
+      createdAt: -1
+    },
+    skip: 1
+  });
+  if (mostRecent)
     pubDate = mostRecent.createdAt;
-  if(secondMostRecent)
+  if (secondMostRecent)
     lastBuildDate = secondMostRecent.createdAt;
 
   self.setValue('title', self.cdata('We Work Meteor - Recent Profiles'));
@@ -45,12 +69,16 @@ var profileRss = function(query) {
   self.setValue('pubDate', pubDate);
   self.setValue('ttl', 1);
 
-  Profiles.find({}, {sort:{createdAt:-1}}).forEach(function(profile) {
+  Profiles.find({}, {
+    sort: {
+      createdAt: -1
+    }
+  }).forEach(function(profile) {
     self.addItem({
       title: self.cdata(profile.title),
       description: self.cdata(profile.htmlDescription),
-      link: Meteor.absoluteUrl('profiles/'+profile._id),
-      guid: Meteor.absoluteUrl('profiles/'+profile._id),
+      link: Meteor.absoluteUrl('profiles/' + profile._id),
+      guid: Meteor.absoluteUrl('profiles/' + profile._id),
       pubDate: profile.createdAt
     });
   });

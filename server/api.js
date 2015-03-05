@@ -12,25 +12,20 @@ Meteor.startup(function() {
       return {
         status: "success",
         data: Jobs.find({
-          $or: [{
-            "createdAt": {
-              $gte: daysUntilExpiration()
-            }
-          }, {
-            "updatedAt": {
-              $gte: daysUntilExpiration()
-            }
-          }]
+          createdAt: {
+            $gte: daysUntilExpiration()
+          },
+          status: "active"
         }, {
           sort: {
             createdAt: -1
           },
-          fields:{
-            userId:false,
-            userName:false
+          fields: {
+            userId: false,
+            userName: false
           },
-          transform:function(doc){
-            doc.siteUrl = Meteor.absoluteUrl("jobs/"+doc._id);
+          transform: function(doc) {
+            doc.siteUrl = Meteor.absoluteUrl("jobs/" + doc._id);
             return doc;
           }
         }).fetch()
@@ -46,12 +41,12 @@ Meteor.startup(function() {
           sort: {
             createdAt: -1
           },
-          fields:{
-            userId:false,
-            userName:false
+          fields: {
+            userId: false,
+            userName: false
           },
-          transform:function(doc){
-            doc.siteUrl = Meteor.absoluteUrl("profiles/"+doc._id);
+          transform: function(doc) {
+            doc.siteUrl = Meteor.absoluteUrl("profiles/" + doc._id);
             return doc;
           }
         }).fetch()

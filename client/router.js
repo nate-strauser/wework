@@ -36,7 +36,6 @@ Router.map(function() {
         }),
         profiles: Profiles.find({}, {
           sort: {
-            availableForHire: -1,
             randomSorter: 1
           },
           limit: 8
@@ -63,7 +62,25 @@ Router.map(function() {
       };
     },
     waitOn: function() {
-      return [subs.subscribe('jobs'), subs.subscribe('my_jobs')];
+      return subs.subscribe('jobs');
+    }
+  });
+
+  this.route('myJobs', {
+    path: '/myjobs',
+    data: function() {
+      return {
+        jobs: Jobs.find({
+          userId:Meteor.userId()
+        }, {
+          sort: {
+            createdAt: -1
+          }
+        })
+      };
+    },
+    waitOn: function() {
+      return subs.subscribe('my_jobs');
     }
   });
 

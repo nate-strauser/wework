@@ -15,9 +15,10 @@ Meteor.publish("userData", function() {
 
 Meteor.publish('jobCount', function() {
   Counts.publish(this, 'jobs', Jobs.find({
-    "createdAt": {
+    createdAt: {
       $gte: daysUntilExpiration()
-    }
+    },
+    status: "active"
   }));
 });
 
@@ -29,9 +30,10 @@ Meteor.publish("homeJobs", function() {
   check(arguments, [Match.Any]);
   return [
     Jobs.find({
-      "createdAt": {
+      createdAt: {
         $gte: daysUntilExpiration()
-      }
+      },
+      status: "active"
     }, {
       sort: {
         createdAt: -1
@@ -50,12 +52,10 @@ Meteor.publish("homeJobs", function() {
   ];
 });
 
-
 Meteor.publishComposite('homeDevelopers', {
   find: function() {
     return Profiles.find({}, {
       sort: {
-        availableForHire: -1,
         randomSorter: 1
       },
       limit: 8,
@@ -92,9 +92,10 @@ Meteor.publish("jobs", function() {
   check(arguments, [Match.Any]);
   return [
     Jobs.find({
-      "createdAt": {
+      createdAt: {
         $gte: daysUntilExpiration()
-      }
+      },
+      status: "active"
     }, {
       fields: {
         title: true,
