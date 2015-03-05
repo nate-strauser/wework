@@ -28,7 +28,9 @@ Router.map(function() {
     layoutTemplate:'layoutNoContainer',
     data: function() {
       return {
-        jobs: Jobs.find({}, {
+        jobs: Jobs.find({
+          status:"active"
+        }, {
           sort: {
             createdAt: -1
           },
@@ -54,7 +56,9 @@ Router.map(function() {
     path: '/jobs',
     data: function() {
       return {
-        jobs: Jobs.find({}, {
+        jobs: Jobs.find({
+          status:"active"
+        }, {
           sort: {
             createdAt: -1
           }
