@@ -8,7 +8,7 @@ sitemaps.add('/sitemap.xml', function() {
     });
   });
 
-  var profiles = Profiles.find({}, {sort: {createdAt: -1}}).fetch();
+  var profiles = Profiles.find({status:"active"}, {sort: {createdAt: -1}}).fetch();
   _.each(profiles, function(profile) {
     out.push({
       page: 'profiles/' + profile._id,
