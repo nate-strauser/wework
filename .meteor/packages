@@ -48,3 +48,5 @@ mpowaga:autoform-summernote
 djedi:sanitize-html
 email
 gadicohen:sitemaps
+natestrauser:uploadcare-plus
+reactive-var

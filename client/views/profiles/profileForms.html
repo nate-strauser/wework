@@ -6,14 +6,6 @@
 					<h4>Create Your Developer Profile</h4>
 				</div>
 				<div class="panel-body">
-					<section id="profileAvatarPreview">
-						<h5>Avatar</h5>
-						<div class="row">
-							<div class="col-md-4">
-								{{> avatar user=currentUser size="large"}}
-							</div>
-						</div>
-					</section>
 					{{#autoForm collection="Profiles" id="profileNew" type="insert"}}
 					    {{>profileFields}}
 					    <div>
@@ -34,14 +26,6 @@
 					<h4>Edit Developer Profile</h4>
 				</div>
 				<div class="panel-body">
-					<section id="profileAvatarPreview">
-						<h5>Avatar</h5>
-						<div class="row">
-							<div class="col-md-4">
-								{{> avatar userId=profile.userId size="large"}}
-							</div>
-						</div>
-					</section>
 					{{#autoForm collection="Profiles" id="profileEdit" type="update" doc=profile}}
 					    {{>profileFields}}
 					    <div>
@@ -56,17 +40,49 @@
 </template>
 
 <template name="profileFields">
+	<div class="form-group"  id="profileAvatarPreview">
+		<label class="control-label">{{#if customImagePreviewUrl}}Custom{{else}}Automatic{{/if}} Avatar</label>
+		<div class="row">
+			<div class="col-md-4">
+				{{#if customImagePreviewUrl}}
+					<div class="avatar avatar-large">
+						<img class="img-responsive" src="{{resizeImageUrl customImagePreviewUrl 200 200}}"/>
+					</div>
+				{{else}}
+					{{> avatar user=currentUser size="large"}}
+				{{/if}}
+			</div>
+			<div class="col-md-4">
+				<input
+					id="custom-image"
+					name="customImageUrl"
+					data-schema-key="customImageUrl" 
+					type="hidden"
+					role="uploadcare-uploader"
+					data-tabs="file camera url facebook gdrive dropbox instagram flickr skydrive"
+					data-image-shrink="800x800"
+					data-images-only="true"
+					data-preview-step="true"
+					data-clearable="true"
+					data-multiple="false"
+					data-system-dialog="false"
+					data-crop="800:800"
+				/>
+			</div>
+		</div>
+	</div>
+
 	{{>afQuickField name='name' placeholder="Your Name"}}
 	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
 	{{>afQuickField name='availableForHire'}}
 	{{>afQuickField name='type' noselect="true" options="allowed"}}
 	{{>afQuickField name='interestedIn' noselect="true" options="allowed"}}
 	{{>afQuickField name='location' placeholder="Where are you located"}}
-    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
-    {{>afQuickField name='url' placeholder="URL your personal website/blog"}}
-    {{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}
-    {{>afQuickField name='githubUrl' placeholder="Your github public profile"}}
-    {{>afQuickField name='linkedinUrl' placeholder="Your linkeding public profile"}}
-    {{>afQuickField name='stackoverflowUrl' placeholder="Your stackoverflow public profile"}}
-    {{>afQuickField name='description' rows=8  placeholder="Tell us about what you've done with meteor, how long you've been programming, things like that"}}
+	{{>afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
+	{{>afQuickField name='url' placeholder="URL your personal website/blog"}}
+	{{>afQuickField name='resumeUrl' placeholder="URL of resume/cv hosted externally (dropbox, gdrive, etc)"}}
+	{{>afQuickField name='githubUrl' placeholder="Your github public profile"}}
+	{{>afQuickField name='linkedinUrl' placeholder="Your linkeding public profile"}}
+	{{>afQuickField name='stackoverflowUrl' placeholder="Your stackoverflow public profile"}}
+	{{>afQuickField name='description' rows=8  placeholder="Tell us about what you've done with meteor, how long you've been programming, things like that"}}
 </template>

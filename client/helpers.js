@@ -11,3 +11,8 @@ UI.registerHelper("currentUserDisplayName", function() {
 UI.registerHelper("currentUserEmail", function() {
 	return getUserEmail(Meteor.user());
 });
+
+UI.registerHelper("resizeImageUrl", function(imageUrl, height, width) {
+	if(imageUrl)
+      return imageUrl + "-/resize/" + height + "x" + width + "/";
+});

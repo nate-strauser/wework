@@ -2,7 +2,15 @@
 	<div class="col-md-3">
 		<div class="developer-grid panel panel-default text-center">
 			<div class="panel-body">
-				<a href="{{pathFor 'profile'}}">{{> avatar userId=userId size="medium" class="center-block"}}</a>
+				<a href="{{pathFor 'profile'}}">
+					{{#if customImageUrl}}
+						<div class="avatar avatar-medium center-block">
+							<img class="img-responsive" src="{{resizeImageUrl customImageUrl 100 100}}"/>
+						</div>
+					{{else}}
+						{{> avatar userId=userId size="medium" class="center-block"}}
+					{{/if}}
+				</a>
 				<h4 class="name"><a href="{{pathFor 'profile'}}">{{displayName}}</a></h4>
 				<div class="labels">
 					{{#if availableForHire}}

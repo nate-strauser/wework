@@ -5,7 +5,14 @@
   				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-3">
-							{{> avatar userId=userId size="large"}}
+							{{#if customImageUrl}}
+								<div class="avatar avatar-large">
+									<img class="img-responsive" src="{{resizeImageUrl customImageUrl 200 200}}"/>
+								</div>
+							{{else}}
+								{{> avatar userId=userId size="large"}}
+							{{/if}}
+							
 							{{#if availableForHire}}
 								<br>
 								<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>

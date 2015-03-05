@@ -72,7 +72,8 @@ Meteor.publishComposite('homeDevelopers', {
         randomSorter: true,
         type: true,
         name: true,
-        status:true
+        status:true,
+        customImageUrl:true
       }
     });
   },
@@ -178,7 +179,8 @@ Meteor.publish("profiles", function() {
         randomSorter: true,
         type: true,
         name: true,
-        status:true
+        status:true,
+        customImageUrl:true
       }
     }),
     Users.find({  //this may publish users for not active status profiles - could be resolved with publish composite, but performance is slow with so many children lookups

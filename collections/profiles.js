@@ -32,6 +32,10 @@ Profiles.attachSchema(
         }
       }
     },
+    customImageUrl: {
+      type: String,
+      optional: true
+    },
     name: {
       type: String,
       label: "Name",

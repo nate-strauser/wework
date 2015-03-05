@@ -186,6 +186,12 @@ Router.onBeforeAction(AccountsTemplates.ensureSignedIn, {
   only: ['profileEdit', 'profileNew', 'jobEdit', 'jobNew']
 });
 
+
+Router.onBeforeAction(function(){
+  loadUploadcare();
+  this.next();
+},{only:['profileEdit','profileNew','jobEdit','jobNew']});
+
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
 
 Router.onRun(function() {
