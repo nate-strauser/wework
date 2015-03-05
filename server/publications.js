@@ -48,7 +48,8 @@ Meteor.publish("homeJobs", function() {
         createdAt: true,
         updatedAt: true,
         remote: true,
-        jobtype: true
+        jobtype: true,
+        status:true
       }
     })
   ];
@@ -70,7 +71,8 @@ Meteor.publishComposite('homeDevelopers', {
         availableForHire: true,
         randomSorter: true,
         type: true,
-        name: true
+        name: true,
+        status:true
       }
     });
   },
@@ -108,7 +110,8 @@ Meteor.publish("jobs", function() {
         createdAt: true,
         updatedAt: true,
         remote: true,
-        jobtype: true
+        jobtype: true,
+        status:true
       }
     })
   ];
@@ -174,7 +177,8 @@ Meteor.publish("profiles", function() {
         availableForHire: true,
         randomSorter: true,
         type: true,
-        name: true
+        name: true,
+        status:true
       }
     }),
     Users.find({  //this may publish users for not active status profiles - could be resolved with publish composite, but performance is slow with so many children lookups
