@@ -23,19 +23,9 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
 	}
 });
 
-Template.jobExpiredAlert.helpers({
-	expired: function() {
-		if (this.userId === Meteor.userId()) {
-			if ((this.createdAt < daysUntilExpiration()) && (this.updatedAt < daysUntilExpiration())) {
-				return true;
-			} else if ((this.createdAt < daysUntilExpiration()) && (this.updatedAt === undefined)) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
+Template.jobEdit.events({
+	'click #cancel':function(event, template){
+		event.preventDefault();
+		Router.go("job",{_id:this.job._id});
 	}
-});
-
+})
