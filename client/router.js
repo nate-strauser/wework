@@ -38,6 +38,7 @@ Router.map(function() {
         }),
         profiles: Profiles.find({}, {
           sort: {
+            availableForHire: -1,
             randomSorter: 1
           },
           limit: 8

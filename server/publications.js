@@ -61,6 +61,7 @@ Meteor.publishComposite('homeDevelopers', {
     	status: "active"
     }, {
       sort: {
+        availableForHire: -1,
         randomSorter: 1
       },
       limit: 8,
