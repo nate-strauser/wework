@@ -4,18 +4,19 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Your User Profile</h4>
+                    <h4 class="modal-title">{{_ "your_user_profile"}}</h4>
                 </div>
 
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-12">
                             {{#autoForm id="userProfileEdit" collection="Users" doc=currentUser type="update"}}
+                                <!-- TODO i18n -->
                                 {{> afQuickField name='profile.name' placeholder="John Doe"}}
                                 <br><br>
                                 <div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <button id="cancel" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">{{_ "update"}}</button>
+                                    <button id="cancel" class="btn btn-default">{{_ "cancel"}}</button>
                                 </div>
                             {{/autoForm}}
                         </div>

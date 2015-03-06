@@ -6,28 +6,28 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
+						<span class="sr-only">{{_ "toggle_navigation"}}</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/">We Work Meteor</a>
+					<a class="navbar-brand" href="/">{{ _"wework_name"}}</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="{{isActiveRoute regex='^jobs$'}}"><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-						<li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">Developers</a></li>
+						<li class="{{isActiveRoute regex='^jobs$'}}"><a href="{{pathFor 'jobs'}}">{{_ "jobs"}}</a></li>
+						<li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">{{_ "profiles"}}</a></li>
 						{{#if currentUser}}
-							<li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
+							<li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">{{_ "post_job"}}</a></li>
 							{{#unless currentUser.isDeveloper}}
 								<li class="{{isActiveRoute regex='^profile$'}}">
-									<a href="{{pathFor 'profileNew'}}">Create Developer Profile</a>
+									<a href="{{pathFor 'profileNew'}}">{{_ "header_create_profile"}}</a>
 								</li>
 							{{/unless}}
 						{{/if}}
-						
+
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						{{#if currentUser}}
@@ -37,32 +37,32 @@
 								</a>
 								<ul class="dropdown-menu" role="menu">
 									<li>
-										<a href="{{pathFor 'myJobs'}}"><i class="fa fa-building fa-fw"></i> My Posted Jobs</a>
+										<a href="{{pathFor 'myJobs'}}"><i class="fa fa-building fa-fw"></i> {{_ "my_posted_jobs"}}</a>
 									 </li>
 									<li class="divider"></li>
 									{{#if isInRole 'admin'}}
-										<li><a href="/admin"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
+										<li><a href="/admin"><i class="fa fa-cogs fa-fw"></i> {{_ "admin"}}</a></li>
 										<li class="divider"></li>
 									{{/if}}
 									{{#if currentUser.isDeveloper}}
 										<li>
-											{{#with profile}}<a href="{{pathFor 'profile'}}"><i class="fa fa-rocket fa-fw"></i> Developer Profile</a>{{/with}}
+											{{#with profile}}<a href="{{pathFor 'profile'}}"><i class="fa fa-rocket fa-fw"></i> {{_ "header_profile"}}</a>{{/with}}
 										</li>
 									{{else}}
 										<li>
-											<a href="{{pathFor 'profileNew'}}"><i class="fa fa-rocket fa-fw"></i> Create Developer Profile</a>
+											<a href="{{pathFor 'profileNew'}}"><i class="fa fa-rocket fa-fw"></i> {{_ "header_create_profile"}}</a>
 										</li>
 									{{/if}}
 									<li>
-										<a href="#" id="userProfile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+										<a href="#" id="userProfile"><i class="fa fa-user fa-fw"></i> {{_ "user_profile"}}</a>
 									 </li>
 									<li class="divider"></li>
-									<li><a href="#" id="signOut"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a></li>
+									<li><a href="#" id="signOut"><i class="fa fa-sign-out fa-fw"></i> {{_ "sign_out"}}</a></li>
 								</ul>
 							</li>
 						{{else}}
-							<li class="{{isActiveRoute regex='signIn'}}"><a href="{{pathFor 'signIn'}}">Log In</a></li>
-							<li class="{{isActiveRoute regex='signUp'}}"><a href="{{pathFor 'signUp'}}">Sign Up</a></li>
+							<li class="{{isActiveRoute regex='signIn'}}"><a href="{{pathFor 'signIn'}}">{{_ "log_in"}}</a></li>
+							<li class="{{isActiveRoute regex='signUp'}}"><a href="{{pathFor 'signUp'}}">{{_ "sign_up"}}</a></li>
 						{{/if}}
 					</ul>
 				</div><!-- /.navbar-collapse -->

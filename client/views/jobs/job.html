@@ -5,7 +5,7 @@
 				<div class="panel-body">
 					{{>jobExpiredAlert}}
 					{{#if isInRole 'admin'}}
-					    {{>jobStatusToggle}}  
+					    {{>jobStatusToggle}}
 					{{/if}}
 					{{>jobStatusAlert}}
 					<div class="row">
@@ -47,7 +47,7 @@
 								<i class="fa fa-envelope"></i> {{contact}}
 								<hr>
 							{{/if}}
-							<i class="fa fa-calendar"></i> Posted on {{formatDate createdAt}}
+							<i class="fa fa-calendar"></i> {{_ "posted_on"}} {{formatDate createdAt}}
 						</div>
 						<div class="col-sm-9">
 							{{#if htmlDescription}}
@@ -60,11 +60,11 @@
 							{{#if $eq userId $.Meteor.userId}}
 								<div class="pull-right">
 									&nbsp;
-									<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+									<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> {{_ "edit"}}</a>
 								</div>
 								<div class="pull-right">
 									{{#quickRemoveButton collection="Jobs" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
-										<i class="fa fa-trash-o"></i> Delete
+										<i class="fa fa-trash-o"></i> {{_ "delete"}}
 									{{/quickRemoveButton}}
 								</div>
 							{{/if}}

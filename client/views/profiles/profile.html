@@ -12,13 +12,13 @@
 							{{else}}
 								{{> avatar userId=userId size="large"}}
 							{{/if}}
-							
+
 							{{#if availableForHire}}
 								<br>
-								<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+								<span class="label label-primary"><i class="fa fa-rocket"></i> {{_ "hire_me"}}</span>
 							{{/if}}
 							{{#if $eq type 'Company'}}
-								<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
+								<span class="label label-danger"><i class="fa fa-users"></i> {{_ "company"}}</span>
 							{{/if}}
 							<hr>
 							<small>
@@ -27,7 +27,7 @@
 								{{/if}}
 								{{#if interestedIn}}
 									<hr>
-									<b>Interested In</b>
+									<b>{{_ "interested_in"}}</b>
 									{{#each interestedIn}}
 										<br>
 										{{this}}
@@ -35,7 +35,7 @@
 									<hr>
 								{{/if}}
 								{{#if url}}
-									<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank">Web Site</a>
+									<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank">{{ _"web_site"}}</a>
 								{{/if}}
 								{{#if contact}}
 									<br>
@@ -43,23 +43,23 @@
 								{{/if}}
 								{{#if resumeUrl}}
 									<br>
-									<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
+									<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">{{_ "view_resume"}}</a>
 								{{/if}}
 								{{#if githubUrl}}
 									<br>
-									<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">Github</a>
+									<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">{{_ "github"}}</a>
 								{{/if}}
 								{{#if linkedinUrl}}
 									<br>
-									<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">LinkedIn</a>
+									<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">{{_ "linkedin"}}</a>
 								{{/if}}
 								{{#if stackoverflowUrl}}
 									<br>
-									<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">Stackoverflow</a>
+									<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">{{_ "stackoverflow"}}</a>
 								{{/if}}
 							</small>
 							<hr>
-							<i class="fa fa-calendar"></i> Created on {{formatDate createdAt}}
+							<i class="fa fa-calendar"></i> {{_ "created_on"}} {{formatDate createdAt}}
 						</div>
 						<div class="col-sm-9">
 							<div class="row">
@@ -91,11 +91,11 @@
 							{{#if $eq userId $.Meteor.userId}}
 								<div class="pull-right">
 									&nbsp;
-									<a href="{{pathFor 'profileEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+									<a href="{{pathFor 'profileEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> {{_ "edit"}}</a>
 								</div>
 								<div class="pull-right">
 									{{#quickRemoveButton collection="Profiles" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
-										<i class="fa fa-trash-o"></i> Delete
+										<i class="fa fa-trash-o"></i> {{_ "delete"}}
 									{{/quickRemoveButton}}
 								</div>
 							{{/if}}

@@ -3,16 +3,16 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Post New Job</h4>
+					<h4>{{_ "post_new_job"}}</h4>
 				</div>
   				<div class="panel-body">
   					<div class="alert alert-info">
-  						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> This job board is specifically for jobs using <a href="http://www.meteor.com/">Meteor</a>.  Please do not post unrelated jobs here.
+						<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> {{{_ "wework_warning"}}}
   					</div>
     				{{#autoForm id="jobNew" collection="Jobs" type="insert"}}
 					    {{>jobFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Post</button>
+					        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{_ "post"}}</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -26,14 +26,14 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Edit Job Post</h4>
+					<h4>{{_ "edit_job_post"}}</h4>
 				</div>
   				<div class="panel-body">
     				{{#autoForm id="jobEdit" collection="Jobs" doc=job type="update"}}
 					    {{>jobFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
-					    	<button id="cancel" class="btn btn-default"> Cancel</button>
+					        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{_ "update"}}</button>
+					        <button id="cancel" class="btn btn-default"> {{_ "cancel"}}</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -43,6 +43,7 @@
 </template>
 
 <template name="jobFields">
+	<!-- TODO i18n -->
 	{{> afQuickField name='title' placeholder="Title displayed for your listing"}}
     {{> afQuickField name='company' placeholder="Name of the hiring company"}}
     {{> afQuickField name='location' placeholder="Where is this job located?"}}
