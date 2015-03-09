@@ -90,7 +90,7 @@ Router.map(function() {
   });
 
   this.route('job', {
-    path: '/jobs/:_id',
+    path: '/jobs/:_id/:slug?',
     data: function() {
       return Jobs.findOne({
         _id: this.params._id
@@ -98,6 +98,14 @@ Router.map(function() {
     },
     waitOn: function() {
       return subs.subscribe("job", this.params._id);
+    },
+    onBeforeAction: function() {
+        var expectedSlug = this.data().slug();
+        if (this.params.slug !== expectedSlug) {
+            this.redirect("job", {_id:this.params._id, slug:expectedSlug});
+        } else {
+            this.render();
+        }
     }
   });
 
@@ -106,7 +114,7 @@ Router.map(function() {
   });
 
   this.route('jobEdit', {
-    path: '/jobs/:_id/edit',
+    path: '/jobs/:_id/:slug/edit',
     data: function() {
       return {
         job: Jobs.findOne({
@@ -136,7 +144,7 @@ Router.map(function() {
   });
 
   this.route('profile', {
-    path: '/profiles/:_id',
+    path: '/profiles/:_id/:slug?',
     data: function() {
       return Profiles.findOne({
           _id: this.params._id
@@ -144,6 +152,14 @@ Router.map(function() {
     },
     waitOn: function() {
       return subs.subscribe('profile', this.params._id);
+    },
+    onBeforeAction: function() {
+        var expectedSlug = this.data().slug();
+        if (this.params.slug !== expectedSlug) {
+            this.redirect("profile", {_id:this.params._id, slug:expectedSlug});
+        } else {
+            this.next();
+        }
     }
   });
 
@@ -161,7 +177,7 @@ Router.map(function() {
   });
 
   this.route('profileEdit', {
-    path: '/profiles/:_id/edit',
+    path: '/profiles/:_id/:slug/edit',
     data: function() {
       return {
         profile: Profiles.findOne({
