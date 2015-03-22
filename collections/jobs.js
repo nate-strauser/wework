@@ -74,7 +74,7 @@ Jobs.attachSchema(
     description: {
       type: String,
       label: "Job Description",
-      max: 10000,
+      max: 20000,
       autoform: {
         afFieldInput: SUMMERNOTE_OPTIONS
       }

@@ -31,7 +31,6 @@ aldeed:delete-button
 useraccounts:bootstrap
 meteorhacks:subs-manager
 dburles:collection-helpers
-yogiben:admin
 alanning:roles
 nemo64:bootstrap
 zimme:iron-router-active
@@ -50,3 +49,4 @@ email
 gadicohen:sitemaps
 natestrauser:uploadcare-plus
 reactive-var
+yogiben:admin@=1.0.9
