@@ -37,7 +37,7 @@ zimme:iron-router-active
 percolate:migrations
 jparker:crypto-md5
 tmeasday:publish-counts
-bengott:avatar
+bengott:avatar@=0.7.3
 matb33:collection-hooks
 percolatestudio:synced-cron
 reywood:publish-composite
