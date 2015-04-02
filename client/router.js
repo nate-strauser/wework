@@ -104,7 +104,7 @@ Router.map(function() {
         if (this.params.slug !== expectedSlug) {
             this.redirect("job", {_id:this.params._id, slug:expectedSlug});
         } else {
-            this.render();
+            this.next();
         }
     }
   });
