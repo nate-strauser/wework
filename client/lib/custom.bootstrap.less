@@ -704,6 +704,17 @@ hr {
 }
 
 
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+// Upstream patch for normalize.css submitted: https://github.com/necolas/normalize.css/pull/379 - remove this fix once that is merged
+
+[role="button"] {
+  cursor: pointer;
+}
+
 
 // @import "bootstrap/less/type.less"
 //
@@ -946,7 +957,7 @@ abbr[data-original-title] {
 }
 .initialism {
   font-size: 90%;
-  text-transform: uppercase;
+  .text-uppercase();
 }
 
 // Blockquotes
@@ -1286,7 +1297,7 @@ th {
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  > tbody > tr:nth-child(odd) {
+  > tbody > tr:nth-of-type(odd) {
     background-color: @table-bg-accent;
   }
 }
@@ -1308,7 +1319,7 @@ th {
 // Reset default table behavior
 
 table col[class*="col-"] {
-  position: static; // Prevent border hiding in Firefox and IE9/10 (see https://github.com/twbs/bootstrap/issues/11623)
+  position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
   float: none;
   display: table-column;
 }
@@ -1316,7 +1327,7 @@ table {
   td,
   th {
     &[class*="col-"] {
-      position: static; // Prevent border hiding in Firefox and IE9/10 (see https://github.com/twbs/bootstrap/issues/11623)
+      position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
       float: none;
       display: table-cell;
     }
@@ -1536,7 +1547,7 @@ output {
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
-  border-radius: @input-border-radius;
+  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
@@ -1554,9 +1565,13 @@ output {
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    cursor: @cursor-disabled;
     background-color: @input-bg-disabled;
-    opacity: 1; // iOS fix for unreadable disabled content
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
   }
 
   // Reset height for `textarea`s
@@ -1581,41 +1596,26 @@ input[type="search"] {
 // Special styles for iOS temporal inputs
 //
 // In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned.
-// As a workaround, we set a pixel line-height that matches the
-// given height of the input. Since this fucks up everything else, we have to
-// appropriately reset it for Internet Explorer and the size variations.
+// text within the input to become vertically misaligned. As a workaround, we
+// set a pixel line-height that matches the given height of the input, but only
+// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  line-height: @input-height-base;
-  // IE8+ misaligns the text within date inputs, so we reset
-  line-height: @line-height-base ~"\0";
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    line-height: @input-height-base;
 
-  &.input-sm {
-    line-height: @input-height-small;
-    line-height: @line-height-small ~"\0";
-  }
-  &.input-lg {
-    line-height: @input-height-large;
-    line-height: @line-height-large ~"\0";
-  }
-}
+    &.input-sm,
+    .input-group-sm & {
+      line-height: @input-height-small;
+    }
 
-// IE 11 hack to reverse the iOS temporal input hack.
-_:-ms-fullscreen, :root input[type="date"],
-_:-ms-fullscreen, :root input[type="time"],
-_:-ms-fullscreen, :root input[type="datetime-local"],
-_:-ms-fullscreen, :root input[type="month"] {
-  line-height: @line-height-base;
-
-  &.input-sm {
-    line-height: @line-height-small;
-  }
-  &.input-lg {
-    line-height: @line-height-large;
+    &.input-lg,
+    .input-group-lg & {
+      line-height: @input-height-large;
+    }
   }
 }
 
@@ -1626,7 +1626,7 @@ _:-ms-fullscreen, :root input[type="month"] {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: @form-group-margin-bottom;
 }
 
 
@@ -1666,6 +1666,7 @@ _:-ms-fullscreen, :root input[type="month"] {
 // Radios and checkboxes on same line
 .radio-inline,
 .checkbox-inline {
+  position: relative;
   display: inline-block;
   padding-left: 20px;
   margin-bottom: 0;
@@ -1722,6 +1723,7 @@ input[type="checkbox"] {
   padding-bottom: (@padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
+  min-height: (@line-height-computed + @font-size-base);
 
   &.input-lg,
   &.input-sm {
@@ -1735,15 +1737,40 @@ input[type="checkbox"] {
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
+//
+// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
-.input-sm,
-.form-group-sm .form-control {
+.input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
+.form-group-sm {
+  .form-control {
+    .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  }
+  .form-control-static {
+    height: @input-height-small;
+    padding: @padding-small-vertical @padding-small-horizontal;
+    font-size: @font-size-small;
+    line-height: @line-height-small;
+    min-height: (@line-height-computed + @font-size-small);
+  }
+}
 
-.input-lg,
-.form-group-lg .form-control {
+.input-lg {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+}
+.form-group-lg {
+  .form-control {
+    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  }
+  .form-control-static {
+    height: @input-height-large;
+    padding: @padding-large-vertical @padding-large-horizontal;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+    min-height: (@line-height-computed + @font-size-large);
+  }
 }
 
 
@@ -1876,8 +1903,7 @@ input[type="checkbox"] {
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
-    // then undo the floating of radios and checkboxes to match (which also avoids
-    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    // then undo the floating of radios and checkboxes to match.
     .radio,
     .checkbox {
       display: inline-block;
@@ -2083,7 +2109,7 @@ input[type="checkbox"] {
   &:hover,
   &:focus {
     color: @link-hover-color;
-    text-decoration: underline;
+    text-decoration: @link-hover-decoration;
     background-color: transparent;
   }
   &[disabled],
@@ -2158,10 +2184,6 @@ input[type="button"] {
     &.active {
       z-index: 2;
     }
-    &:focus {
-      // Remove focus outline when dropdown JS adds it after closing the menu
-      outline: 0;
-    }
   }
 }
 
@@ -2215,13 +2237,13 @@ input[type="button"] {
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group > .btn-group:first-child {
+.btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-right-radius(0);
   }
 }
-.btn-group > .btn-group:last-child > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   .border-left-radius(0);
 }
 
@@ -2784,11 +2806,9 @@ input[type="button"] {
 .tab-content {
   > .tab-pane {
     display: none;
-    visibility: hidden;
   }
   > .active {
     display: block;
-    visibility: visible;
   }
 }
 
@@ -2853,7 +2873,6 @@ input[type="button"] {
 
 .hidden {
   display: none !important;
-  visibility: hidden !important;
 }
 
 
@@ -2936,7 +2955,6 @@ input[type="button"] {
 
     &.collapse {
       display: block !important;
-      visibility: visible !important;
       height: auto !important;
       padding-bottom: 0; // Override default setting
       overflow: visible !important;
@@ -3200,6 +3218,8 @@ input[type="button"] {
 }
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
+  margin-bottom: 0;
+  .border-top-radius(@navbar-border-radius);
   .border-bottom-radius(0);
 }
 
@@ -3808,7 +3828,9 @@ input[type="button"] {
     position: relative;
     top: -1px;
   }
-  .btn-xs & {
+
+  .btn-xs &,
+  .btn-group-xs > .btn & {
     top: 0;
     padding: 1px 5px;
   }
@@ -3824,11 +3846,20 @@ input[type="button"] {
   }
 
   // Account for badges in navs
-  a.list-group-item.active > &,
+  .list-group-item.active > &,
   .nav-pills > .active > a > & {
     color: @badge-active-color;
     background-color: @badge-active-bg;
   }
+
+  .list-group-item > & {
+    float: right;
+  }
+
+  .list-group-item > & + & {
+    margin-right: 5px;
+  }
+
   .nav-pills > li > a > & {
     margin-left: 3px;
   }
@@ -3852,6 +3883,7 @@ input[type="button"] {
   .h1 {
     color: @jumbotron-heading-color;
   }
+
   p {
     margin-bottom: (@jumbotron-padding / 2);
     font-size: @jumbotron-font-size;
@@ -3874,7 +3906,8 @@ input[type="button"] {
   @media screen and (min-width: @screen-sm-min) {
     padding: (@jumbotron-padding * 1.6) 0;
 
-    .container & {
+    .container &,
+    .container-fluid & {
       padding-left:  (@jumbotron-padding * 2);
       padding-right: (@jumbotron-padding * 2);
     }
@@ -3949,6 +3982,7 @@ input[type="button"] {
     // Specified for the h4 to prevent conflicts of changing @headings-color
     color: inherit;
   }
+
   // Provide class for links that match alerts
   .alert-link {
     font-weight: @alert-link-font-weight;
@@ -3959,6 +3993,7 @@ input[type="button"] {
   > ul {
     margin-bottom: 0;
   }
+
   > p + p {
     margin-top: 5px;
   }
@@ -3988,12 +4023,15 @@ input[type="button"] {
 .alert-success {
   .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
 }
+
 .alert-info {
   .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
 }
+
 .alert-warning {
   .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
 }
+
 .alert-danger {
   .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
 }
@@ -4101,6 +4139,20 @@ input[type="button"] {
   }
 }
 
+.media,
+.media-body {
+  zoom: 1;
+  overflow: hidden;
+}
+
+.media-body {
+  width: 10000px;
+}
+
+.media-object {
+  display: block;
+}
+
 .media-right,
 .media > .pull-right {
   padding-left: 10px;
@@ -4179,14 +4231,6 @@ input[type="button"] {
   &:last-child {
     margin-bottom: 0;
     .border-bottom-radius(@list-group-border-radius);
-  }
-
-  // Align badges within list items
-  > .badge {
-    float: right;
-  }
-  > .badge + .badge {
-    margin-right: 5px;
   }
 }
 
@@ -4317,7 +4361,11 @@ a.list-group-item {
   font-size: ceil((@font-size-base * 1.125));
   color: inherit;
 
-  > a {
+  > a,
+  > small,
+  > .small,
+  > small > a,
+  > .small > a {
     color: inherit;
   }
 }
@@ -4602,6 +4650,7 @@ a.list-group-item {
   // Additional properties for button version
   // iOS requires the button element instead of an anchor tag.
   // If you want the anchor version, it requires `href="#"`.
+  // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
   button& {
     padding: 0;
     cursor: pointer;
@@ -4633,9 +4682,8 @@ a.list-group-item {
 
 .collapse {
   display: none;
-  visibility: hidden;
 
-  &.in      { display: block; visibility: visible; }
+  &.in      { display: block; }
   tr&.in    { display: table-row; }
   tbody&.in { display: table-row-group; }
 }
@@ -4664,12 +4712,13 @@ a.list-group-item {
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   @caret-width-base solid;
+  border-top:   @caret-width-base dashed;
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
 }
 
 // The dropdown wrapper (div)
+.dropup,
 .dropdown {
   position: relative;
 }
@@ -4844,7 +4893,7 @@ a.list-group-item {
   .dropdown-menu {
     top: auto;
     bottom: 100%;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
 }
 
@@ -4938,6 +4987,7 @@ a.list-group-item {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
   &.fade { .opacity(0); }
@@ -5032,8 +5082,10 @@ a.list-group-item {
   position: absolute;
   z-index: @zindex-tooltip;
   display: block;
-  visibility: visible;
+  // Reset font and text properties given new insertion method
+  font-family: @font-family-base;
   font-size: @font-size-small;
+  font-weight: normal;
   line-height: 1.4;
   .opacity(0);
 
@@ -5063,6 +5115,7 @@ a.list-group-item {
   border-color: transparent;
   border-style: solid;
 }
+// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
 .tooltip {
   &.top .tooltip-arrow {
     bottom: 0;
@@ -5073,13 +5126,15 @@ a.list-group-item {
   }
   &.top-left .tooltip-arrow {
     bottom: 0;
-    left: @tooltip-arrow-width;
+    right: @tooltip-arrow-width;
+    margin-bottom: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
   }
   &.top-right .tooltip-arrow {
     bottom: 0;
-    right: @tooltip-arrow-width;
+    left: @tooltip-arrow-width;
+    margin-bottom: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
   }
@@ -5106,13 +5161,15 @@ a.list-group-item {
   }
   &.bottom-left .tooltip-arrow {
     top: 0;
-    left: @tooltip-arrow-width;
+    right: @tooltip-arrow-width;
+    margin-top: -@tooltip-arrow-width;
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
   &.bottom-right .tooltip-arrow {
     top: 0;
-    right: @tooltip-arrow-width;
+    left: @tooltip-arrow-width;
+    margin-top: -@tooltip-arrow-width;
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
@@ -5134,7 +5191,8 @@ a.list-group-item {
   display: none;
   max-width: @popover-max-width;
   padding: 1px;
-  // Reset font and text propertes given new insertion method
+  // Reset font and text properties given new insertion method
+  font-family: @font-family-base;
   font-size: @font-size-base;
   font-weight: normal;
   line-height: @line-height-base;
@@ -5288,24 +5346,24 @@ a.list-group-item {
 
     // WebKit CSS3 transforms for supported devices
     @media all and (transform-3d), (-webkit-transform-3d) {
-      transition: transform .6s ease-in-out;
-      backface-visibility: hidden;
-      perspective: 1000;
+      .transition-transform(~'0.6s ease-in-out');
+      .backface-visibility(~'hidden');
+      .perspective(1000);
 
       &.next,
       &.active.right {
-        transform: translate3d(100%, 0, 0);
+        .translate3d(100%, 0, 0);
         left: 0;
       }
       &.prev,
       &.active.left {
-        transform: translate3d(-100%, 0, 0);
+        .translate3d(-100%, 0, 0);
         left: 0;
       }
       &.next.left,
       &.prev.right,
       &.active {
-        transform: translate3d(0, 0, 0);
+        .translate3d(0, 0, 0);
         left: 0;
       }
     }
@@ -5409,6 +5467,7 @@ a.list-group-item {
     width:  20px;
     height: 20px;
     margin-top: -10px;
+    line-height: 1;
     font-family: serif;
   }
 
@@ -5456,6 +5515,7 @@ a.list-group-item {
     // Internet Explorer 8-9 does not support clicks on elements without a set
     // `background-color`. We cannot use `filter` since that's not viewed as a
     // background color by the browser. Thus, a hack is needed.
+    // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
     //
     // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
     // set alpha transparency for the best results possible.
