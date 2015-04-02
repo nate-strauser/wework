@@ -128,6 +128,15 @@ Jobs.attachSchema(
   })
 );
 
+Jobs.helpers({
+  path: function() {
+    return 'jobs/' + this._id + '/' + this.slug();
+  },
+  slug: function() {
+    return getSlug(this.title);
+  }
+});
+
 Jobs.allow({
   insert: function(userId, doc) {
     return userId && doc && userId === doc.userId;

@@ -172,6 +172,12 @@ Profiles.attachSchema(
 Profiles.helpers({
   displayName: function() {
     return this.name || this.userName;
+  },
+  path: function() {
+    return 'profiles/' + this._id + '/' + this.slug();
+  },
+  slug: function() {
+    return getSlug(this.displayName() + ' ' + this.title);
   }
 });
 

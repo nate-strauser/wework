@@ -73,6 +73,7 @@ Meteor.publishComposite('homeDevelopers', {
         randomSorter: true,
         type: true,
         name: true,
+        userName: true,
         status:true,
         customImageUrl:true
       }
@@ -180,6 +181,7 @@ Meteor.publish("profiles", function() {
         randomSorter: true,
         type: true,
         name: true,
+        userName: true,
         status:true,
         customImageUrl:true
       }

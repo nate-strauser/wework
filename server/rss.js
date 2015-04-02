@@ -35,8 +35,8 @@ RssFeed.publish('jobs', function(query) {
     self.addItem({
       title: self.cdata(job.title),
       description: self.cdata(job.htmlDescription),
-      link: Meteor.absoluteUrl('jobs/' + job._id),
-      guid: Meteor.absoluteUrl('jobs/' + job._id),
+      link: Meteor.absoluteUrl(job.path()),
+      guid: Meteor.absoluteUrl(job.path()),
       pubDate: job.createdAt
     });
   });
@@ -79,8 +79,8 @@ var profileRss = function(query) {
     self.addItem({
       title: self.cdata(profile.title),
       description: self.cdata(profile.htmlDescription),
-      link: Meteor.absoluteUrl('profiles/' + profile._id),
-      guid: Meteor.absoluteUrl('profiles/' + profile._id),
+      link: Meteor.absoluteUrl(profile.path()),
+      guid: Meteor.absoluteUrl(profile.path()),
       pubDate: profile.createdAt
     });
   });

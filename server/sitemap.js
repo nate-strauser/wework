@@ -3,7 +3,7 @@ sitemaps.add('/sitemap.xml', function() {
   var jobs = Jobs.find({status: "active"}, {sort: {createdAt: -1}}).fetch();
   _.each(jobs, function(job) {
     out.push({
-      page: 'jobs/' + job._id,
+      page: job.path(),
       lastmod: job.updatedAt
     });
   });
@@ -11,7 +11,7 @@ sitemaps.add('/sitemap.xml', function() {
   var profiles = Profiles.find({status:"active"}, {sort: {createdAt: -1}}).fetch();
   _.each(profiles, function(profile) {
     out.push({
-      page: 'profiles/' + profile._id,
+      page: profile.path(),
       lastmod: profile.updatedAt
     });
   });

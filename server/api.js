@@ -25,7 +25,7 @@ Meteor.startup(function() {
             userName: false
           },
           transform: function(doc) {
-            doc.siteUrl = Meteor.absoluteUrl("jobs/" + doc._id);
+            doc.siteUrl = Meteor.absoluteUrl("jobs/" + doc._id + "/" + getSlug(doc.title));
             return doc;
           }
         }).fetch()
@@ -48,7 +48,7 @@ Meteor.startup(function() {
             userName: false
           },
           transform: function(doc) {
-            doc.siteUrl = Meteor.absoluteUrl("profiles/" + doc._id);
+            doc.siteUrl = Meteor.absoluteUrl("profiles/" + doc._id + "/" + getSlug((doc.name || doc.userName) + " " + doc.title));
             return doc;
           }
         }).fetch()
