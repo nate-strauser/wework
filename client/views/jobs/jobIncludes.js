@@ -20,6 +20,16 @@ Template.jobStatusToggle.helpers({
   }
 });
 
+Template.jobLabels.helpers({
+  "new": function(){
+    if (this.createdAt < daysAsNew()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
+
 Template.jobStatusToggle.events({
   "click .set-status": function() {
     Jobs.update({

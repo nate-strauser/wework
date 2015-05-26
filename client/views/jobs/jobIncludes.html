@@ -1,4 +1,5 @@
 <template name="jobLabels">
+	{{#if new}}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{{/if}}
 	{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
 	{{#if jobtype}}<span class="label label-default"><i class="fa fa-clock-o"></i> {{jobtype}}</span>{{/if}}
 </template>
@@ -17,7 +18,7 @@
 <template name="jobStatusToggle">
 	<div class="row">
 		<div class="col-sm-12">
-			Current Status is <b>{{status}}</b> - Set status to 
+			Current Status is <b>{{status}}</b> - Set status to
 			{{#each statuses}}
 				{{#unless $eq ../status this}}
 					<button type="button" class="set-status">{{this}}</button>
