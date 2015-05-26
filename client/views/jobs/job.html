@@ -5,7 +5,7 @@
 				<div class="panel-body">
 					{{>jobExpiredAlert}}
 					{{#if isInRole 'admin'}}
-					    {{>jobStatusToggle}}  
+					    {{>jobStatusToggle}}
 					{{/if}}
 					{{>jobStatusAlert}}
 					<div class="row">
@@ -47,7 +47,16 @@
 								<i class="fa fa-envelope"></i> {{contact}}
 								<hr>
 							{{/if}}
+							{{#if salary}}
+								<i class="fa fa-usd"></i> {{salary}}
+								<hr>
+							{{/if}}
+							{{#if equity}}
+								<i class="fa fa-pie-chart"></i> {{equity}}
+								<hr>
+							{{/if}}
 							<i class="fa fa-calendar"></i> Posted on {{formatDate createdAt}}
+
 						</div>
 						<div class="col-sm-9">
 							{{#if htmlDescription}}

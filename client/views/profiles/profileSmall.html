@@ -12,15 +12,7 @@
 					{{/if}}
 				</a>
 				<h4 class="name"><a href="{{pathFor 'profile'}}">{{displayName}}</a></h4>
-				<div class="labels">
-					{{#if availableForHire}}
-						<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
-					{{/if}}
-					{{#if $eq type 'Company'}}
-						<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
-					{{/if}}
-
-				</div>
+				{{>profileLabels}}
 				<div class="title">
 					<small>{{title}}</small>
 				</div>
@@ -29,7 +21,7 @@
 						<small><i class="fa fa-map-marker"></i>&nbsp;{{location}}</small>
 					{{/if}}
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

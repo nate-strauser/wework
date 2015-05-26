@@ -1,0 +1,14 @@
+<template name="profileLabels">
+  <div class="labels">
+    {{#if new}}
+      <span class="label label-warning"><i class="fa fa-star"></i> New</span>
+    {{/if}}
+    {{#if availableForHire}}
+      <span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+    {{/if}}
+    {{#if $eq type 'Company'}}
+      <span class="label label-danger"><i class="fa fa-users"></i> Company</span>
+    {{/if}}
+
+  </div>
+</template>
