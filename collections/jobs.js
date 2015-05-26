@@ -31,6 +31,16 @@ Jobs.attachSchema(
       label: "Contact Info",
       max: 128
     },
+    salary: {
+      type: String,
+      label: "Salary",
+      max: 128
+    },
+    equity: {
+      type: String,
+      label: "Equity",
+      max: 128
+    },
     jobtype: {
       type: String,
       label: "Job Type",
