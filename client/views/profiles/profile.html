@@ -12,14 +12,9 @@
 							{{else}}
 								{{> avatar userId=userId size="large"}}
 							{{/if}}
-							
-							{{#if availableForHire}}
-								<br>
-								<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
-							{{/if}}
-							{{#if $eq type 'Company'}}
-								<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
-							{{/if}}
+
+							<br>
+							{{>profileLabels}}
 							<hr>
 							<small>
 								{{#if location}}
