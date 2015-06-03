@@ -82,7 +82,15 @@ Jobs.attachSchema(
     status: {
       type: String,
       allowedValues: STATUSES,
-      defaultValue: "pending"
+      autoValue: function() {
+        if (this.isInsert) {
+          return 'pending';
+        } else if (this.isUpsert) {
+          return {
+            $setOnInsert: 'pending'
+          };
+        }
+      },
     },
     // Automatically set HTML content based on markdown content
     // whenever the markdown content is set.
