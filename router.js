@@ -206,7 +206,3 @@ Router.onBeforeAction(function(){
 },{only:['profileEdit','profileNew','jobEdit','jobNew']});
 
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});
-
-Router.onRun(function() {
-  GAnalytics.pageview();
-});
