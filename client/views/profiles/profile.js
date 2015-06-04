@@ -4,7 +4,7 @@ Template.profile.helpers({
       var doc = collection.findOne(id);
       if (confirm('Really delete "' + doc.title + '"?')) {
         this.remove();
-        GAnalytics.event("profile", "remove", getUserName(Meteor.user()));
+        ga("send", "event", "profile", "remove", doc.title);
         Router.go('profiles');
       }
     };

@@ -9,18 +9,14 @@ Router.configure({
       to: 'footer'
     }
   },
-  progressSpinner: false
+  progressSpinner: false,
+  trackPageView: true
 });
 
 var subs = new SubsManager({
   cacheLimit: 20,
   expireIn: 5
 });
-
-
-Meteor.subscribe("userData");
-Meteor.subscribe("jobCount");
-Meteor.subscribe("developerCount");
 
 Router.map(function() {
   this.route('home', {
@@ -199,7 +195,7 @@ Router.map(function() {
   });
 });
 
-Router.onBeforeAction(AccountsTemplates.ensureSignedIn, {
+Router.plugin('ensureSignedIn', {
   only: ['profileEdit', 'profileNew', 'jobEdit', 'jobNew']
 });
 

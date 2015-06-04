@@ -4,7 +4,7 @@ Template.job.helpers({
       var doc = collection.findOne(id);
       if (confirm('Really delete "' + doc.title + '"?')) {
         this.remove();
-        GAnalytics.event("job", "remove", getUserName(Meteor.user()));
+        ga("send", "event", "job", "remove", doc.title);
         Router.go('myJobs');
       }
     };

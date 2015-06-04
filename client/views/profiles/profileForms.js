@@ -4,7 +4,7 @@ AutoForm.addHooks(['profileNew', 'profileEdit'], {
       if (error) {
         console.log("Insert Error:", error);
       } else {
-        GAnalytics.event("profile", "insert", getUserName(Meteor.user()));
+        ga("send", "event", "profile", "insert", result.title);
         Router.go('profile', {
           _id: result
         });
@@ -14,7 +14,7 @@ AutoForm.addHooks(['profileNew', 'profileEdit'], {
       if (error) {
         console.log("Update Error:", error);
       } else {
-        GAnalytics.event("profile", "update", getUserName(Meteor.user()));
+        ga("send", "event", "profile", "update", result.title);
         Router.go('profile', {
           _id: Router.current().params._id
         });
@@ -54,6 +54,8 @@ Template.profileFields.rendered = function() {
         if (file) {
           file.done(function(info) {
             customImagePreviewUrl.set(info.cdnUrl);
+            ga("send", "event", "profile", "imageUploaded", template.data.profile.title);
+        
           });
         } else if(customImagePreviewUrl.get()){
           	customImagePreviewUrl.set(null);

@@ -4,7 +4,7 @@ AutoForm.addHooks(['userProfileEdit'], {
 			if (error) {
 				console.log(error);
 			} else {
-				GAnalytics.event("userProfile", "edit", getUserName(Meteor.user()));
+				ga("send", "event", "userProfile", "edit", getUserName(Meteor.user()));
 				Modal.hide("userProfile");
 			}
 		}

@@ -4,9 +4,7 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
 			if (error) {
 				console.log("Insert Error:", error);
 			} else {
-				//console.log("Insert Result:", result);
-				GAnalytics.event("expert","insert",getUserName(Meteor.user()));
-
+				ga("send", "event", "job", "insert", result.title);
 				Router.go('job', {_id:result});
 			}
 		},
@@ -14,9 +12,7 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
 			if (error) {
 				console.log("Update Error:", error);
 			} else {
-				//console.log("Update Result:", result);
-				GAnalytics.event("job","update",getUserName(Meteor.user()));
-
+				ga("send", "event", "job", "update", result.title);
 				Router.go('job', {_id: Router.current().params._id});
 			}
 		}

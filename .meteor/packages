@@ -22,7 +22,6 @@ aldeed:autoform
 aldeed:collection2
 multiply:iron-router-progress
 pauli:accounts-linkedin
-datariot:ganalytics
 natestrauser:connection-banner
 dfischer:phantomjs
 lampe:rssfeed
@@ -51,3 +50,5 @@ natestrauser:uploadcare-plus
 reactive-var
 yogiben:admin@=1.0.9
 ongoworks:speakingurl
+reywood:iron-router-ga
+okgrow:iron-router-autoscroll
