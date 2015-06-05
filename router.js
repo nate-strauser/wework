@@ -120,6 +120,13 @@ Router.map(function() {
     },
     waitOn: function() {
       return subs.subscribe("job", this.params._id);
+    },
+    onBeforeAction: function() {
+      if (this.data.userId !== Meteor.userId()) {
+        this.redirect("jobs")
+      } else {
+        this.next();
+      }
     }
   });
 
