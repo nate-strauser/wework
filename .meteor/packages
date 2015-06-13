@@ -17,7 +17,7 @@ spiderable
 iron:router
 natestrauser:font-awesome
 raix:handlebar-helpers
-mrt:moment
+momentjs:moment
 aldeed:autoform
 aldeed:collection2
 multiply:iron-router-progress
