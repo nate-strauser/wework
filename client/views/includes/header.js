@@ -11,10 +11,14 @@ Template.header.events({
     Meteor.logout();
     Router.go("/");
   },
-  'click .navbar-nav a': function() {
+  'click .navbar-nav a': function(event, template) {
     var targetButton = document.getElementsByClassName('navbar-toggle')[0];
+    var _this = $(event.currentTarget); 
+
     if (window.innerWidth < 768) {
-      targetButton.click()
+      if( !_this.hasClass('box-user-option') ){
+         targetButton.click()
+      }
     }
   },
   'click #userProfile': function(event, template) {
