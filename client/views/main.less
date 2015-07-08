@@ -7,7 +7,11 @@ h1,h2,h3,h4,h5{
 }
 
 #content-wrapper{
-	min-height: 800px;
+    min-height: 800px;
+
+    a:visited {
+        color: lighten(@brand-primary, 20%);
+    }
 }
 
 #iron-router-progress {
@@ -71,13 +75,7 @@ nav.navbar, .btn, li a, .input-group-addon, .jumbotron, .panel, .label{
     padding-top:0.5rem;
 }
 
-footer{
-    border-top: 2px solid @brand-primary;
-    margin-top:20px;
-    padding: 20px 0px 20px 0px;    
-}
-
-footer, .jumbotron{
+footer, .jumbotron {
     background-color: #27272b;
     color:white;
 }
@@ -126,6 +124,14 @@ nav.navbar {
 }
 
 footer {
+    border-top: 2px solid @brand-primary;
+    margin-top:20px;
+    padding: 20px 0px 20px 0px;    
+
+    a:visited {
+        color: desaturate(darken(@brand-primary, 20%), 30%);
+    }
+
     #disclaimer{
         font-size: 50%;
         padding-top: 15px;
