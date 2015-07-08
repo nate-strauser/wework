@@ -7,7 +7,7 @@ If you have a project or problem you need help with, you can post a job or conta
 If you are a developer, you can apply to jobs or offer your services for hire.
 
 ## Settings
-This app does need a settings file to run - see `settings-example.json` for the supoprted values.  The actual settings used for wework.meteor.com are kept private
+This app does need a settings file to run - see `settings-example.json` for the supported values.  The actual settings used for wework.meteor.com are kept private
 
 ## Contributing
 If anyone wants to improve on this, please submit a pull request w/ your changes.
