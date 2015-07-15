@@ -21,7 +21,8 @@ Template.jobStatusToggle.helpers({
 });
 
 Template.jobStatusToggle.events({
-  "click .set-status": function() {
+  "click .set-status": function(event, template) {
+    event.preventDefault();
     Jobs.update({
       _id: Router.current().params._id
     }, {
