@@ -9,8 +9,8 @@ h1,h2,h3,h4,h5{
 #content-wrapper{
     min-height: 800px;
 
-    a:visited {
-        color: lighten(@brand-primary, 20%);
+    a:not(.btn):visited {
+        color: @text-color;
     }
 }
 
@@ -80,10 +80,16 @@ footer, .jumbotron {
     color:white;
 }
 
-.jumbotron{
+#content-wrapper .jumbotron{
     margin-top:-20px;
     #buttons{
          @media only screen and (min-width : @screen-md-max) { padding-top:50px; }
+    }
+    a:visited {
+        color: @brand-primary;
+    }
+    a.btn, a.btn:visited {
+        color: #fff;
     }
 }
 
@@ -129,7 +135,7 @@ footer {
     padding: 20px 0px 20px 0px;    
 
     a:visited {
-        color: desaturate(darken(@brand-primary, 20%), 30%);
+        color: @brand-primary;
     }
 
     #disclaimer{
