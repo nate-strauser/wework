@@ -1,11 +1,11 @@
 {
   "public" : {
     "ga": {
-      "account":"GA ID"
+      "id":"GA ID"
     }
   },
-  "apm":{
-  	"id":"APM ID",
-  	"secret":"APM Secret"
+  "kadira": {
+     "appId": "Kadira App ID",
+     "appSecret": "Kadira App Secret"
   }
 }
