@@ -1,6 +1,6 @@
 {
 	"wework_name": "We Work Meteor",
-	"wework_slogan": "The premier job board and developer community space specifically for <a href=\"http://www.meteor.com/\">Meteor</a>.",
+	"wework_subtitle": "The premier job board and developer community space specifically for <a href=\"http://www.meteor.com/\">Meteor</a>.",
 	"wework_warning": "This job board is specifically for jobs using <a href=\"http://www.meteor.com/\">Meteor</a>. Please do not post unrelated jobs here.",
 	"wework_disclaimer": "We Work Meteor is an independent entity and has not been authorized, sponsored, or otherwise approved by <a href=\"http://www.meteor.com/\">Meteor Development Group</a>."
 }
