@@ -2,5 +2,6 @@
 	"wework_name": "We Work Meteor",
 	"wework_subtitle": "The premier job board and developer community space specifically for <a href=\"http://www.meteor.com/\">Meteor</a>.",
 	"wework_warning": "This job board is specifically for jobs using <a href=\"http://www.meteor.com/\">Meteor</a>. Please do not post unrelated jobs here.",
-	"wework_disclaimer": "We Work Meteor is an independent entity and has not been authorized, sponsored, or otherwise approved by <a href=\"http://www.meteor.com/\">Meteor Development Group</a>."
+	"wework_disclaimer": "We Work Meteor is an independent entity and has not been authorized, sponsored, or otherwise approved by <a href=\"http://www.meteor.com/\">Meteor Development Group</a>.",
+	"wework_browse": "Browse the <a href=\"__jobs_path__\">__active_jobs_count__ active job postings</a> or <a href=\"__new_profile_path__\">create your own profile</a> to join the <a href=\"__profiles_path__\">__active_profiles_count__ registered developers</a>."
 }
