@@ -7,7 +7,7 @@ SyncedCron.add({
   job: function() {
     Profiles.find({}).forEach(function(profile){
       Profiles.update({_id:profile._id},{$set:{
-            randomSorter:Math.floor(Math.random()*10000)
+            randomSorter:Math.floor(Math.random()*1000000)
         }});
     });
   }
