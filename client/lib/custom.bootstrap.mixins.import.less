@@ -14,7 +14,7 @@
 // @import "bootstrap/less/mixins/hide-text.less"
 // CSS image replacement
 //
-// Heads up! v3 launched with with only `.hide-text()`, but per our pattern for
+// Heads up! v3 launched with only `.hide-text()`, but per our pattern for
 // mixins being reused as classes with the same name, this doesn't hold up. As
 // of v3.0.1 we have added `.text-hide()` and deprecated `.hide-text()`.
 //
@@ -130,7 +130,7 @@
 // More easily include all the states for responsive-utilities.less.
 .responsive-visibility() {
   display: block !important;
-  table&  { display: table; }
+  table&  { display: table !important; }
   tr&     { display: table-row !important; }
   th&,
   td&     { display: table-cell !important; }
@@ -169,12 +169,35 @@
 
 
 
+// @import "bootstrap/less/mixins/reset-text.less"
+.reset-text() {
+  font-family: @font-family-base;
+  // We deliberately do NOT reset font-size.
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: @line-height-base;
+  text-align: left; // Fallback for where `start` is not supported
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}
+
+
+
 // @import "bootstrap/less/mixins/text-emphasis.less"
 // Typography
 
 .text-emphasis-variant(@color) {
   color: @color;
-  a&:hover {
+  a&:hover,
+  a&:focus {
     color: darken(@color, 10%);
   }
 }
@@ -455,15 +478,31 @@
   background-color: @background;
   border-color: @border;
 
-  &:hover,
   &:focus,
-  &.focus,
+  &.focus {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 25%);
+  }
+  &:hover {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+  }
   &:active,
   &.active,
   .open > .dropdown-toggle& {
     color: @color;
     background-color: darken(@background, 10%);
         border-color: darken(@border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background, 17%);
+          border-color: darken(@border, 25%);
+    }
   }
   &:active,
   &.active,
@@ -531,12 +570,13 @@
 // @import "bootstrap/less/mixins/pagination.less"
 // Pagination
 
-.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @border-radius) {
+.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   > li {
     > a,
     > span {
       padding: @padding-vertical @padding-horizontal;
       font-size: @font-size;
+      line-height: @line-height;
     }
     &:first-child {
       > a,
@@ -563,7 +603,8 @@
     color: @color;
     background-color: @background;
 
-    a& {
+    a&,
+    button& {
       color: @color;
 
       .list-group-item-heading {
@@ -744,7 +785,8 @@
 
 .bg-variant(@color) {
   background-color: @color;
-  a&:hover {
+  a&:hover,
+  a&:focus {
     background-color: darken(@color, 10%);
   }
 }
@@ -910,8 +952,8 @@
       // Prevent columns from collapsing when empty
       min-height: 1px;
       // Inner gutter via padding
-      padding-left:  (@grid-gutter-width / 2);
-      padding-right: (@grid-gutter-width / 2);
+      padding-left:  ceil((@grid-gutter-width / 2));
+      padding-right: floor((@grid-gutter-width / 2));
     }
   }
   .col(1); // kickstart it
@@ -999,8 +1041,8 @@
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  margin-left:  (@gutter / -2);
-  margin-right: (@gutter / -2);
+  margin-left:  ceil((@gutter / -2));
+  margin-right: floor((@gutter / -2));
   &:extend(.clearfix all);
 }
 

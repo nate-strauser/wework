@@ -125,17 +125,8 @@ Router.map(function() {
 
   this.route('profiles', {
     path: '/profiles',
-    data: function() {
-      return {
-        profiles: Profiles.find({}, {
-          sort: {
-            randomSorter: 1
-          }
-        })
-      };
-    },
-    waitOn: function() {
-      return subs.subscribe('profiles');
+    subscriptions: function() {
+      return subs.subscribe('developerUsers');
     }
   });
 

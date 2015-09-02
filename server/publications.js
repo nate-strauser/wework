@@ -167,26 +167,10 @@ Meteor.publishComposite('profile', function(profileId) {
   }
 });
 
-Meteor.publish("profiles", function() {
+Meteor.publish("developerUsers", function() {
   check(arguments, [Match.Any]);
   return [
-    Profiles.find({
-    	status: "active"
-    }, {
-      fields: {
-        userId: true,
-        title: true,
-        location: true,
-        availableForHire: true,
-        randomSorter: true,
-        type: true,
-        name: true,
-        userName: true,
-        status:true,
-        customImageUrl:true
-      }
-    }),
-    Users.find({  //this may publish users for not active status profiles - could be resolved with publish composite, but performance is slow with so many children lookups
+    Users.find({  //this may publish users for not active status profiles
       isDeveloper: true
     }, {
       fields: {

@@ -1,17 +1,3 @@
-AccountsTemplates.configureRoute("forgotPwd");
-AccountsTemplates.configureRoute("resetPwd");
-AccountsTemplates.configureRoute("signIn", {
-    name: 'signIn',
-    path: '/sign-in',
-    redirect: '/',
-});
-AccountsTemplates.configureRoute("signUp", {
-    name: 'signUp',
-    path: '/sign-up',
-    redirect: '/',
-});
-AccountsTemplates.configureRoute("verifyEmail");
-
 AccountsTemplates.configure({
     // Behaviour
     confirmPassword: true,
@@ -36,3 +22,19 @@ AccountsTemplates.configure({
     homeRoutePath: '/',
     redirectTimeout: 2000,
 });
+
+
+AccountsTemplates.configureRoute("forgotPwd");
+AccountsTemplates.configureRoute("resetPwd");
+AccountsTemplates.configureRoute("signIn", {
+    name: 'signIn',
+    path: '/sign-in',
+    redirect: '/',
+});
+AccountsTemplates.configureRoute("signUp", {
+    name: 'signUp',
+    path: '/sign-up',
+    redirect: '/',
+});
+AccountsTemplates.configureRoute("verifyEmail");
+

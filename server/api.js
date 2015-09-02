@@ -2,12 +2,9 @@
 Meteor.startup(function() {
 
   // Global configuration
-  Restivus.configure({
-    useAuth: false,
-    prettyJson: false
-  });
+  var Api = new Restivus();
 
-  Restivus.addRoute('jobs', {
+  Api.addRoute('jobs', {
     get: function() {
       return {
         status: "success",
@@ -33,7 +30,7 @@ Meteor.startup(function() {
     }
   });
 
-  Restivus.addRoute('profiles', {
+  Api.addRoute('profiles', {
     get: function() {
       return {
         status: "success",
