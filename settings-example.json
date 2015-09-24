@@ -2,6 +2,9 @@
   "public" : {
     "ga": {
       "id":"GA ID"
+    },
+    "uploadcare":{
+      "publickey":"Upload Care Public Key"
     }
   },
   "kadira": {
