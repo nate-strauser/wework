@@ -1,0 +1,18 @@
+{
+	"posted_on": "Posted on",
+	"post_new_job": "Post New Job",
+	"edit_job_post": "Edit Job Post",
+	"remote": "Remote",
+	"uh_oh": "Uh oh!",
+	"job_post_expired": "This job post expired.",
+	"update_now": "Update now to keep it in the public Jobs list.",
+	"current_status_is": "Current Status is",
+	"set_status_to": "Set status to",
+	"status_pending_description": "This post is still pending admin approval. It will be reviewed shortly and then become live on the site.",
+	"status_flagged_description": "This post has been flagged for content. Contact an admin if you believe this is in error.",
+	"no_current_jobs": "No Current Jobs",
+	"recent_jobs": "Recent Jobs",
+	"last_post_about": "Last post about %s",
+	"my_posted_jobs": "My Posted Jobs",
+	"you_havent_posted_any_jobs": "You haven't posted any jobs."
+}

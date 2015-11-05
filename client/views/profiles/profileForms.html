@@ -3,13 +3,13 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Create Your Developer Profile</h4>
+					<h4>{{_ "create_your_profile"}}</h4>
 				</div>
 				<div class="panel-body">
 					{{#autoForm collection="Profiles" id="profileNew" type="insert"}}
 					    {{>profileFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+					        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{_ "save"}}</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -23,14 +23,14 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Edit Developer Profile</h4>
+					<h4>{{_ "edit_your_profile"}}</h4>
 				</div>
 				<div class="panel-body">
 					{{#autoForm collection="Profiles" id="profileEdit" type="update" doc=profile}}
 					    {{>profileFields}}
 					    <div>
-					    	<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
-					    	<button id="cancel" class="btn btn-default"> Cancel</button>
+					        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{_ "update"}}</button>
+					        <button id="cancel" class="btn btn-default"> {{_ "cancel"}}</button>
 					    </div>
 					{{/autoForm}}
 				</div>
@@ -41,7 +41,7 @@
 
 <template name="profileFields">
 	<div class="form-group"  id="profileAvatarPreview">
-		<label class="control-label">{{#if customImagePreviewUrl}}Custom{{else}}Automatic{{/if}} Avatar</label>
+		<label class="control-label">{{#if customImagePreviewUrl}}{{_ "custom_avatar"}}{{else}}{{_ "automatic_avatar"}}{{/if}}</label>
 		<div class="row">
 			<div class="col-md-4">
 				{{#if customImagePreviewUrl}}
@@ -56,7 +56,7 @@
 				<input
 					id="custom-image"
 					name="customImageUrl"
-					data-schema-key="customImageUrl" 
+					data-schema-key="customImageUrl"
 					type="hidden"
 					role="uploadcare-uploader"
 					data-tabs="file camera url facebook gdrive dropbox instagram flickr skydrive"
@@ -72,6 +72,7 @@
 		</div>
 	</div>
 
+	<!-- TODO i18n -->
 	{{>afQuickField name='name' placeholder="Your Name"}}
 	{{>afQuickField name='title' placeholder="Title displayed for your listing"}}
 	{{>afQuickField name='availableForHire'}}

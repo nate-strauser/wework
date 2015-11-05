@@ -1,5 +1,5 @@
 <template name="jobLabels">
-	{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
+	{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> {{_ "remote"}}</span>{{/if}}
 	{{#if jobtype}}<span class="label label-default"><i class="fa fa-clock-o"></i> {{jobtype}}</span>{{/if}}
 </template>
 
@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-xs-10 col-xs-offset-1 alert alert-danger alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<strong>Uh oh!</strong> This job post expired. <a href="{{pathFor 'jobEdit'}}">Update now to keep it in the public Jobs list.</a>
+				<strong>{{_ "uh_oh"}}</strong> {{_ "job_post_expired"}} <a href="{{pathFor 'jobEdit'}}">{{_ "update_now"}}</a>
 			</div>
 		</div>
 	{{/if}}
@@ -17,7 +17,7 @@
 <template name="jobStatusToggle">
 	<div class="row">
 		<div class="col-sm-12">
-			Current Status is <b>{{status}}</b> - Set status to 
+			{{_ "current_status_is"}} <b>{{status}}</b> - {{_ "set_status_to"}}
 			{{#each statuses}}
 				{{#unless $eq ../status this}}
 					<button type="button" class="set-status">{{this}}</button>
@@ -31,12 +31,12 @@
 <template name="jobStatusAlert">
 	{{#if $eq status 'pending'}}
 		<div class="alert alert-warning">
-			<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> This post is still pending admin approval. It will be reviewed shortly and then become live on the site.
+			<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> {{_ "status_pending_description"}}
 		</div>
 	{{else}}
 		{{#if $eq status 'flagged'}}
 			<div class="alert alert-danger">
-				<i class="fa fa-flag fa-2x pull-left"></i> This post has been flagged for content.  Contact an admin if you believe this is in error.
+				<i class="fa fa-flag fa-2x pull-left"></i> {{_ "status_flagged_description"}}
 			</div>
 		{{/if}}
 	{{/if}}

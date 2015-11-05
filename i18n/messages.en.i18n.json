@@ -1,0 +1,6 @@
+{
+	"loading": "Loading....",
+	"not_found_title": "Oops, we couldn't find the item that belongs to this url.",
+	"not_found_reason": "It may have been deleted by the owner or removed by admins.",
+	"confirm_deletion": "Really delete '%s'?"
+}

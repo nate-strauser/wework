@@ -1,5 +1,5 @@
 <template name="myJobs">
-	<h3>My Posted Jobs</h3>
+	<h3>{{_ "my_posted_jobs"}}</h3>
 	{{#each jobs}}
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -7,6 +7,7 @@
 			</div>
 		</div>
 	{{else}}
-		You haven't posted any jobs.  <a href="{{pathFor 'jobNew'}}">Post a Job</a> if you have one to offer.
+		<!-- TODO i18n -->
+		{{_ "you_havent_posted_any_jobs"}}  <a href="{{pathFor 'jobNew'}}">Post a Job</a> if you have one to offer.
 	{{/each}}
 </template>
