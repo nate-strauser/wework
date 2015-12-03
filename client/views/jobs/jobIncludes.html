@@ -28,6 +28,15 @@
 	</div>
 </template>
 
+<template name="jobSuggestedTweet">
+	<div class="row">
+		<div class="col-sm-12">
+			{{title}} - {{#if remote}}#Remote{{/if}} {{type}} - {{urlFor 'job'}} #meteorjob #meteorjs
+			<hr>
+		</div>
+	</div>
+</template>
+
 <template name="jobStatusAlert">
 	{{#if $eq status 'pending'}}
 		<div class="alert alert-warning">
