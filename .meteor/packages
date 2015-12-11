@@ -13,6 +13,7 @@ accounts-google
 accounts-twitter
 accounts-meteor-developer
 #jazeee:spiderable-longer-timeout
+ongoworks:spiderable
 iron:router
 natestrauser:font-awesome
 raix:handlebar-helpers
