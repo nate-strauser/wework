@@ -1,1 +1,1 @@
-Spiderable.debug = true;
+// Spiderable.debug = true;
