@@ -1,6 +1,6 @@
 ## We Work Meteor
 http://www.weworkmeteor.com/
-# Meteor Job Board and Expert Directory
+# Meteor Job Board and Developer Directory
 
 If you have a project or problem you need help with, you can post a job or contact an expert.
 
