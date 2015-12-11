@@ -1,0 +1,1 @@
+Spiderable.debug = true;

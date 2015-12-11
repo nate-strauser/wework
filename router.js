@@ -196,4 +196,10 @@ Router.onBeforeAction(function(){
   this.next();
 },{only:['profileEdit','profileNew','jobEdit','jobNew']});
 
+Router.onAfterAction(function() {
+  if (this.ready()) {
+    return Meteor.isReadyForSpiderable = true;
+  }
+});
+
 Router.plugin('dataNotFound', {notFoundTemplate: 'notFound'});

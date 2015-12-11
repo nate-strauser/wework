@@ -63,6 +63,7 @@ iron:location@1.0.11
 iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
+jazeee:spiderable-longer-timeout@1.2.13
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
 jparker:gravatar@0.3.1
@@ -108,6 +109,7 @@ oauth2@1.1.5
 observe-sequence@1.0.7
 ongoworks:speakingurl@6.0.0
 ordered-dict@1.0.4
+ostrio:meteor-root@1.0.2
 pauli:accounts-linkedin@1.2.0
 pauli:linkedin@1.2.0
 peppelg:bootstrap-3-modal@1.0.4
@@ -131,7 +133,6 @@ simple:json-routes@1.0.4
 softwarerero:accounts-t9n@1.1.7
 spacebars@1.0.7
 spacebars-compiler@1.0.7
-spiderable@1.0.9
 srp@1.0.4
 standard-minifiers@1.0.2
 summernote:standalone@0.6.16
