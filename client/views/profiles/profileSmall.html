@@ -1,36 +1,36 @@
 <template name="profileSmall">
-	<div class="col-md-3">
-		<div class="developer-grid panel panel-default text-center">
-			<div class="panel-body">
-				<a href="{{pathFor 'profile'}}">
+    <div class="col-md-3">
+        <div class="developer-grid panel panel-default text-center">
+            <div class="panel-body">
+                <a href="{{pathFor 'profile'}}">
 					{{#if customImageUrl}}
-						<div class="avatar avatar-medium center-block">
+						<div class="avatar center-block">
 							<img class="img-responsive" src="{{resizeImageUrl customImageUrl 100 100}}"/>
 						</div>
 					{{else}}
 						{{> avatar userId=userId size="medium" class="center-block"}}
 					{{/if}}
 				</a>
-				<h4 class="name"><a href="{{pathFor 'profile'}}">{{displayName}}</a></h4>
-				<div class="labels">
-					{{#if availableForHire}}
-						<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
-					{{/if}}
-					{{#if $eq type 'Company'}}
-						<span class="label label-danger"><i class="fa fa-users"></i> Company</span>
-					{{/if}}
-
-				</div>
-				<div class="title">
-					<small>{{title}}</small>
-				</div>
-				<div class="location">
-					{{#if location}}
-						<small><i class="fa fa-map-marker"></i>&nbsp;{{location}}</small>
-					{{/if}}
-				</div>
-				
-			</div>
-		</div>
-	</div>
+                <h4 class="name"><a href="{{pathFor 'profile'}}">
+					{{#if name}}{{name}}{{else}}{{userName}}{{/if}}
+				</a></h4>
+                <div class="labels">
+                    {{#if availableForHire}}
+                        <span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
+                    {{/if}}
+                    {{#if $eq type 'Company'}}
+                        <span class="label label-danger"><i class="fa fa-users"></i> Company</span>
+                    {{/if}}
+                </div>
+                <div class="title">
+                    <small>{{title}}</small>
+                </div>
+                <div class="location">
+                    {{#if location}}
+                        <small><i class="fa fa-map-marker"></i>&nbsp;{{location}}</small>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

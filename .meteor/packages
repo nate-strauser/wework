@@ -3,7 +3,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 less
 service-configuration
 accounts-ui
@@ -23,11 +22,10 @@ aldeed:collection2
 multiply:iron-router-progress
 pauli:accounts-linkedin
 natestrauser:connection-banner
-dfischer:phantomjs
 lampe:rssfeed
 meteorhacks:kadira
 aldeed:delete-button
-useraccounts:bootstrap
+useraccounts:bootstrap@=1.12.4
 meteorhacks:subs-manager
 dburles:collection-helpers
 alanning:roles
@@ -36,7 +34,7 @@ zimme:iron-router-active
 percolate:migrations
 jparker:crypto-md5
 tmeasday:publish-counts
-bengott:avatar@=0.7.3
+utilities:avatar
 matb33:collection-hooks
 percolatestudio:synced-cron
 reywood:publish-composite
@@ -53,3 +51,17 @@ ongoworks:speakingurl
 reywood:iron-router-ga
 alethes:pages
 useraccounts:iron-routing
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
