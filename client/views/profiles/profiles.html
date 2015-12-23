@@ -1,6 +1,11 @@
 <template name="profiles">
 	<div class="row">
-		{{> pages}}
-    	{{> pagesNav}}
+		{{#each profiles}}
+	        {{>profileSmall}}
+	    {{/each}}
+	    
+	</div>
+	<div class="text-center">
+		{{> infiniteScroll }}
 	</div>
 </template>
