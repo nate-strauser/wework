@@ -10,5 +10,8 @@
   "kadira": {
      "appId": "Kadira App ID",
      "appSecret": "Kadira App Secret"
+  },
+  "PrerenderIO": {
+    "token": "Prerender.io Token"
   }
 }
