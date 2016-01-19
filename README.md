@@ -1,5 +1,5 @@
 ## We Work Meteor
-http://www.weworkmeteor.com/
+https://www.weworkmeteor.com/
 # Meteor Job Board and Developer Directory
 
 If you have a project or problem you need help with, you can post a job or contact a developer.

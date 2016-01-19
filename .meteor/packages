@@ -25,7 +25,7 @@ natestrauser:connection-banner
 lampe:rssfeed
 meteorhacks:kadira
 aldeed:delete-button
-useraccounts:bootstrap@=1.12.4
+useraccounts:bootstrap
 meteorhacks:subs-manager
 dburles:collection-helpers
 alanning:roles
@@ -66,3 +66,4 @@ ejson
 spacebars
 check
 dfischer:prerenderio
+force-ssl
