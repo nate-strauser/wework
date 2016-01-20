@@ -13,6 +13,35 @@ SyncedCron.add({
   }
 });
 
+SyncedCron.add({
+  name: 'Prerender.io Recache Main Pages',
+  schedule: function(parser) {
+    // parser is a later.parse object
+    return parser.text('every 4 hours');
+  }, 
+  job: function() {
+    if(Meteor.settings && Meteor.settings.PrerenderIO && Meteor.settings.PrerenderIO.token){ 
+      var sendRecacheRequest = function(url){
+        var result = HTTP.post("http://api.prerender.io/recache",{data:{
+          prerenderToken: Meteor.settings.PrerenderIO.token,
+          url: url
+        }});
+        if(result.statusCode !== 200){
+          console.log("Error - PrerenderIO Recache Failed");
+          console.log(result);
+        }
+      }
+
+      sendRecacheRequest(Meteor.absoluteUrl());
+      sendRecacheRequest(Meteor.absoluteUrl("jobs"));
+      sendRecacheRequest(Meteor.absoluteUrl("profiles"));
+    
+    }else{
+      console.log('Missing PrerenderIO Token in settings - skipping recache')
+    }
+  }
+});
+
 SyncedCron.options = {
   //Log job run details to console
   log: true,
