@@ -107,6 +107,22 @@ Migrations.add({
   down: function() {}
 });
 
+
+Migrations.add({
+  version: 6,
+  name: 'Ensure https urls for all profile custom images',
+  up: function() {
+    Profiles.find({customImageUrl:{$exists:true}}).forEach(function(profile){
+      if(profile.customImageUrl !== ""){
+        var newUrl = profile.customImageUrl.replace("http://www.ucarecdn.com", "https://ucarecdn.com");
+        if(newUrl !== profile.customImageUrl)
+          Profiles.update({_id:profile._id},{$set:{customImageUrl:newUrl}});
+      }
+    });
+  },
+  down: function() {}
+});
+
 Meteor.startup(function(){
   Migrations.migrateTo('latest');
 });

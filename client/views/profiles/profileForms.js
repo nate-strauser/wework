@@ -42,7 +42,7 @@ Template.profileFields.rendered = function() {
       Meteor.clearInterval(interval);
       var widget = uploadcare.SingleWidget('#custom-image');
       
-      if(template.data.profile && template.data.profile.customImageUrl){
+      if(template.data && template.data.profile && template.data.profile.customImageUrl){
         var customImage = template.data.profile.customImageUrl;
         if(customImage){
           widget.value(customImage);
@@ -53,9 +53,13 @@ Template.profileFields.rendered = function() {
       widget.onChange(function(file) {
         if (file) {
           file.done(function(info) {
+            console.log(info);
             customImagePreviewUrl.set(info.cdnUrl);
-            ga("send", "event", "profile", "imageUploaded", template.data.profile.title);
-        
+            if(template.data && template.data.profile && template.data.profile.title)
+              ga("send", "event", "profile", "imageUploaded", template.data.profile.title);
+            else
+              ga("send", "event", "profile", "imageUploaded");
+              
           });
         } else if(customImagePreviewUrl.get()){
           	customImagePreviewUrl.set(null);
