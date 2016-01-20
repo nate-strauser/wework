@@ -12,6 +12,14 @@ h1,h2,h3,h4,h5{
     a:not(.btn):visited {
         color: @text-color;
     }
+
+    .job-url {
+        word-break: break-all;
+
+        @media (min-width: @screen-sm-min) {
+            text-align: right;
+        }
+    }
 }
 
 #iron-router-progress {
