@@ -92,6 +92,10 @@ Jobs.attachSchema(
         }
       },
     },
+    featuredThrough: {
+      type: Date,
+      optional: true
+    },
     // Automatically set HTML content based on markdown content
     // whenever the markdown content is set.
     htmlDescription: {
@@ -142,6 +146,9 @@ Jobs.helpers({
   },
   slug: function() {
     return getSlug(this.title);
+  },
+  featured: function() {
+    return this.featuredThrough && moment().isBefore(this.featuredThrough);
   }
 });
 

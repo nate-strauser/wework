@@ -1,6 +1,5 @@
 *.sublime-workspace
-settings.json
-prod_settings.json
+*settings.json
 
 npm-debug.log
 node_modules

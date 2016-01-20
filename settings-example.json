@@ -5,6 +5,9 @@
     },
     "uploadcare":{
       "publickey":"Upload Care Public Key"
+    },
+    "stripe":{
+        "pubKey":"Stripe Publishable Key"
     }
   },
   "kadira": {
@@ -13,5 +16,8 @@
   },
   "PrerenderIO": {
     "token": "Prerender.io Token"
+  },
+  "stripe":{
+      "secretKey":"Stripe Secret Key"
   }
 }

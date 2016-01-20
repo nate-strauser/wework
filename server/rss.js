@@ -26,6 +26,9 @@ RssFeed.publish('jobs', function(query) {
   self.setValue('ttl', 1);
 
   Jobs.find({
+    createdAt: {
+        $gte: daysUntilExpiration()
+    },
     status: "active"
   }, {
     sort: {
