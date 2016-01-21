@@ -112,8 +112,8 @@ oauth2@1.1.5
 observe-sequence@1.0.7
 ongoworks:speakingurl@6.0.0
 ordered-dict@1.0.4
-pauli:accounts-linkedin@1.2.0
-pauli:linkedin@1.2.0
+ostrio:iron-router-helper-class@1.0.0
+ostrio:iron-router-title@1.0.2
 peppelg:bootstrap-3-modal@1.0.4
 percolate:migrations@0.9.8
 percolatestudio:synced-cron@1.1.0

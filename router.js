@@ -10,8 +10,11 @@ Router.configure({
         }
     },
     progressSpinner: false,
-    trackPageView: true
+    progressDelay: 250,
+    trackPageView: true,
+    title: "We Work Meteor - Job board and developer listing just for Meteor"
 });
+
 
 Router.map(function() {
     this.route('home', {
@@ -45,11 +48,13 @@ Router.map(function() {
     });
 
     this.route('jobs', {
-        path: '/jobs'
+        path: '/jobs',
+        title: "We Work Meteor - All Jobs"
     });
 
     this.route('myJobs', {
         path: '/myjobs',
+        title: "We Work Meteor - My Jobs",
         data: function() {
             return {
                 jobs: Jobs.find({
@@ -68,6 +73,9 @@ Router.map(function() {
 
     this.route('job', {
         path: '/jobs/:_id/:slug?',
+        title: function(){
+            return "We Work Meteor - " + this.data().title;
+        },
         data: function() {
             return Jobs.findOne({
                 _id: this.params._id
@@ -90,11 +98,13 @@ Router.map(function() {
     });
 
     this.route('jobNew', {
-        path: '/job'
+        path: '/job',
+        title: "We Work Meteor - Post a Job"
     });
 
     this.route('jobEdit', {
         path: '/jobs/:_id/:slug/edit',
+        title: "We Work Meteor - Edit Job Post",
         data: function() {
             return {
                 job: Jobs.findOne({
@@ -109,6 +119,7 @@ Router.map(function() {
 
     this.route('profiles', {
         path: '/profiles',
+        title: "We Work Meteor - All Developers",
         subscriptions: function() {
             return subs.subscribe('developerUsers');
         }
@@ -116,6 +127,9 @@ Router.map(function() {
 
     this.route('profile', {
         path: '/profiles/:_id/:slug?',
+        title: function(){
+            return "We Work Meteor - " + this.data().displayName() + " - " + this.data().title;
+        },
         data: function() {
             return Profiles.findOne({
                 _id: this.params._id
@@ -139,6 +153,7 @@ Router.map(function() {
 
     this.route('profileNew', {
         path: '/profile',
+        title: "We Work Meteor - Create Developer Profile",
         onBeforeAction: function() {
             if (Meteor.user().isDeveloper) {
                 Router.go('profile', Profiles.findOne({
@@ -152,6 +167,7 @@ Router.map(function() {
 
     this.route('profileEdit', {
         path: '/profiles/:_id/:slug/edit',
+        title: "We Work Meteor - Edit My Developer Profile",
         data: function() {
             return {
                 profile: Profiles.findOne({
@@ -186,12 +202,6 @@ Router.onBeforeAction(function() {
 }, {
     only: ['profileEdit', 'profileNew', 'jobEdit', 'jobNew']
 });
-
-// Router.onAfterAction(function() {
-//   if (this.ready()) {
-//     return Meteor.isReadyForSpiderable = true;
-//   }
-// });
 
 Router.plugin('dataNotFound', {
     notFoundTemplate: 'notFound'
