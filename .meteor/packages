@@ -48,7 +48,6 @@ natestrauser:uploadcare-plus
 reactive-var
 yogiben:admin
 ongoworks:speakingurl
-reywood:iron-router-ga
 staringatlights:infinite-scroll
 useraccounts:iron-routing
 standard-minifiers
@@ -69,3 +68,5 @@ dfischer:prerenderio
 force-ssl
 http
 ostrio:iron-router-title
+astronomerio:core
+

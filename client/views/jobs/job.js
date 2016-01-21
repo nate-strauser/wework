@@ -4,7 +4,7 @@ Template.job.helpers({
       var doc = collection.findOne(id);
       if (confirm('Really delete "' + doc.title + '"?')) {
         this.remove();
-        ga("send", "event", "job", "remove", doc.title);
+        analytics.track("Job Removed");
         Router.go('myJobs');
       }
     };

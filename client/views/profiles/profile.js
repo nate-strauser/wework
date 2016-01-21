@@ -4,7 +4,7 @@ Template.profile.helpers({
       var doc = collection.findOne(id);
       if (confirm('Really delete "' + doc.title + '"?')) {
         this.remove();
-        ga("send", "event", "profile", "remove", doc.title);
+        analytics.track("Profile Removed");
         Router.go('profiles');
       }
     };

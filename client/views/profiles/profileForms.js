@@ -4,7 +4,7 @@ AutoForm.addHooks(['profileNew', 'profileEdit'], {
       if (error) {
         console.log("Insert Error:", error);
       } else {
-        ga("send", "event", "profile", "insert", result.title);
+        analytics.track("Profile Created");
         Router.go('profile', {
           _id: result
         });
@@ -14,7 +14,7 @@ AutoForm.addHooks(['profileNew', 'profileEdit'], {
       if (error) {
         console.log("Update Error:", error);
       } else {
-        ga("send", "event", "profile", "update", result.title);
+        analytics.track("Profile Edited");
         Router.go('profile', {
           _id: Router.current().params._id
         });
@@ -55,11 +55,7 @@ Template.profileFields.rendered = function() {
           file.done(function(info) {
             console.log(info);
             customImagePreviewUrl.set(info.cdnUrl);
-            if(template.data && template.data.profile && template.data.profile.title)
-              ga("send", "event", "profile", "imageUploaded", template.data.profile.title);
-            else
-              ga("send", "event", "profile", "imageUploaded");
-              
+            analytics.track("Profile Image Uploaded");      
           });
         } else if(customImagePreviewUrl.get()){
           	customImagePreviewUrl.set(null);

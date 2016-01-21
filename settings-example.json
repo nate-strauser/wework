@@ -1,13 +1,13 @@
 {
   "public" : {
-    "ga": {
-      "id":"GA ID"
-    },
     "uploadcare":{
       "publickey":"Upload Care Public Key"
     },
     "stripe":{
         "pubKey":"Stripe Publishable Key"
+    },
+    "astronomer": {
+      "appId": "Astronomer.io App Id"
     }
   },
   "kadira": {

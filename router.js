@@ -11,7 +11,6 @@ Router.configure({
     },
     progressSpinner: false,
     progressDelay: 250,
-    trackPageView: true,
     title: "We Work Meteor - Job board and developer listing just for Meteor"
 });
 
@@ -74,7 +73,8 @@ Router.map(function() {
     this.route('job', {
         path: '/jobs/:_id/:slug?',
         title: function(){
-            return "We Work Meteor - " + this.data().title;
+            if(this.data())
+                return "We Work Meteor - " + this.data().title;
         },
         data: function() {
             return Jobs.findOne({
@@ -128,7 +128,8 @@ Router.map(function() {
     this.route('profile', {
         path: '/profiles/:_id/:slug?',
         title: function(){
-            return "We Work Meteor - " + this.data().displayName() + " - " + this.data().title;
+            if(this.data())
+                return "We Work Meteor - " + this.data().displayName() + " - " + this.data().title;
         },
         data: function() {
             return Profiles.findOne({

@@ -4,16 +4,16 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
 			if (error) {
 				console.log("Insert Error:", error);
 			} else {
-				ga("send", "event", "job", "insert", result.title);
-				Router.go('job', {_id:result});
+				analytics.track("Job Created");
+        		Router.go('job', {_id:result});
 			}
 		},
 		update: function(error, result) {
 			if (error) {
 				console.log("Update Error:", error);
 			} else {
-				ga("send", "event", "job", "update", result.title);
-				Router.go('job', {_id: Router.current().params._id});
+				analytics.track("Job Edited");
+        		Router.go('job', {_id: Router.current().params._id});
 			}
 		}
 	}
