@@ -1,14 +1,16 @@
 <template name="job">
-	<div class="row">
+	<div id="job" class="row">
 		<div class="col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					{{>jobExpiredAlert}}
 					{{#if isInRole 'admin'}}
+					    {{>jobAdminEditLink}}
 					    {{>jobStatusToggle}}  
-					    {{>jobSuggestedTweet}}  
+					    {{>jobSuggestedTweet}}
 					{{/if}}
 					{{>jobStatusAlert}}
+					{{>jobFeatured}}
 					<div class="row">
 						<div class="col-sm-12">
 							<h2>
@@ -19,7 +21,7 @@
 					<div class="row">
 						<div class="col-sm-3">
 							{{#if company}}
-								<i class="fa fa-building"></i> {{company}}
+								<i class="fa fa-building fa-fw"></i> {{company}}
 							{{/if}}
 						</div>
 						<div class="col-sm-3">
@@ -37,18 +39,18 @@
 					<div class="row">
 						<div class="col-sm-3">
 							{{>jobLabels}}
-							{{#if remote}}
+							{{#if hasLabel}}
 								<hr>
-							{{else}}
-								{{#if jobtype}}
-									<hr>
-								{{/if}}
 							{{/if}}
 							{{#if contact}}
-								<i class="fa fa-envelope"></i> {{contact}}
+								<i class="fa fa-envelope fa-fw"></i> {{contact}}
 								<hr>
 							{{/if}}
-							<i class="fa fa-calendar"></i> Posted on {{formatDate createdAt}}
+							<i class="fa fa-calendar fa-fw"></i> Posted on {{formatDate createdAt}}
+							{{#if featured}}
+							<hr>
+							<i class="fa fa-trophy fa-fw"></i> Featured Until {{formatDate featuredThrough}}
+							{{/if}}
 						</div>
 						<div class="col-sm-9">
 							{{#if htmlDescription}}
@@ -63,11 +65,13 @@
 									&nbsp;
 									<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 								</div>
-								<div class="pull-right">
-									{{#quickRemoveButton collection="Jobs" _id=_id class="btn btn-danger" beforeRemove=beforeRemove}}
-										<i class="fa fa-trash-o"></i> Delete
-									{{/quickRemoveButton}}
-								</div>
+								{{#if $eq status "active"}}
+									<div class="pull-right">
+										<a id="job-deactivate" class="btn btn-danger">
+											<i class="fa fa-times"></i> Deactivate
+										</a>
+									</div>
+								{{/if}}
 							{{/if}}
 						</div>
 					</div>

@@ -14,4 +14,4 @@ SUMMERNOTE_OPTIONS = {
   styleWithSpan: false
 };
 
-STATUSES = ["pending","active","flagged"];
+STATUSES = ["pending","active","flagged","inactive","filled"];

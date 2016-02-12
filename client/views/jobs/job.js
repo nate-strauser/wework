@@ -1,12 +1,13 @@
-Template.job.helpers({
-  beforeRemove: function() {
-    return function(collection, id) {
-      var doc = collection.findOne(id);
-      if (confirm('Really delete "' + doc.title + '"?')) {
-        this.remove();
-        analytics.track("Job Removed");
-        Router.go('myJobs');
-      }
-    };
+Template.job.events({
+  'click #job-deactivate': function(event, template) {
+    event.preventDefault();
+    Modal.show('jobDeactivate',template.data);
   }
 });
+
+Template.job.helpers({
+  'hasLabel': function() {
+    return this.jobType || this.remote || this.featured;
+  }
+});
+

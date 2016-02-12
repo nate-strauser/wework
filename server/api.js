@@ -28,6 +28,35 @@ Meteor.startup(function() {
         }).fetch()
       };
     }
+  });  
+
+  Api.addRoute('featuredJobs', {
+    get: function() {
+      return {
+        status: "success",
+        data: Jobs.find({
+          featuredThrough: {
+            $gte: new Date()
+          },
+          createdAt: {
+            $gte: daysUntilExpiration()
+          },
+          status: "active"
+        }, {
+          sort: {
+            createdAt: -1
+          },
+          fields: {
+            userId: false,
+            userName: false
+          },
+          transform: function(doc) {
+            doc.siteUrl = Meteor.absoluteUrl("jobs/" + doc._id + "/" + getSlug(doc.title));
+            return doc;
+          }
+        }).fetch()
+      };
+    }
   });
 
   Api.addRoute('profiles', {

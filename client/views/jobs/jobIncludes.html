@@ -1,52 +1,79 @@
 <template name="jobLabels">
-	{{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
-	{{#if jobtype}}<span class="label label-default"><i class="fa fa-clock-o"></i> {{jobtype}}</span>{{/if}}
+    {{#if featured}}<span class="label label-primary"><i class="fa fa-trophy"></i> Featured</span>{{/if}}
+    {{#if remote}}<span class="label label-success"><i class="fa fa-globe"></i> Remote</span>{{/if}}
+    {{#if jobtype}}<span class="label label-default"><i class="fa fa-clock-o"></i> {{jobtype}}</span>{{/if}}
 </template>
-
 <template name="jobExpiredAlert">
-	{{#if expired}}
-		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1 alert alert-danger alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<strong>Uh oh!</strong> This job post expired. <a href="{{pathFor 'jobEdit'}}">Update now to keep it in the public Jobs list.</a>
-			</div>
-		</div>
-	{{/if}}
+    {{#if expired}}
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 alert alert-danger">
+                <strong>Uh oh!</strong> This job post expired.
+            </div>
+        </div>
+    {{/if}}
 </template>
-
 <template name="jobStatusToggle">
-	<div class="row">
-		<div class="col-sm-12">
-			Current Status is <b>{{status}}</b> - Set status to 
-			{{#each statuses}}
-				{{#unless $eq ../status this}}
-					<button type="button" class="set-status">{{this}}</button>
-				{{/unless}}
-			{{/each}}
-			<hr>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-sm-12">
+            Current Status is <b>{{status}}</b> - Set status to
+            {{#each statuses}}
+                {{#unless $eq ../status this}}
+                    <button type="button" class="set-status">{{this}}</button>
+                {{/unless}}
+            {{/each}}
+            <hr>
+        </div>
+    </div>
 </template>
-
+<template name="jobAdminEditLink">
+    <div class="pull-right">
+    	<a href="/admin/Jobs/{{_id}}/edit">Edit Job</a>
+    </div>
+</template>
 <template name="jobSuggestedTweet">
-	<div class="row">
-		<div class="col-sm-12">
-			{{title}} - {{#if remote}}#Remote {{jobtype}}{{else}}{{jobtype}} in {{location}}{{/if}} {{urlFor 'job'}} #meteorjob #meteorjs
-			<hr>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{title}} -
+            {{#if remote}}#Remote {{jobtype}}{{else}}{{jobtype}} in {{location}}{{/if}} {{urlFor 'job'}} #meteorjob #meteorjs
+            <hr>
+        </div>
+    </div>
 </template>
-
 <template name="jobStatusAlert">
-	{{#if $eq status 'pending'}}
-		<div class="alert alert-warning">
-			<i class="fa fa-exclamation-triangle fa-2x pull-left"></i> This post is still pending admin approval. It will be reviewed shortly and then become live on the site.
-		</div>
-	{{else}}
-		{{#if $eq status 'flagged'}}
-			<div class="alert alert-danger">
-				<i class="fa fa-flag fa-2x pull-left"></i> This post has been flagged for content.  Contact an admin if you believe this is in error.
-			</div>
-		{{/if}}
-	{{/if}}
+    {{#if $eq status 'pending'}}
+        <div class="alert alert-info">
+            <i class="fa fa-exclamation-triangle fa-2x pull-left"></i> This post is awaiting admin approval. It will be reviewed shortly and then become live on the site.
+        </div>
+    {{else}}
+        {{#if $eq status 'flagged'}}
+            <div class="alert alert-danger">
+                <i class="fa fa-flag fa-2x pull-left"></i> This post has been flagged for content. Contact an admin if you believe this is in error.
+            </div>
+        {{/if}}
+    {{/if}}
+</template>
+<template name="jobFeatured">
+    {{#if $eq currentUser._id userId}}
+        {{#unless featured}}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="well">
+                        <h3 class="top-flush">Upgrade to a Featured Job Post</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul>
+                                    <li>Guaranteed to stay on home page</li>
+                                    <li>Highlighted job listing display</li>
+                                    <li>Priority placement in jobs listing</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <a id="buy-featured" class="btn btn-primary btn-lg" role="button" href="#">Buy 30 Days for $100</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
+    {{/if}}
 </template>
