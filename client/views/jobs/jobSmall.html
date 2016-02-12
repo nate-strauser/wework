@@ -1,21 +1,31 @@
 <template name="jobSmall">
-	<div class="row">
-		<div class="col-sm-9">
-			<h4>
+    <div class="jobSmall {{#if featured}}featured{{/if}} panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h4>
 				<a href="{{pathFor 'job'}}">{{title}}</a>
 			</h4>
-		</div> 
-		<div class="col-sm-3 text-right">
-			{{>jobLabels}}
-		</div> 
-	</div>
-	<div class="row">
-		<div class="col-sm-3">
-			<i class="fa fa-calendar"></i> {{formatDate createdAt}}
-		</div>
-		<div class="col-sm-9 text-right">
-			{{#if company}}<i class="fa fa-building"></i> {{company}}{{/if}}
-			{{#if location}}{{#if company}} - {{/if}}<i class="fa fa-map-marker"></i> {{location}}{{/if}}
-		</div>
-	</div>
+                </div>
+                <div class="col-sm-3 text-right">
+                    {{>jobLabels}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                     
+                    <i class="fa fa-calendar"></i> {{formatDate createdAt}}
+                    {{!-- {{#if featured}} - Featured Until {{formatDate featuredThrough}}{{/if}}
+                     --}}
+                    
+                </div>
+                <div class="col-sm-9 text-right">
+                    {{#if company}}<i class="fa fa-building"></i> {{company}}{{/if}}
+                    {{#if location}}
+                        {{#if company}} - {{/if}}<i class="fa fa-map-marker"></i> {{location}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

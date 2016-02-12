@@ -22,12 +22,25 @@ Router.map(function() {
         data: function() {
             return {
                 jobs: Jobs.find({
+                    featuredThrough: {
+                        $exists: false
+                    },
                     status: "active"
                 }, {
                     sort: {
                         createdAt: -1
                     },
                     limit: 10
+                }),
+                featuredJobs: Jobs.find({
+                    featuredThrough: {
+                        $gte: new Date()
+                    },
+                    status: "active"
+                }, {
+                    sort: {
+                        featuredThrough: -1
+                    }
                 }),
                 profiles: Profiles.find({}, {
                     sort: {
@@ -42,7 +55,7 @@ Router.map(function() {
             };
         },
         subscriptions: function() {
-            return [subs.subscribe('homeJobs'), subs.subscribe('homeDevelopers')];
+            return [subs.subscribe('homeJobs'), subs.subscribe('featuredJobs'), subs.subscribe('homeDevelopers')];
         }
     });
 
@@ -72,8 +85,8 @@ Router.map(function() {
 
     this.route('job', {
         path: '/jobs/:_id/:slug?',
-        title: function(){
-            if(this.data())
+        title: function() {
+            if (this.data())
                 return "We Work Meteor - " + this.data().title;
         },
         data: function() {
@@ -127,8 +140,8 @@ Router.map(function() {
 
     this.route('profile', {
         path: '/profiles/:_id/:slug?',
-        title: function(){
-            if(this.data())
+        title: function() {
+            if (this.data())
                 return "We Work Meteor - " + this.data().displayName() + " - " + this.data().title;
         },
         data: function() {

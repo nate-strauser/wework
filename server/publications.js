@@ -32,6 +32,9 @@ Meteor.publish("homeJobs", function() {
     check(arguments, [Match.Any]);
     return [
         Jobs.find({
+            featuredThrough: {
+                $exists:false
+            },
             createdAt: {
                 $gte: daysUntilExpiration()
             },
@@ -49,7 +52,35 @@ Meteor.publish("homeJobs", function() {
                 updatedAt: true,
                 remote: true,
                 jobtype: true,
-                status: true
+                status: true,
+                featuredThrough: true
+            }
+        })
+    ];
+});
+
+Meteor.publish("featuredJobs", function() {
+    check(arguments, [Match.Any]);
+    return [
+        Jobs.find({
+            featuredThrough: {
+                $gte: new Date()
+            },
+            status: "active"
+        }, {
+            sort: {
+                featuredThrough: -1
+            },
+            fields: {
+                title: true,
+                company: true,
+                location: true,
+                createdAt: true,
+                updatedAt: true,
+                remote: true,
+                jobtype: true,
+                status: true,
+                featuredThrough: true
             }
         })
     ];
@@ -114,9 +145,11 @@ Meteor.publish("jobs", function(limit) {
             updatedAt: true,
             remote: true,
             jobtype: true,
-            status: true
+            status: true,
+            featuredThrough: true
         },
         sort: {
+            featuredThrough:-1,
             createdAt: -1
         },
         limit: limit

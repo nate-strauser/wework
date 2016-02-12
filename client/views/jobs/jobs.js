@@ -11,6 +11,7 @@ Template.jobs.helpers({
     "jobs": function() {
         return Jobs.find({}, {
             sort: {
+                featuredThrough: -1,
                 createdAt: -1
             }
         });

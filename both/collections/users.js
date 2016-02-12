@@ -72,7 +72,7 @@ Users.allow({
     return Roles.userIsInRole(userId, ['admin']) || (!_.contains(fieldNames, 'roles') && userId && doc && userId === doc.userId);
   },
   remove: function(userId, doc) {
-    return Roles.userIsInRole(userId, ['admin']);
+    return false;
   },
   fetch: ['userId']
 });

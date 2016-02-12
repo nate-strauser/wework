@@ -96,6 +96,10 @@ Jobs.attachSchema(
       type: Date,
       optional: true
     },
+    featuredChargeHistory: {
+      type: [String],
+      optional: true
+    },
     // Automatically set HTML content based on markdown content
     // whenever the markdown content is set.
     htmlDescription: {
@@ -157,10 +161,15 @@ Jobs.allow({
     return userId && doc && userId === doc.userId;
   },
   update: function(userId, doc, fieldNames, modifier) {
-    return Roles.userIsInRole(userId, ['admin']) || (!_.contains(fieldNames, 'htmlDescription') && !_.contains(fieldNames, 'status') && userId && doc && userId === doc.userId);
+    return Roles.userIsInRole(userId, ['admin']) || 
+    (!_.contains(fieldNames, 'htmlDescription') 
+      && !_.contains(fieldNames, 'status') 
+        && !_.contains(fieldNames, 'featuredThrough') 
+          && !_.contains(fieldNames, 'featuredChargeHistory') 
+          && userId && doc && userId === doc.userId);
   },
   remove: function(userId, doc) {
-    return Roles.userIsInRole(userId, ['admin']) || (userId && doc && userId === doc.userId);
+    return false;
   },
   fetch: ['userId']
 });
