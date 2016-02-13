@@ -43,7 +43,7 @@ Meteor.methods({
             status: status
         };
         
-        if (Meteor.isServer && status === "active" && moment().isBefore(job.featuredThrough))
+        if (Meteor.isServer && status === "active" && job.featured)
             setObject.featuredThrough = moment().add(30,"days").toDate();
 
         Jobs.update({
