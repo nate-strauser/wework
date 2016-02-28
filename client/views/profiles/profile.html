@@ -3,6 +3,12 @@
 		<div class="col-sm-12">
 			<div class="panel panel-default">
   				<div class="panel-body">
+  					{{#if isInRole 'admin'}}
+					    {{>profileAdminEditLink}}
+					    {{>profileStatusToggle}}
+					{{/if}}
+					{{>profileStatusAlert}}
+					
 					<div class="row">
 						<div class="col-sm-3">
 							{{#if customImageUrl}}

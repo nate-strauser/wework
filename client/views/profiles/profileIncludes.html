@@ -1,0 +1,22 @@
+<template name="profileStatusToggle">
+    <div class="row">
+        <div class="col-sm-12">
+            Current Status is <b>{{status}}</b> - Set status to {{#each statuses}} {{#unless $eq ../status this}}
+            <button type="button" class="set-status">{{this}}</button>
+            {{/unless}} {{/each}}
+            <hr>
+        </div>
+    </div>
+</template>
+<template name="profileAdminEditLink">
+    <div class="pull-right">
+        <a href="/admin/Profiles/{{_id}}/edit">Edit Profile</a>
+    </div>
+</template>
+<template name="profileStatusAlert">
+    {{#if $eq status 'flagged'}}
+    <div class="alert alert-danger">
+        <i class="fa fa-flag fa-2x pull-left"></i> This profile has been flagged for content. Contact an admin if you believe this is in error.
+    </div>
+    {{/if}}
+</template>

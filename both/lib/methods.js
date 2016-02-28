@@ -53,6 +53,31 @@ Meteor.methods({
         });
 
     },
+    adminSetProfileStatus: function(profileId, status) {
+        check(profileId, String);
+        check(status, String);
+
+        var job = Profiles.findOne({
+            _id: profileId
+        });
+        if (!job)
+            throw new Meteor.Error("Could not find profile.");
+
+        if (!Roles.userIsInRole(this.userId, ['admin']))
+            throw new Meteor.Error("Only admins can set profile status");
+
+        var setObject = {
+            status: status
+        };
+        
+        
+        Profiles.update({
+            _id: profileId
+        }, {
+            $set: setObject
+        });
+
+    },
     createFeaturedJobCharge: function(tokenId, jobId) {
         check(tokenId, String);
         check(jobId, String);
