@@ -49,31 +49,45 @@
             <div class="alert alert-danger">
                 <i class="fa fa-flag fa-2x pull-left"></i> This post has been flagged for content. Contact an admin if you believe this is in error.
             </div>
+        {{else}}
+            {{#if $eq status 'inactive'}}
+                <div class="alert alert-warning">
+                    <i class="fa fa-flag-checkered fa-2x pull-left"></i> This job post has been deactivated.
+                </div>
+            {{else}}
+                {{#if $eq status 'filled'}}
+                    <div class="alert alert-success">
+                        <i class="fa fa-trophy fa-2x pull-left"></i> This job post has been filled.
+                    </div>
+                {{/if}}
+            {{/if}}
         {{/if}}
     {{/if}}
 </template>
 <template name="jobFeatured">
     {{#if $eq currentUser._id userId}}
         {{#unless featured}}
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="well">
-                        <h3 class="top-flush">Upgrade to a Featured Job Post</h3>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul>
-                                    <li>Guaranteed to stay on home page</li>
-                                    <li>Highlighted job listing display</li>
-                                    <li>Priority placement in jobs listing</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <a id="buy-featured" class="btn btn-primary btn-lg" role="button" href="#">Buy 30 Days for $100</a>
+            {{#if featuredAllowed}}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="well">
+                            <h3 class="top-flush">Upgrade to a Featured Job Post</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul>
+                                        <li>Guaranteed to stay on home page</li>
+                                        <li>Highlighted job listing display</li>
+                                        <li>Priority placement in jobs listing</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <a id="buy-featured" class="btn btn-primary btn-lg" role="button" href="#">Buy 30 Days for $100</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {{/if}}
         {{/unless}}
     {{/if}}
 </template>

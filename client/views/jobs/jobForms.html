@@ -33,13 +33,21 @@
                     <h4>Edit Job Post</h4>
                 </div>
                 <div class="panel-body">
-                    {{#autoForm id="jobEdit" collection="Jobs" doc=job type="update" }}
-                        {{>jobFields}}
-                        <div>
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
-                            <button id="cancel" class="btn btn-default"> Cancel</button>
+                    {{#if $eq job.status 'pending'}}
+                        {{#autoForm id="jobEdit" collection="Jobs" doc=job type="update" }}
+                            {{>jobFields}}
+                            <div>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Update</button>
+                                <button id="cancel" class="btn btn-default"> Cancel</button>
+                            </div>
+                        {{/autoForm}}
+                    {{else}}
+                        <div class="alert alert-info">
+                            <i class="fa fa-exclamation-triangle fa-2x pull-left"></i> Only pending jobs can be edited.
+                            <br>
+                            <a href="{{pathFor 'job' _id=job._id}}">Back to post</a>
                         </div>
-                    {{/autoForm}}
+                    {{/if}}
                 </div>
             </div>
         </div>
