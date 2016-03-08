@@ -15,3 +15,4 @@ SUMMERNOTE_OPTIONS = {
 };
 
 STATUSES = ["pending","active","flagged","inactive","filled"];
+PROFILE_STATUSES = ["active","flagged"];

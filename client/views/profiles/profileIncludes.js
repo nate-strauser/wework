@@ -1,6 +1,6 @@
 Template.profileStatusToggle.helpers({
   "statuses": function() {
-    return STATUSES;
+    return PROFILE_STATUSES;
   }
 });
 

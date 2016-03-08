@@ -134,7 +134,7 @@ Profiles.attachSchema(
     },
     status: {
       type: String,
-      allowedValues: STATUSES,
+      allowedValues: PROFILE_STATUSES,
       defaultValue:"active"
     },
     // Force value to be current date (on server) upon insert
