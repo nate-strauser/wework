@@ -13,8 +13,7 @@ SyncedCron.add({
   }
 });
 
-console.log(Meteor.settings);
-
+//Disabled pending MDG support response on token and service url for Galaxy bundled service
 // SyncedCron.add({
 //   name: 'Prerender.io Recache Main Pages',
 //   schedule: function(parser) {
