@@ -13,6 +13,8 @@ SyncedCron.add({
   }
 });
 
+console.log(Meteor.settings);
+
 // SyncedCron.add({
 //   name: 'Prerender.io Recache Main Pages',
 //   schedule: function(parser) {

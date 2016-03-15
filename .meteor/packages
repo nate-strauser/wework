@@ -12,7 +12,6 @@ accounts-github
 accounts-google
 accounts-twitter
 accounts-meteor-developer
-#jazeee:spiderable-longer-timeout
 iron:router
 natestrauser:font-awesome
 raix:handlebar-helpers
