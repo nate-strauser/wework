@@ -49,7 +49,6 @@ yogiben:admin
 ongoworks:speakingurl
 staringatlights:infinite-scroll
 useraccounts:iron-routing
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -70,3 +69,5 @@ astronomerio:core
 copleykj:stripe-sync
 mdg:seo
 
+standard-minifier-css
+standard-minifier-js
