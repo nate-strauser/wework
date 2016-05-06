@@ -61,12 +61,12 @@
 					<div class="row">
 						<div class="col-xs-12">
 							{{#if $eq userId $.Meteor.userId}}
-								{{#if $eq status "pending"}}
+								{{!-- {{#if $eq status "pending"}} --}}
 									<div class="pull-right">
 										&nbsp;
 										<a href="{{pathFor 'jobEdit'}}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
 									</div>
-								{{/if}}
+								{{!-- {{/if}} --}}
 								{{#if $eq status "active"}}
 									<div class="pull-right">
 										<a id="job-deactivate" class="btn btn-danger">

@@ -169,7 +169,7 @@ Jobs.allow({
       && !_.contains(fieldNames, 'status') 
         && !_.contains(fieldNames, 'featuredThrough') 
           && !_.contains(fieldNames, 'featuredChargeHistory') 
-          && doc.status === "pending" && userId && doc && userId === doc.userId);
+          && /*doc.status === "pending" &&*/ userId && doc && userId === doc.userId);
   },
   remove: function(userId, doc) {
     return false;
