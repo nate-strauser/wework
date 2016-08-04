@@ -1,6 +1,5 @@
 AdminConfig = {
   name: 'Abstractions Job Board',
-  adminEmails: ['justin@codeandsupply.co'],
   collections: {
     Jobs: {
       icon: 'briefcase',
