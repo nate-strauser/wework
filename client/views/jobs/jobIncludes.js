@@ -41,7 +41,7 @@ Template.jobFeatured.events({
       allowRememberMe: true,
       description: 'Featured Job Post - 30 Days',
       currency: "usd",
-      amount: 10000,
+      amount: 20000,
       email:getUserEmail(Meteor.user()),
       closed:function(){
         btn.button('reset');
