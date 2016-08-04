@@ -1,1 +1,1 @@
-FROM_EMAIL = "We Work Meteor <admin@weworkmeteor.com>";
+FROM_EMAIL = "Abstractions Job Board <team@abstractions.io>";

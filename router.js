@@ -11,7 +11,7 @@ Router.configure({
     },
     progressSpinner: false,
     progressDelay: 250,
-    title: "We Work Meteor - Job board and developer listing just for Meteor"
+    title: "Abstractions Job Board - Job board and talent profiles just for Abstractions"
 });
 
 
@@ -61,12 +61,12 @@ Router.map(function() {
 
     this.route('jobs', {
         path: '/jobs',
-        title: "We Work Meteor - All Jobs"
+        title: "Abstractions Job Board - All Jobs"
     });
 
     this.route('myJobs', {
         path: '/myjobs',
-        title: "We Work Meteor - My Jobs",
+        title: "Abstractions Job Board - My Jobs",
         data: function() {
             return {
                 jobs: Jobs.find({
@@ -87,7 +87,7 @@ Router.map(function() {
         path: '/jobs/:_id/:slug?',
         title: function() {
             if (this.data())
-                return "We Work Meteor - " + this.data().title;
+                return "Abstractions Job Board - " + this.data().title;
         },
         data: function() {
             return Jobs.findOne({
@@ -112,12 +112,12 @@ Router.map(function() {
 
     this.route('jobNew', {
         path: '/job',
-        title: "We Work Meteor - Post a Job"
+        title: "Abstractions Job Board - Post a Job"
     });
 
     this.route('jobEdit', {
         path: '/jobs/:_id/:slug/edit',
-        title: "We Work Meteor - Edit Job Post",
+        title: "Abstractions Job Board - Edit Job Post",
         data: function() {
             return {
                 job: Jobs.findOne({
@@ -132,7 +132,7 @@ Router.map(function() {
 
     this.route('profiles', {
         path: '/profiles',
-        title: "We Work Meteor - All Developers",
+        title: "Abstractions Job Board - All Developers",
         subscriptions: function() {
             return subs.subscribe('developerUsers');
         }
@@ -142,7 +142,7 @@ Router.map(function() {
         path: '/profiles/:_id/:slug?',
         title: function() {
             if (this.data())
-                return "We Work Meteor - " + this.data().displayName() + " - " + this.data().title;
+                return "Abstractions Job Board - " + this.data().displayName() + " - " + this.data().title;
         },
         data: function() {
             return Profiles.findOne({
@@ -167,7 +167,7 @@ Router.map(function() {
 
     this.route('profileNew', {
         path: '/profile',
-        title: "We Work Meteor - Create Developer Profile",
+        title: "Abstractions Job Board - Create Developer Profile",
         onBeforeAction: function() {
             if (Meteor.user().isDeveloper) {
                 Router.go('profile', Profiles.findOne({
@@ -181,7 +181,7 @@ Router.map(function() {
 
     this.route('profileEdit', {
         path: '/profiles/:_id/:slug/edit',
-        title: "We Work Meteor - Edit My Developer Profile",
+        title: "Abstractions Job Board - Edit My Developer Profile",
         data: function() {
             return {
                 profile: Profiles.findOne({

@@ -2,7 +2,6 @@ accounts-base@1.2.8
 accounts-facebook@1.0.10
 accounts-github@1.0.10
 accounts-google@1.0.10
-accounts-meteor-developer@1.0.10
 accounts-oauth@1.1.13
 accounts-password@1.1.12
 accounts-twitter@1.0.10
@@ -85,7 +84,6 @@ mdg:seo@1.0.1
 mdg:validation-error@0.5.1
 meteor@1.1.16
 meteor-base@1.0.4
-meteor-developer@1.1.9
 meteorhacks:inject-initial@1.0.4
 meteorhacks:kadira@2.29.1
 meteorhacks:meteorx@1.4.1

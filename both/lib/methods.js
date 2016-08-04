@@ -95,7 +95,7 @@ Meteor.methods({
 	        	source:tokenId,
 	        	amount:10000,
 	        	currency:"usd",
-	        	description:"We Work Meteor - Featured Job Post - 30 Days"
+	        	description:"Abstractions Job Board - Featured Job Post - 30 Days"
 	        });
 
 	        if(result && result.status === "succeeded"){
