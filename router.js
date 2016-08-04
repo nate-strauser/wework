@@ -11,7 +11,7 @@ Router.configure({
     },
     progressSpinner: false,
     progressDelay: 250,
-    title: "Abstractions Job Board - Job board and talent profiles just for Abstractions"
+    title: "jobs.abstractions.io - Job board and talent profiles just for Abstractions"
 });
 
 
@@ -61,12 +61,12 @@ Router.map(function() {
 
     this.route('jobs', {
         path: '/jobs',
-        title: "Abstractions Job Board - All Jobs"
+        title: "jobs.abstractions.io - All Jobs"
     });
 
     this.route('myJobs', {
         path: '/myjobs',
-        title: "Abstractions Job Board - My Jobs",
+        title: "jobs.abstractions.io - My Jobs",
         data: function() {
             return {
                 jobs: Jobs.find({
@@ -87,7 +87,7 @@ Router.map(function() {
         path: '/jobs/:_id/:slug?',
         title: function() {
             if (this.data())
-                return "Abstractions Job Board - " + this.data().title;
+                return "jobs.abstractions.io - " + this.data().title;
         },
         data: function() {
             return Jobs.findOne({
@@ -112,12 +112,12 @@ Router.map(function() {
 
     this.route('jobNew', {
         path: '/job',
-        title: "Abstractions Job Board - Post a Job"
+        title: "jobs.abstractions.io - Post a Job"
     });
 
     this.route('jobEdit', {
         path: '/jobs/:_id/:slug/edit',
-        title: "Abstractions Job Board - Edit Job Post",
+        title: "jobs.abstractions.io - Edit Job Post",
         data: function() {
             return {
                 job: Jobs.findOne({
@@ -132,7 +132,7 @@ Router.map(function() {
 
     this.route('profiles', {
         path: '/profiles',
-        title: "Abstractions Job Board - All Developers",
+        title: "jobs.abstractions.io - All Developers",
         subscriptions: function() {
             return subs.subscribe('developerUsers');
         }
@@ -142,7 +142,7 @@ Router.map(function() {
         path: '/profiles/:_id/:slug?',
         title: function() {
             if (this.data())
-                return "Abstractions Job Board - " + this.data().displayName() + " - " + this.data().title;
+                return "jobs.abstractions.io - " + this.data().displayName() + " - " + this.data().title;
         },
         data: function() {
             return Profiles.findOne({
@@ -167,7 +167,7 @@ Router.map(function() {
 
     this.route('profileNew', {
         path: '/profile',
-        title: "Abstractions Job Board - Create Developer Profile",
+        title: "jobs.abstractions.io - Create Developer Profile",
         onBeforeAction: function() {
             if (Meteor.user().isDeveloper) {
                 Router.go('profile', Profiles.findOne({
@@ -181,7 +181,7 @@ Router.map(function() {
 
     this.route('profileEdit', {
         path: '/profiles/:_id/:slug/edit',
-        title: "Abstractions Job Board - Edit My Developer Profile",
+        title: "jobs.abstractions.io - Edit My Developer Profile",
         data: function() {
             return {
                 profile: Profiles.findOne({

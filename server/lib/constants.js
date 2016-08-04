@@ -1,1 +1,1 @@
-FROM_EMAIL = "Abstractions Job Board <team@abstractions.io>";
+FROM_EMAIL = "jobs.abstractions.io <team@abstractions.io>";
