@@ -132,7 +132,7 @@ Router.map(function() {
 
     this.route('profiles', {
         path: '/profiles',
-        title: "jobs.abstractions.io - All Developers",
+        title: "jobs.abstractions.io - All software professionals",
         subscriptions: function() {
             return subs.subscribe('developerUsers');
         }
