@@ -15,8 +15,8 @@ Meteor.methods({
 		if (job.status !== "active")
             throw new Meteor.Error("You can only deactivate an active job.");
 
-      
-        
+
+
         Jobs.update({
             _id: jobId
         }, {
@@ -42,7 +42,7 @@ Meteor.methods({
         var setObject = {
             status: status
         };
-        
+
         if (Meteor.isServer && status === "active" && job.featured())
             setObject.featuredThrough = moment().add(30,"days").toDate();
 
@@ -69,8 +69,8 @@ Meteor.methods({
         var setObject = {
             status: status
         };
-        
-        
+
+
         Profiles.update({
             _id: profileId
         }, {
@@ -93,12 +93,12 @@ Meteor.methods({
         if(Meteor.isServer){
         	var result = Stripe.charges.create({
 	        	source:tokenId,
-	        	amount:10000,
+	        	amount:20000,
 	        	currency:"usd",
-	        	description:"We Work Meteor - Featured Job Post - 30 Days"
+	        	description:"Abstractions Job Board - Featured Job Post - 30 Days"
 	        });
 
-	        if(result && result.status === "succeeded"){
+	        if(result && (result.status === "succeeded" || result.status === "paid")){
 	        	Jobs.update({_id:job._id},{
 	        		$set:{
 	        			featuredThrough:moment().add(30,"days").toDate()

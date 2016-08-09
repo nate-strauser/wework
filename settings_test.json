@@ -1,0 +1,28 @@
+{
+  "public" : {
+    "uploadcare":{
+      "publickey":"bec09cb897a96e1d0663"
+    },
+    "stripe":{
+        "pubKey":"pk_test_i1oeNwMyGZQFh1ANO0GS6mqN"
+    },
+    "astronomer": {
+      "appId": "Astronomer.io App Id"
+    }
+  },
+  "kadira": {
+     "appId": "Kadira App ID",
+     "appSecret": "Kadira App Secret"
+  },
+  "PrerenderIO": {
+    "token": "Prerender.io Token"
+  },
+  "stripe":{
+      "secretKey":"sk_test_WRggqkzAKz26Zg8mk7oDA6vX"
+  },
+	"galaxy.meteor.com": {
+		"env": {
+			"MONGO_URL": "mongodb://jobsdot:VGJYQlsXksi7sYd@ds139665.mlab.com:39665/jobsabstractions"
+		}
+	}
+}

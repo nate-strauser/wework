@@ -84,10 +84,10 @@ Jobs.attachSchema(
       allowedValues: STATUSES,
       autoValue: function() {
         if (this.isInsert) {
-          return 'pending';
+          return 'active';
         } else if (this.isUpsert) {
           return {
-            $setOnInsert: 'pending'
+            $setOnInsert: 'active'
           };
         }
       },

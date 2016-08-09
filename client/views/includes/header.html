@@ -11,18 +11,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">We Work Meteor</a>
+                    <a class="navbar-brand" href="/">jobs.abstractions.io</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="{{isActiveRoute regex='^jobs$'}}"><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-                        <li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">Developers</a></li>
+                        <li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">Talent</a></li>
                         {{#if currentUser}}
                             <li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
                             {{#unless currentUser.isDeveloper}}
                                 <li class="{{isActiveRoute regex='^profile$'}}">
-                                    <a href="{{pathFor 'profileNew'}}">Create Developer Profile</a>
+                                    <a href="{{pathFor 'profileNew'}}">Create Profile</a>
                                 </li>
                             {{/unless}}
                         {{/if}}
