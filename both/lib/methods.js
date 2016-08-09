@@ -98,7 +98,7 @@ Meteor.methods({
 	        	description:"Abstractions Job Board - Featured Job Post - 30 Days"
 	        });
 
-	        if(result && result.status === "succeeded"){
+	        if(result && (result.status === "succeeded" || result.status === "pending")){
 	        	Jobs.update({_id:job._id},{
 	        		$set:{
 	        			featuredThrough:moment().add(30,"days").toDate()
@@ -108,7 +108,7 @@ Meteor.methods({
 	        		}
 	        	});
 	        }else{
-	        	throw new Meteor.Error("Payment Failed!");
+	        	throw new Meteor.Error("Payment Failed!", "Stripe result not as expected", JSON.stringify(result));
 	        }
         }else{
         	Jobs.update({
