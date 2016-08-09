@@ -108,7 +108,7 @@ Meteor.methods({
 	        		}
 	        	});
 	        }else{
-	        	throw new Meteor.Error("Payment Failed!");
+	        	throw new Meteor.Error("Payment Failed!", "Stripe result not as expected", JSON.stringify(result));
 	        }
         }else{
         	Jobs.update({
