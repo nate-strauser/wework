@@ -98,7 +98,7 @@ Meteor.methods({
 	        	description:"We Work Meteor - Featured Job Post - 30 Days"
 	        });
 
-	        if(result && result.status === "succeeded"){
+            if(result && (result.status === "succeeded" || result.status === "paid")){ //'paid' status is not in stripe docs, but is occuring - see https://github.com/nate-strauser/wework/issues/108
 	        	Jobs.update({_id:job._id},{
 	        		$set:{
 	        			featuredThrough:moment().add(30,"days").toDate()
@@ -108,7 +108,7 @@ Meteor.methods({
 	        		}
 	        	});
 	        }else{
-	        	throw new Meteor.Error("Payment Failed!");
+	        	throw new Meteor.Error("Payment Failed!", "Stripe result not as expected", JSON.stringify(result));
 	        }
         }else{
         	Jobs.update({
