@@ -59,6 +59,11 @@ UserSchema = new SimpleSchema({
   },
   "roles.$": {
     type: String
+  },
+  // In order to avoid an 'Exception in setInterval callback' from Meteor
+  heartbeat: {
+    type: Date,
+    optional: true,
   }
 });
 
