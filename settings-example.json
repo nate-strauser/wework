@@ -1,23 +1,20 @@
 {
-  "public" : {
-    "uploadcare":{
-      "publickey":"Upload Care Public Key"
+  "public": {
+    "uploadcare": {
+      "publickey": "Upload Care Public Key"
     },
-    "stripe":{
-        "pubKey":"Stripe Publishable Key"
+    "Stripe": {
+      "pubKey": "Stripe Publishable Key"
     },
     "astronomer": {
       "appId": "Astronomer.io App Id"
     }
   },
   "kadira": {
-     "appId": "Kadira App ID",
-     "appSecret": "Kadira App Secret"
+    "appId": "Kadira App ID",
+    "appSecret": "Kadira App Secret"
   },
-  "PrerenderIO": {
-    "token": "Prerender.io Token"
-  },
-  "stripe":{
-      "secretKey":"Stripe Secret Key"
+  "Stripe": {
+    "secretKey": "Stripe Secret Key"
   }
 }
