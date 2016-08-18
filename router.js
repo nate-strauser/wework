@@ -55,7 +55,7 @@ Router.map(function() {
             };
         },
         subscriptions: function() {
-            return [subs.subscribe('homeJobs'), subs.subscribe('featuredJobs'), subs.subscribe('homeDevelopers')];
+            return [subs.subscribe('homeJobs'), subs.subscribe('featuredJobs'), subs.subscribe('homeDevelopers'), subs.subscribe('developerCount'), subs.subscribe('jobCount')];
         }
     });
 

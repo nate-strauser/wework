@@ -52,7 +52,6 @@ nemo64:bootstrap
 zimme:iron-router-active
 percolate:migrations
 jparker:crypto-md5
-tmeasday:publish-counts
 utilities:avatar
 matb33:collection-hooks
 percolatestudio:synced-cron
@@ -72,3 +71,4 @@ astronomerio:core
 shwaydogg:space-monkey
 copleykj:stripe-sync
 mdg:seo
+natestrauser:publish-performant-counts

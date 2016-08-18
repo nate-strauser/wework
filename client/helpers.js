@@ -16,3 +16,8 @@ UI.registerHelper("resizeImageUrl", function(imageUrl, height, width) {
 	if(imageUrl)
       return imageUrl + "-/resize/" + height + "x" + width + "/";
 });
+
+UI.registerHelper("getCount", function(name) {
+	if(name)
+      return Counter.get(name);
+});
