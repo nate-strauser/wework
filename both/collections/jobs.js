@@ -164,12 +164,8 @@ Jobs.allow({
     return userId && doc && userId === doc.userId;
   },
   update: function(userId, doc, fieldNames, modifier) {
-    return Roles.userIsInRole(userId, ['admin']) || 
-    (!_.contains(fieldNames, 'htmlDescription') 
-      && !_.contains(fieldNames, 'status') 
-        && !_.contains(fieldNames, 'featuredThrough') 
-          && !_.contains(fieldNames, 'featuredChargeHistory') 
-          && /*doc.status === "pending" &&*/ userId && doc && userId === doc.userId);
+    return Roles.userIsInRole(userId, ['admin']) ||
+      (!_.contains(fieldNames, 'htmlDescription') && !_.contains(fieldNames, 'status') && !_.contains(fieldNames, 'featuredThrough') && !_.contains(fieldNames, 'featuredChargeHistory') && /*doc.status === "pending" &&*/ userId && doc && userId === doc.userId);
   },
   remove: function(userId, doc) {
     return false;

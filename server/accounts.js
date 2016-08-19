@@ -6,9 +6,9 @@ Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile;
 
   var email = getUserEmail(user);
-  if(email){
-  	user.emailHash = CryptoJS.MD5(email.trim().toLowerCase()).toString();
+  if (email) {
+    user.emailHash = CryptoJS.MD5(email.trim().toLowerCase()).toString();
   }
-  
+
   return user;
 });

@@ -27,7 +27,7 @@ RssFeed.publish('jobs', function(query) {
 
   Jobs.find({
     createdAt: {
-        $gte: daysUntilExpiration()
+      $gte: daysUntilExpiration()
     },
     status: "active"
   }, {

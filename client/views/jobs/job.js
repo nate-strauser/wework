@@ -1,7 +1,7 @@
 Template.job.events({
   'click #job-deactivate': function(event, template) {
     event.preventDefault();
-    Modal.show('jobDeactivate',template.data);
+    Modal.show('jobDeactivate', template.data);
   }
 });
 
@@ -10,4 +10,3 @@ Template.job.helpers({
     return this.jobType || this.remote || this.featured;
   }
 });
-

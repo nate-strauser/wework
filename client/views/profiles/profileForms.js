@@ -41,10 +41,10 @@ Template.profileFields.rendered = function() {
     if (typeof uploadcare !== "undefined") {
       Meteor.clearInterval(interval);
       var widget = uploadcare.SingleWidget('#custom-image');
-      
-      if(template.data && template.data.profile && template.data.profile.customImageUrl){
+
+      if (template.data && template.data.profile && template.data.profile.customImageUrl) {
         var customImage = template.data.profile.customImageUrl;
-        if(customImage){
+        if (customImage) {
           widget.value(customImage);
           customImagePreviewUrl.set(customImage);
         }
@@ -55,10 +55,10 @@ Template.profileFields.rendered = function() {
           file.done(function(info) {
             console.log(info);
             customImagePreviewUrl.set(info.cdnUrl);
-            analytics.track("Profile Image Uploaded");      
+            analytics.track("Profile Image Uploaded");
           });
-        } else if(customImagePreviewUrl.get()){
-          	customImagePreviewUrl.set(null);
+        } else if (customImagePreviewUrl.get()) {
+          customImagePreviewUrl.set(null);
         }
       });
     }
@@ -67,7 +67,7 @@ Template.profileFields.rendered = function() {
 
 Template.profileFields.helpers({
   "customImagePreviewUrl": function(event, template) {
-    if(customImagePreviewUrl.get())
-    	return customImagePreviewUrl.get();
+    if (customImagePreviewUrl.get())
+      return customImagePreviewUrl.get();
   }
 });

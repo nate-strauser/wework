@@ -70,7 +70,7 @@ Migrations.add({
   name: 'Copy htmlDescription over to description',
   up: function() {
     Profiles.find({}).forEach(function(profile) {
-      if(profile.htmlDescription)
+      if (profile.htmlDescription)
         Profiles.update({
           _id: profile._id
         }, {
@@ -82,7 +82,7 @@ Migrations.add({
     });
 
     Jobs.find({}).forEach(function(job) {
-      if(job.htmlDescription)
+      if (job.htmlDescription)
         Jobs.update({
           _id: job._id
         }, {
@@ -101,8 +101,8 @@ Migrations.add({
   version: 5,
   name: 'Set status for all profiles/jobs',
   up: function() {
-    Profiles.update({},{$set:{status:"active"}}, {multi:true});
-    Jobs.update({},{$set:{status:"active"}}, {multi:true});
+    Profiles.update({}, { $set: { status: "active" } }, { multi: true });
+    Jobs.update({}, { $set: { status: "active" } }, { multi: true });
   },
   down: function() {}
 });
@@ -112,17 +112,17 @@ Migrations.add({
   version: 6,
   name: 'Ensure https urls for all profile custom images',
   up: function() {
-    Profiles.find({customImageUrl:{$exists:true}}).forEach(function(profile){
-      if(profile.customImageUrl !== ""){
+    Profiles.find({ customImageUrl: { $exists: true } }).forEach(function(profile) {
+      if (profile.customImageUrl !== "") {
         var newUrl = profile.customImageUrl.replace("http://www.ucarecdn.com", "https://ucarecdn.com");
-        if(newUrl !== profile.customImageUrl)
-          Profiles.update({_id:profile._id},{$set:{customImageUrl:newUrl}});
+        if (newUrl !== profile.customImageUrl)
+          Profiles.update({ _id: profile._id }, { $set: { customImageUrl: newUrl } });
       }
     });
   },
   down: function() {}
 });
 
-Meteor.startup(function(){
+Meteor.startup(function() {
   Migrations.migrateTo('latest');
 });

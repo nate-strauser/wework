@@ -42,8 +42,8 @@ Template.jobFeatured.events({
       description: 'Featured Job Post - 30 Days',
       currency: "usd",
       amount: 10000,
-      email:getUserEmail(Meteor.user()),
-      closed:function(){
+      email: getUserEmail(Meteor.user()),
+      closed: function() {
         btn.button('reset');
       },
       token: function(token, args) {
@@ -51,13 +51,13 @@ Template.jobFeatured.events({
         Meteor.call("createFeaturedJobCharge", token.id, job._id, function(error, result) {
           if (error) {
             console.log("Insert Error:", error);
-          }else{
+          } else {
             console.log(result);
-           // Router.go("orders");
+            // Router.go("orders");
             //successNotification('Card Saved');
           }
           btn.button('reset');
-         });
+        });
       }
     });
   }

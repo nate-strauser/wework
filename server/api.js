@@ -28,7 +28,7 @@ Meteor.startup(function() {
         }).fetch()
       };
     }
-  });  
+  });
 
   Api.addRoute('featuredJobs', {
     get: function() {
