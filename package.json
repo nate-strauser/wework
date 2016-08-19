@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "We Work Meteor, a job board and developer directory for Meteor specific work https://www.weworkmeteor.com",
   "main": "",
+  "engines": {
+    "node": "= 4.5.0",
+    "npm": "= 3.9.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
