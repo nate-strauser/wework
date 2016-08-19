@@ -1,0 +1,24 @@
+{
+  "name": "wework",
+  "version": "1.0.0",
+  "description": "We Work Meteor, a job board and developer directory for Meteor specific work https://www.weworkmeteor.com",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "pretest": "npm run lint --silent"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nate-strauser/wework.git"
+  },
+  "author": "Nathan Strauser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nate-strauser/wework/issues"
+  },
+  "homepage": "https://github.com/nate-strauser/wework#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7"
+  }
+}
