@@ -8,7 +8,7 @@
 					    {{>profileStatusToggle}}
 					{{/if}}
 					{{>profileStatusAlert}}
-					
+
 					<div class="row">
 						<div class="col-sm-3">
 							{{#if customImageUrl}}
@@ -18,7 +18,7 @@
 							{{else}}
 								{{> avatar userId=userId size="large"}}
 							{{/if}}
-							
+
 							{{#if availableForHire}}
 								<br>
 								<span class="label label-primary"><i class="fa fa-rocket"></i> Hire Me</span>
@@ -41,7 +41,7 @@
 									<hr>
 								{{/if}}
 								{{#if url}}
-									<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank">Web Site</a>
+									<i class="fa fa-external-link"></i>&nbsp;<a href="{{url}}" target="_blank" rel="noopener">Web Site</a>
 								{{/if}}
 								{{#if contact}}
 									<br>
@@ -49,19 +49,19 @@
 								{{/if}}
 								{{#if resumeUrl}}
 									<br>
-									<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank">View Resume</a>
+									<i class="fa fa-file-text"></i>&nbsp;&nbsp;<a href="{{resumeUrl}}" target="_blank" rel="noopener">View Resume</a>
 								{{/if}}
 								{{#if githubUrl}}
 									<br>
-									<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank">Github</a>
+									<i class="fa fa-github"></i>&nbsp;&nbsp;<a href="{{githubUrl}}" target="_blank" rel="noopener">Github</a>
 								{{/if}}
 								{{#if linkedinUrl}}
 									<br>
-									<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank">LinkedIn</a>
+									<i class="fa fa-linkedin"></i>&nbsp;&nbsp;<a href="{{linkedinUrl}}" target="_blank" rel="noopener">LinkedIn</a>
 								{{/if}}
 								{{#if stackoverflowUrl}}
 									<br>
-									<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank">Stackoverflow</a>
+									<i class="fa fa-stack-overflow"></i>&nbsp;&nbsp;<a href="{{stackoverflowUrl}}" target="_blank" rel="noopener">Stackoverflow</a>
 								{{/if}}
 							</small>
 							<hr>
