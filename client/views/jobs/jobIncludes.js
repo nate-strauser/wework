@@ -35,7 +35,7 @@ Template.jobFeatured.events({
     var btn = $(event.currentTarget);
     btn.button('loading');
     StripeCheckout.open({
-      key: Meteor.settings.public.stripe.pubKey,
+      key: Meteor.settings.public.Stripe.pubKey,
       name: 'We Work Meteor',
       billingAddress: false,
       allowRememberMe: true,
