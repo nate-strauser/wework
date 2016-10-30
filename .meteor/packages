@@ -35,7 +35,7 @@ reactive-var@1.0.11
 iron:router
 natestrauser:font-awesome
 raix:handlebar-helpers
-momentjs:moment
+momentjs:moment@=2.14.4
 aldeed:autoform
 aldeed:collection2
 multiply:iron-router-progress
