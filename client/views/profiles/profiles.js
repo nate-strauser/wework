@@ -1,7 +1,7 @@
 Template.profiles.onCreated(function() {
   this.query = new ReactiveVar({});
   this.infiniteScroll({
-    perPage: 7,
+    perPage: 40,
     collection: Profiles,
     publication: 'profiles',
     query: this.query
