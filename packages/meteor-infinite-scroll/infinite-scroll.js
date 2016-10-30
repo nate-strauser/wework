@@ -57,7 +57,7 @@ Blaze.TemplateInstance.prototype.infiniteScroll = function infiniteScroll(option
     // How many results to fetch per "page"
     perPage: 10,
     // The query to use when fetching our collection
-    query: {},
+    query: new ReactiveVar({}),
     // The subscription manager to use (optional)
     subManager: null,
     // Collection to use for counting the amount of results
@@ -105,6 +105,7 @@ Blaze.TemplateInstance.prototype.infiniteScroll = function infiniteScroll(option
     limit.set(options.perPage);
   }
 
+
   // Create subscription to the collection
   tpl.autorun(function() {
     // Rerun when the limit changes
@@ -122,7 +123,7 @@ Blaze.TemplateInstance.prototype.infiniteScroll = function infiniteScroll(option
       subscriber = tpl;
     }
 
-    tpl.infiniteSub = subscriber.subscribe(options.publication, lmt, options.query);
+    tpl.infiniteSub = subscriber.subscribe(options.publication, lmt, options.query.get());
   });
 
   // Create infiniteReady reactive var that we can use to track
@@ -144,7 +145,7 @@ Blaze.TemplateInstance.prototype.infiniteScroll = function infiniteScroll(option
    * Load more results for this collection.
    */
   loadMore = function() {
-    var count = collection.find(options.query, {
+    var count = collection.find({}, {
       reactive: false
     }).count();
 

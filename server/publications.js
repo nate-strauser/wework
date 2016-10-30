@@ -1,5 +1,5 @@
 //publish name is null to automatically publish to all users
-Meteor.publish(null, function() {
+Meteor.publish(null, function () {
   check(arguments, [Match.Any]);
   if (this.userId) {
     return [
@@ -26,16 +26,16 @@ var developerCounter = new Counter('developerCount', Profiles.find({
   status: "active"
 }));
 
-Meteor.publish('jobCount', function() {
+Meteor.publish('jobCount', function () {
   return jobCounter;
 });
 
-Meteor.publish('developerCount', function() {
+Meteor.publish('developerCount', function () {
   return developerCounter
 });
 
 
-Meteor.publish("homeJobs", function() {
+Meteor.publish("homeJobs", function () {
   check(arguments, [Match.Any]);
   return [
     Jobs.find({
@@ -66,7 +66,7 @@ Meteor.publish("homeJobs", function() {
   ];
 });
 
-Meteor.publish("featuredJobs", function() {
+Meteor.publish("featuredJobs", function () {
   check(arguments, [Match.Any]);
   return [
     Jobs.find({
@@ -94,7 +94,7 @@ Meteor.publish("featuredJobs", function() {
 });
 
 Meteor.publishComposite('homeDevelopers', {
-  find: function() {
+  find: function () {
     return Profiles.find({
       status: "active"
     }, {
@@ -118,7 +118,7 @@ Meteor.publishComposite('homeDevelopers', {
     });
   },
   children: [{
-    find: function(profile) {
+    find: function (profile) {
       return Users.find({
         _id: profile.userId
       }, {
@@ -135,7 +135,7 @@ Meteor.publishComposite('homeDevelopers', {
   }]
 });
 
-Meteor.publish("jobs", function(limit) {
+Meteor.publish("jobs", function (limit) {
   check(limit, Number);
 
   return Jobs.find({
@@ -163,7 +163,7 @@ Meteor.publish("jobs", function(limit) {
   });
 });
 
-Meteor.publish("my_jobs", function() {
+Meteor.publish("my_jobs", function () {
   check(arguments, [Match.Any]);
   if (this.userId) {
     return [
@@ -175,7 +175,7 @@ Meteor.publish("my_jobs", function() {
   this.ready();
 });
 
-Meteor.publish("job", function(jobId) {
+Meteor.publish("job", function (jobId) {
   check(arguments, [Match.Any]);
   return [
     Jobs.find({
@@ -184,15 +184,15 @@ Meteor.publish("job", function(jobId) {
   ];
 });
 
-Meteor.publishComposite('profile', function(profileId) {
+Meteor.publishComposite('profile', function (profileId) {
   return {
-    find: function() {
+    find: function () {
       return Profiles.find({
         _id: profileId
       })
     },
     children: [{
-      find: function(profile) {
+      find: function (profile) {
         return Users.find({
           _id: profile.userId
         }, {
@@ -210,7 +210,7 @@ Meteor.publishComposite('profile', function(profileId) {
   }
 });
 
-Meteor.publish("developerUsers", function() {
+Meteor.publish("developerUsers", function () {
   check(arguments, [Match.Any]);
   return [
     Users.find({ //this may publish users for not active status profiles
@@ -228,14 +228,43 @@ Meteor.publish("developerUsers", function() {
   ];
 });
 
-Meteor.publish('profiles', function(limit) {
+Meteor.publish('profiles', function (limit, query) {
   var selector = {};
+  var options = {};
   check(limit, Number);
+  check(query, Match.Maybe(Object));
 
-  return Profiles.find(selector, {
-    limit: limit,
-    sort: {
+  var textQuery = query.text;
+  check(textQuery, Match.Maybe(String));
+
+  var typeQuery = query.type;
+  check(typeQuery, Match.Maybe(String));
+
+  var availableForHireQuery = query.availableForHire;
+  check(availableForHireQuery, Match.Maybe(Boolean));
+
+  if(typeQuery)
+    selector.type = typeQuery;
+
+  if(availableForHireQuery)
+    selector.availableForHire = true;
+
+  options.limit = limit;
+
+  if (!textQuery) {
+    options.sort = {
       randomSorter: 1
-    }
-  });
+    };
+  } else {
+    selector.$text = { $search: textQuery };
+    options.fields = {
+      score: { $meta: "textScore" }
+    };
+    options.sort = {
+      score: { $meta: "textScore" }
+    };
+  }
+
+
+  return Profiles.find(selector, options);
 });

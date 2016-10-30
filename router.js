@@ -55,7 +55,7 @@ Router.map(function() {
             };
         },
         subscriptions: function() {
-            return [subs.subscribe('homeJobs'), subs.subscribe('featuredJobs'), subs.subscribe('homeDevelopers'), subs.subscribe('developerCount'), subs.subscribe('jobCount')];
+            return [subs.subscribe('homeJobs'), subs.subscribe('featuredJobs'), Meteor.subscribe('homeDevelopers'), subs.subscribe('developerCount'), subs.subscribe('jobCount')];
         }
     });
 

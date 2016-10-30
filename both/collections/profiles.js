@@ -169,6 +169,16 @@ Profiles.attachSchema(
   })
 );
 
+if (Meteor.isServer) {
+  Profiles._ensureIndex({
+    "userName": "text",
+    "name": "text",
+    "title": "text",
+    "description": "text",
+    "location": "text"
+  });
+}
+
 Profiles.helpers({
   displayName: function() {
     return this.name || this.userName;

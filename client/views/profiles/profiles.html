@@ -1,11 +1,34 @@
 <template name="profiles">
-	<div class="row">
-		{{#each profiles}}
-	        {{>profileSmall}}
-	    {{/each}}
-	    
-	</div>
-	<div class="text-center">
-		{{> infiniteScroll }}
-	</div>
+  <section id="profiles">
+    <div class="row search-filter">
+        <div class="col-md-3 col-md-offset-6 col-sm-6 text-right">
+          <div class="form-group">
+            <select id="type" class="form-control">
+              <option value="All">Companies &amp; Individuals</option>
+              <option value="Individual">Individuals Only</option>
+              <option value="Company">Companies Only</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="form-group">
+            <input type="text" id="search" class="form-control" placeholder="Search" />
+          </div>
+        </div>
+      {{!--
+      <input type="checkbox" id="availableForHire" /> --}}
+    </div>
+    <div class="row">
+      {{#each profiles}}
+        {{>profileSmall}}
+      {{else}}
+        {{#if queryActive}}
+          Sorry no matching profiles found.
+        {{/if}}
+      {{/each}}
+    </div>
+    <div class="text-center">
+        {{> infiniteScroll }}
+    </div>
+  </section>
 </template>
