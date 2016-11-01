@@ -31,21 +31,26 @@ check@1.2.4
 force-ssl@1.0.13
 http@1.2.10
 reactive-var@1.0.11
+shell-server@0.2.1
+
 
 iron:router
 natestrauser:font-awesome
+natestrauser:connection-banner
+natestrauser:uploadcare-plus
+natestrauser:publish-performant-counts
 raix:handlebar-helpers
-momentjs:moment@=2.14.4
+momentjs:moment@=2.15.1
 aldeed:autoform
 aldeed:collection2
+aldeed:delete-button
 multiply:iron-router-progress
 # pauli:accounts-linkedin
-natestrauser:connection-banner
 lampe:rssfeed
 meteorhacks:kadira
-aldeed:delete-button
-useraccounts:bootstrap
 meteorhacks:subs-manager
+useraccounts:bootstrap
+useraccounts:iron-routing
 dburles:collection-helpers
 alanning:roles
 nemo64:bootstrap
@@ -61,15 +66,11 @@ peppelg:bootstrap-3-modal
 mpowaga:autoform-summernote
 djedi:sanitize-html
 gadicohen:sitemaps
-natestrauser:uploadcare-plus
 yogiben:admin
 ongoworks:speakingurl
 staringatlights:infinite-scroll
-useraccounts:iron-routing
 ostrio:iron-router-title
 astronomerio:core
 shwaydogg:space-monkey
 copleykj:stripe-sync
 mdg:seo
-natestrauser:publish-performant-counts
-shell-server@0.2.1
