@@ -14,7 +14,7 @@ aldeed:collection2@2.10.0
 aldeed:collection2-core@1.2.0
 aldeed:delete-button@2.0.0
 aldeed:schema-deny@1.1.0
-aldeed:schema-index@1.1.0
+aldeed:schema-index@1.1.1
 aldeed:simple-schema@1.5.3
 aldeed:tabular@1.6.1
 aldeed:template-extension@4.0.0
@@ -22,7 +22,7 @@ allow-deny@1.0.5
 astronomerio:core@1.0.0
 autoupdate@1.2.11
 babel-compiler@6.13.0
-babel-runtime@0.1.12
+babel-runtime@0.1.13
 base64@1.0.10
 binary-heap@1.0.10
 blaze@2.1.9
@@ -99,7 +99,7 @@ mobile-experience@1.0.4
 mobile-status-bar@1.0.13
 modules@0.7.7
 modules-runtime@0.7.7
-momentjs:moment@2.14.4
+momentjs:moment@2.15.1
 mongo@1.1.14
 mongo-id@1.0.6
 mongo-livedata@1.0.12
@@ -107,7 +107,7 @@ mpowaga:autoform-summernote@0.4.3
 multiply:iron-router-progress@1.0.2
 natestrauser:connection-banner@0.4.3
 natestrauser:font-awesome@4.6.3
-natestrauser:publish-performant-counts@0.1.1
+natestrauser:publish-performant-counts@0.1.2
 natestrauser:uploadcare-plus@2.9.0
 nemo64:bootstrap@3.3.5_3
 nemo64:bootstrap-data@3.3.5
