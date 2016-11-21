@@ -1,5 +1,6 @@
 *.sublime-workspace
 *settings.json
+.idea/*
 README-private.md
 
 npm-debug.log

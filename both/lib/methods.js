@@ -23,6 +23,31 @@ Meteor.methods({
       }
     });
   },
+  registerJobInterest: function(jobId) {
+    check(jobId, String);
+
+    var user = Users.findOne({
+      _id: this.userId
+    });
+
+
+    // if (!job)
+    //   throw new Meteor.Error("Could not find job.");
+    //
+    // if (this.userId !== job.userId)
+    //   throw new Meteor.Error("You can only deactivate your own job.");
+    //
+    // if (job.status !== "active")
+    //   throw new Meteor.Error("You can only deactivate an active job.");
+
+    Users.update({
+      _id: this.userId
+    }, {
+      $set: {
+        interestedInJobIds: [jobId]
+      }
+    });
+  },
   adminSetJobStatus: function(jobId, status) {
     check(jobId, String);
     check(status, String);
