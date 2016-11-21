@@ -16,5 +16,13 @@ Template.job.events({
 Template.job.helpers({
   'hasLabel': function() {
     return this.jobType || this.remote || this.featured;
+  },
+
+  'notInterested': function () {
+    if ( Meteor.user().interestedInJobIds ) {
+      return !Meteor.user().interestedInJobIds.includes(this._id)
+    } else {
+      return true;
+    }
   }
 });

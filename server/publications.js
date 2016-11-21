@@ -5,6 +5,10 @@ Meteor.publish(null, function () {
     return [
       Users.find({
         _id: this.userId
+      }, {
+        fields: {
+          interestedInJobIds: 1
+        }
       }),
       Profiles.find({
         userId: this.userId

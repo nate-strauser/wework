@@ -27,3 +27,7 @@ Jobs.after.insert(function(userId, doc) {
     text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + doc._id) + "\n\n\n\n\n\n"
   });
 });
+
+// Users.before.update(function(userId, doc) {
+//
+// })

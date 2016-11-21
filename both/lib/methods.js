@@ -26,25 +26,29 @@ Meteor.methods({
   registerJobInterest: function(jobId) {
     check(jobId, String);
 
-    var user = Users.findOne({
-      _id: this.userId
+    var job = Jobs.findOne({
+      _id: jobId
     });
 
+    if (!job)
+      throw new Meteor.Error("Could not find job.");
 
-    // if (!job)
-    //   throw new Meteor.Error("Could not find job.");
-    //
-    // if (this.userId !== job.userId)
-    //   throw new Meteor.Error("You can only deactivate your own job.");
-    //
-    // if (job.status !== "active")
-    //   throw new Meteor.Error("You can only deactivate an active job.");
+    if (job.status !== "active")
+      throw new Meteor.Error("You can only show interest in an active job.");
+
+
+    var userProfile = Profiles.findOne({
+      userId: this.userId
+    });
+
+    if ( !userProfile )
+      throw new Meteor.Error("You must have a developer profile to register interest in a job.");
 
     Users.update({
       _id: this.userId
     }, {
-      $set: {
-        interestedInJobIds: [jobId]
+      $push: {
+        interestedInJobIds: jobId
       }
     });
   },
