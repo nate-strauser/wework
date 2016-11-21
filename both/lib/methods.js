@@ -36,13 +36,13 @@ Meteor.methods({
     if (job.status !== "active")
       throw new Meteor.Error("You can only show interest in an active job.");
 
-
     var userProfile = Profiles.findOne({
       userId: this.userId
     });
 
     if ( !userProfile )
       throw new Meteor.Error("You must have a developer profile to register interest in a job.");
+    Meteor.call("sendJobInterestEmail", job)
 
     Users.update({
       _id: this.userId

@@ -37,5 +37,3 @@ daysUntilExpiration = function() {
   daysAgo.setDate(daysAgo.getDate() - daysToWait);
   return daysAgo;
 }
-
-
