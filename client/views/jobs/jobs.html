@@ -1,7 +1,25 @@
 <template name="jobs">
-	{{#each jobs}}
-		{{>jobSmall}}
-	{{/each}}
+  <div class="row search-filter">
+    <div class="col-md-3 col-md-offset-9 col-sm-6 text-right">
+      <div class="form-group">
+        <select id="jobType" class="form-control">
+          <option value="All">All</option>
+          {{#each JOB_TYPES}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    {{#if jobs}}
+    	{{#each jobs}}
+    		{{>jobSmall}}
+    	{{/each}}
+    {{else}}
+      <p class="text-center">No jobs under this category.</p>
+    {{/if}}
+  </div>
 	<div class="text-center">
 		{{> infiniteScroll }}
 	</div>
