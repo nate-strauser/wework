@@ -48,7 +48,7 @@ Meteor.methods({
     Users.update({
       _id: this.userId
     }, {
-      $push: {
+      $addToSet: {
         interestedInJobIds: jobId
       }
     });
