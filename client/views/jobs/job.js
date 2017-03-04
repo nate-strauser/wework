@@ -18,11 +18,11 @@ Template.job.helpers({
     return this.jobType || this.remote || this.featured;
   },
 
-  'notInterested': function () {
+  'interestedIn': function () {
     if ( Meteor.user().interestedInJobIds ) {
-      return !Meteor.user().interestedInJobIds.includes(this._id)
+      return Meteor.user().interestedInJobIds.includes(this._id)
     } else {
-      return true;
+      return false;
     }
   }
 });

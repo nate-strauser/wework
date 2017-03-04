@@ -54,10 +54,10 @@
 							{{#if currentUser }}
 								{{#if $eq status "active" }}
 									<hr>
-									{{#if notInterested }}
-										<a id="im-interested" class="btn btn-primary">I'm interested in this</a>
-									{{else}}
+									{{#if interestedIn }}
 										The owner of this post has been notified of your interest.
+									{{else}}
+										<a id="im-interested" class="btn btn-primary">I'm interested in this</a>
 									{{/if}}
 								{{/if}}
 							{{/if}}
