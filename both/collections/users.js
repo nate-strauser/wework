@@ -53,6 +53,10 @@ UserSchema = new SimpleSchema({
     optional: true,
     blackbox: true
   },
+  interestedInJobIds:{
+    type:[String],
+    optional:true
+  },
   roles: {
     type: Array,
     optional: true
