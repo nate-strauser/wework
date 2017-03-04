@@ -42,7 +42,8 @@ Meteor.methods({
 
     if ( !userProfile )
       throw new Meteor.Error("You must have a developer profile to register interest in a job.");
-    Meteor.call("sendJobInterestEmail", job)
+
+    Meteor.call("sendJobInterestEmail", job);
 
     Users.update({
       _id: this.userId
