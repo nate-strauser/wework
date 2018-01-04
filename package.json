@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/nate-strauser/wework#readme",
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "bcrypt": "^0.8.7"
   }
 }
