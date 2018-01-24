@@ -51,6 +51,16 @@
 							<hr>
 							<i class="fa fa-trophy fa-fw"></i> Featured Until {{formatDate featuredThrough}}
 							{{/if}}
+							{{#if currentUser }}
+								{{#if $eq status "active" }}
+									<hr>
+									{{#if interestedIn }}
+										The owner of this post has been notified of your interest.
+									{{else}}
+										<a id="im-interested" class="btn btn-primary">I'm interested in this</a>
+									{{/if}}
+								{{/if}}
+							{{/if}}
 						</div>
 						<div class="col-sm-9">
 							{{#if htmlDescription}}

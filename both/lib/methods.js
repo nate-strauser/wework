@@ -23,6 +23,36 @@ Meteor.methods({
       }
     });
   },
+  registerJobInterest: function(jobId) {
+    check(jobId, String);
+
+    var job = Jobs.findOne({
+      _id: jobId
+    });
+
+    if (!job)
+      throw new Meteor.Error("Could not find job.");
+
+    if (job.status !== "active")
+      throw new Meteor.Error("You can only show interest in an active job.");
+
+    var userProfile = Profiles.findOne({
+      userId: this.userId
+    });
+
+    if ( !userProfile )
+      throw new Meteor.Error("You must have a developer profile to register interest in a job.");
+
+    Meteor.call("sendJobInterestEmail", job);
+
+    Users.update({
+      _id: this.userId
+    }, {
+      $addToSet: {
+        interestedInJobIds: jobId
+      }
+    });
+  },
   adminSetJobStatus: function(jobId, status) {
     check(jobId, String);
     check(status, String);
