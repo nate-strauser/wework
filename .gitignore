@@ -8,3 +8,4 @@ node_modules
 .DS_Store
 /**/.DS_Store
 .demeteorized/
+.vscode/typings/meteor.d.ts

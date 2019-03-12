@@ -2,10 +2,11 @@ SyncedCron.add({
   name: 'Randomize Profile Random Sorter',
   schedule: function(parser) {
     // parser is a later.parse object
-    return parser.text('every 2 hours');
+    return parser.text('every 12 hours');
   },
   job: function() {
-    Profiles.find({}).forEach(function(profile) {
+    var profiles = Profiles.find({},{fields:{_id:1}}).fetch();
+    profiles.forEach(function(profile) {
       Profiles.update({ _id: profile._id }, {
         $set: {
           randomSorter: Math.floor(Math.random() * 1000000)
