@@ -2,6 +2,8 @@
 https://www.weworkmeteor.com/
 # Meteor Job Board and Developer Directory
 
+[![Codeship Status for nate-strauser/wework](https://app.codeship.com/projects/20fcf290-9cc5-0131-c1a7-7ae80bc9bd82/status?branch=master)](https://app.codeship.com/projects/17832)
+
 If you have a project or problem you need help with, you can post a job or contact a developer.
 
 If you are a developer, you can apply to jobs or offer your services for hire.
