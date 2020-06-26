@@ -132,10 +132,19 @@ Profiles.attachSchema(
       type: Number,
       defaultValue: Math.floor(Math.random() * 10000)
     },
+
     status: {
       type: String,
       allowedValues: PROFILE_STATUSES,
-      defaultValue: "active"
+      autoValue: function() {
+        if (this.isInsert) {
+          return 'pending';
+        } else if (this.isUpsert) {
+          return {
+            $setOnInsert: 'pending'
+          };
+        }
+      },
     },
     // Force value to be current date (on server) upon insert
     // and prevent updates thereafter.

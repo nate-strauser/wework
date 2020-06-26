@@ -229,7 +229,7 @@ Meteor.publish("developerUsers", function () {
 });
 
 Meteor.publish('profiles', function (limit, query) {
-  var selector = {};
+  var selector = {status: "active"};
   var options = {};
   check(limit, Number);
   check(query, Match.Maybe(Object));

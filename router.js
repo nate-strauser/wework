@@ -42,7 +42,9 @@ Router.map(function() {
                         featuredThrough: -1
                     }
                 }),
-                profiles: Profiles.find({}, {
+                profiles: Profiles.find({
+                  status:'active'
+                }, {
                     sort: {
                         availableForHire: -1,
                         randomSorter: 1

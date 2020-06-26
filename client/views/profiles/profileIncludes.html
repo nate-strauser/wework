@@ -14,9 +14,15 @@
     </div>
 </template>
 <template name="profileStatusAlert">
-    {{#if $eq status 'flagged'}}
-    <div class="alert alert-danger">
-        <i class="fa fa-flag fa-2x pull-left"></i> This profile has been flagged for content. Contact an admin if you believe this is in error.
-    </div>
+  {{#if $eq status 'pending'}}
+        <div class="alert alert-info">
+            <i class="fa fa-exclamation-triangle fa-2x pull-left"></i> This profile is awaiting admin approval. It will be reviewed shortly and then become live on the site.
+        </div>
+    {{else}}
+      {{#if $eq status 'flagged'}}
+      <div class="alert alert-danger">
+          <i class="fa fa-flag fa-2x pull-left"></i> This profile has been flagged for content. Contact an admin if you believe this is in error.
+      </div>
+      {{/if}}
     {{/if}}
 </template>
