@@ -8,12 +8,12 @@ sitemaps.add('/sitemap.xml', function() {
     });
   });
 
-  var profiles = Profiles.find({ status: "active" }, { sort: { createdAt: -1 } }).fetch();
-  _.each(profiles, function(profile) {
-    out.push({
-      page: profile.path(),
-      lastmod: profile.updatedAt
-    });
-  });
+  // var profiles = Profiles.find({ status: "active" }, { sort: { createdAt: -1 } }).fetch();
+  // _.each(profiles, function(profile) {
+  //   out.push({
+  //     page: profile.path(),
+  //     lastmod: profile.updatedAt
+  //   });
+  // });
   return out;
 });

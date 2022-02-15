@@ -59,26 +59,26 @@ Meteor.startup(function() {
     }
   });
 
-  Api.addRoute('profiles', {
-    get: function() {
-      return {
-        status: "success",
-        data: Profiles.find({
-          status: "active"
-        }, {
-          sort: {
-            createdAt: -1
-          },
-          fields: {
-            userId: false,
-            userName: false
-          },
-          transform: function(doc) {
-            doc.siteUrl = Meteor.absoluteUrl("profiles/" + doc._id + "/" + getSlug((doc.name || doc.userName) + " " + doc.title));
-            return doc;
-          }
-        }).fetch()
-      };
-    }
-  });
+  // Api.addRoute('profiles', {
+  //   get: function() {
+  //     return {
+  //       status: "success",
+  //       data: Profiles.find({
+  //         status: "active"
+  //       }, {
+  //         sort: {
+  //           createdAt: -1
+  //         },
+  //         fields: {
+  //           userId: false,
+  //           userName: false
+  //         },
+  //         transform: function(doc) {
+  //           doc.siteUrl = Meteor.absoluteUrl("profiles/" + doc._id + "/" + getSlug((doc.name || doc.userName) + " " + doc.title));
+  //           return doc;
+  //         }
+  //       }).fetch()
+  //     };
+  //   }
+  // });
 });

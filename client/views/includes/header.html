@@ -17,14 +17,14 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="{{isActiveRoute regex='^jobs$'}}"><a href="{{pathFor 'jobs'}}">Jobs</a></li>
-                        <li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">Developers</a></li>
+                        <!-- <li class="{{isActiveRoute regex='profiles'}}"><a href="{{pathFor 'profiles'}}">Developers</a></li> -->
                         {{#if currentUser}}
                             <li class="{{isActiveRoute regex='jobNew'}}"><a href="{{pathFor 'jobNew'}}">Post a Job</a></li>
-                            {{#unless currentUser.isDeveloper}}
+                            <!-- {{#unless currentUser.isDeveloper}}
                                 <li class="{{isActiveRoute regex='^profile$'}}">
                                     <a href="{{pathFor 'profileNew'}}">Create Developer Profile</a>
                                 </li>
-                            {{/unless}}
+                            {{/unless}} -->
                         {{/if}}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -56,7 +56,7 @@
                 <li><a href="/admin"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
                 <li class="divider"></li>
             {{/if}}
-            {{#if currentUser.isDeveloper}}
+            <!-- {{#if currentUser.isDeveloper}}
                 <li>
                     {{#with profile}}<a href="{{pathFor 'profile'}}"><i class="fa fa-rocket fa-fw"></i> Developer Profile</a>{{/with}}
                 </li>
@@ -64,7 +64,7 @@
                 <li>
                     <a href="{{pathFor 'profileNew'}}"><i class="fa fa-rocket fa-fw"></i> Create Developer Profile</a>
                 </li>
-            {{/if}}
+            {{/if}} -->
             <li>
                 <a href="#" id="userProfile"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
