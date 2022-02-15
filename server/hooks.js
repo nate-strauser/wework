@@ -31,6 +31,6 @@ Jobs.after.insert(function(userId, doc) {
     to: getUserEmail(admin),
     from: FROM_EMAIL,
     subject: "New Job Posted - " + doc.title,
-    text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + doc._id) + "\n\n\n\n\n\n"
+    text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + doc._id) + "\n\n\n\n\n\n Posted by user:" + userId
   });
 });
