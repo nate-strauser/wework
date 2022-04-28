@@ -4,7 +4,7 @@ AutoForm.addHooks(['userProfileEdit'], {
       if (error) {
         console.log(error);
       } else {
-        analytics.track("User Profile Edited");
+        // analytics.track("User Profile Edited");
         Modal.hide("userProfile");
       }
     }

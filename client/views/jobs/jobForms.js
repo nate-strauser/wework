@@ -5,8 +5,8 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
       if (error) {
         console.log("Insert Error:", error);
       } else {
-        analytics.track("Job Created");
-        console.log('new job', {result})
+        // analytics.track("Job Created");
+        Meteor.call("notifyAdminNewJobPost", result);
         Router.go('job', { _id: result });
       }
     },
@@ -14,7 +14,7 @@ AutoForm.addHooks(['jobNew', 'jobEdit'], {
       if (error) {
         console.log("Update Error:", error);
       } else {
-        analytics.track("Job Edited");
+        // analytics.track("Job Edited");
         Router.go('job', { _id: Router.current().params._id });
       }
     }
@@ -27,3 +27,5 @@ Template.jobEdit.events({
     Router.go("job", { _id: this.job._id });
   }
 })
+
+

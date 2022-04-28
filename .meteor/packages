@@ -52,7 +52,7 @@ zimme:iron-router-active
 percolate:migrations
 jparker:crypto-md5
 utilities:avatar
-matb33:collection-hooks
+#matb33:collection-hooks
 percolatestudio:synced-cron
 reywood:publish-composite
 nimble:restivus

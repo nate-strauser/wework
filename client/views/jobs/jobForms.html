@@ -6,7 +6,7 @@
                 <p>Jobs are free to post.
 
                 Your job post will remain on this site for 90 days.  After 90 days the post will no longer appear to visitors.
-                
+
                 You can have your job post featured on the home page for 30 days for $100 buy purchasing the upgrade after creating your post.</p>
                 <br>
             <div class="panel panel-default">
@@ -54,5 +54,12 @@
     </div>
 </template>
 <template name="jobFields">
-    {{> afQuickField name='title' placeholder="Title displayed for your listing"}} {{> afQuickField name="jobtype" firstOption="(Select a Job Type)" options="allowed"}} {{> afQuickField name='company' placeholder="Name of the hiring company"}} {{> afQuickField name='location' placeholder="Where is this job located?"}} {{> afQuickField name='remote'}} {{> afQuickField name='description' rows=8 placeholder="Tell prospective developers about this position. What is the project? What will you expect them to know beforehand? Things like that."}} {{> afQuickField name='url' placeholder="External URL of job posting"}} {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
+    {{> afQuickField name='title' placeholder="Title displayed for your listing"}}
+    {{> afQuickField name="jobtype" firstOption="(Select a Job Type)" options="allowed"}}
+    {{> afQuickField name='company' placeholder="Name of the hiring company"}}
+    {{> afQuickField name='location' placeholder="Where is this job located?"}}
+    {{> afQuickField name='remote'}}
+    {{> afQuickField name='description' rows=8 placeholder="Tell prospective developers about this position. What is the project? What will you expect them to know beforehand? Things like that."}}
+    {{> afQuickField name='url' placeholder="External URL of job posting"}}
+    {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
 </template>
