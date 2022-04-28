@@ -135,7 +135,7 @@ Meteor.publish("featuredJobs", function () {
 //   }]
 // });
 
-Meteor.publish("jobs", function (limit) {
+Meteor.publish("jobs", function (limit = 100) {
   check(limit, Number);
 
   return Jobs.find({

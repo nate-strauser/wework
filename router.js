@@ -64,7 +64,10 @@ Router.map(function() {
 
     this.route('jobs', {
         path: '/jobs',
-        title: "We Work Meteor - All Jobs"
+        title: "We Work Meteor - All Jobs",
+        subscriptions: function() {
+            return [subs.subscribe('jobs')];
+        }
     });
 
     this.route('myJobs', {
