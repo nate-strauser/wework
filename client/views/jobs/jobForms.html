@@ -62,13 +62,4 @@
     {{> afQuickField name='description' rows=8 placeholder="Tell prospective developers about this position. What is the project? What will you expect them to know beforehand? Things like that."}}
     {{> afQuickField name='url' placeholder="External URL of job posting"}}
     {{> afQuickField name='contact' placeholder="email/twitter/whatever for you to be contacted at (your user account email address is not displayed)"}}
-    
-    <!-- Anti-spam fields - hidden from real users -->
-    <div style="position: absolute; left: -5000px; top: -5000px;" aria-hidden="true">
-      <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-      <label for="website">Leave this field empty</label>
-    </div>
-    
-    <!-- Hidden timestamp field -->
-    <input type="hidden" name="formLoadTime" id="formLoadTime">
 </template>
