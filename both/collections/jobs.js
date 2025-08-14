@@ -159,9 +159,11 @@ Jobs.helpers({
   }
 });
 
+// Block client-side inserts - all job creation goes through server methods with reCAPTCHA
+// Keep update rules to allow users to edit their own jobs after creation
 Jobs.allow({
   insert: function(userId, doc) {
-    return userId && doc && userId === doc.userId;
+    return false; // Prevent all client-side inserts
   },
   update: function(userId, doc, fieldNames, modifier) {
     return Roles.userIsInRole(userId, ['admin']) ||

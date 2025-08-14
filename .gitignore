@@ -9,3 +9,7 @@ node_modules
 /**/.DS_Store
 .demeteorized/
 .vscode/typings/meteor.d.ts
+
+meteor.log
+.claude
+docs/claudePlans/**

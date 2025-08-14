@@ -14,10 +14,20 @@
                     <h4>Create Your Job Post</h4>
                 </div>
                 <div class="panel-body">
-                    {{#autoForm id="jobNew" collection="Jobs" type="insert" }}
+                    {{#autoForm id="jobNew" collection="Jobs" type="normal" }}
                         {{>jobFields}}
+                        
+                        <!-- reCAPTCHA v3 Badge Notice -->
+                        <div class="form-group">
+                            <small class="text-muted">
+                                This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+                            </small>
+                        </div>
+                        
                         <div>
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-chevron-right"></i> Continue to preview your post</button>
+                            <button type="submit" class="btn btn-primary" id="submitJobBtn"><i class="fa fa-chevron-right"></i> Continue to preview your post</button>
                         </div>
                     {{/autoForm}}
                 </div>

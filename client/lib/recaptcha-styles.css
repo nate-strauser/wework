@@ -1,0 +1,31 @@
+/* reCAPTCHA v3 badge positioning - hide it since we have attribution text */
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+/* Show attribution when badge is hidden */
+.recaptcha-notice {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* Loading state for submit button */
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Spinner animation for loading state */
+.fa-spinner.fa-spin {
+  animation: fa-spin 1s linear infinite;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
