@@ -23,6 +23,7 @@ Meteor.methods({
     // Development bypass - skip reCAPTCHA in development mode
     const isDevelopment = Meteor.isDevelopment;
     const bypassInDev = Meteor.settings.private?.recaptcha?.bypassInDevelopment;
+    let adminExtraDetails = '';
 
     if (isDevelopment && bypassInDev) {
       console.log('⚠️ reCAPTCHA bypassed in development mode');
@@ -55,6 +56,13 @@ Meteor.methods({
           'Your submission was flagged as potential spam. Please try again or contact support.');
       }
 
+      console.log('Job Insert Debug', {
+        doc,
+        verificationResult
+      });
+
+      adminExtraDetails = `\n\n\n\n\n\n reCAPTCHA Details: ${JSON.stringify(verificationResult, null, 2)}`;
+
       // Add reCAPTCHA score to document
       // doc.recaptchaScore = verificationResult.score;
       // doc.recaptchaAction = verificationResult.action;
@@ -72,7 +80,7 @@ Meteor.methods({
         to: getUserEmail(admin),
         from: FROM_EMAIL,
         subject: "New Job Posted - " + job.title,
-        text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + job._id) + "\n\n\n\n\n\n Posted by user:" + this.userId
+        text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + job._id) + "\n\n\n\n\n\n Posted by user:" + this.userId + adminExtraDetails
       });
     }
 
