@@ -72,12 +72,13 @@ Meteor.methods({
     const jobId = Jobs.insert(doc);
 
     // Send admin notification email
-    const admin = Users.findOne({ roles: "admin" });
+    // const admin = Users.findOne({ roles: "admin" });
     const job = Jobs.findOne(jobId);
 
-    if (admin && job) {
+
+    if (job) {
       Email.send({
-        to: getUserEmail(admin),
+        to: 'nathan.strauser@gmail.com',
         from: FROM_EMAIL,
         subject: "New Job Posted - " + job.title,
         text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + job._id) + "\n\n\n\n\n\n Posted by user:" + this.userId + adminExtraDetails
@@ -87,24 +88,7 @@ Meteor.methods({
     return jobId;
   },
 
-  'notifyAdminNewJobPost'(jobId) {
-    check(jobId, String);
 
-    this.unblock();
-
-    var admin = Users.findOne({ roles: "admin" });
-    var job = Jobs.findOne(jobId);
-
-    if (!job)
-      throw new Meteor.Error("Could not find job");
-
-    Email.send({
-      to: getUserEmail(admin),
-      from: FROM_EMAIL,
-      subject: "New Job Posted - " + job.title,
-      text: "Job needs to be approved before it is live:\n\n" + Meteor.absoluteUrl("jobs/" + job._id) + "\n\n\n\n\n\n Posted by user:" + this.userId
-    });
-  }
 });
 
 // Helper function: Verify reCAPTCHA v3 token with Google

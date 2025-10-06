@@ -177,11 +177,22 @@ Meteor.publish("my_jobs", function () {
 
 Meteor.publish("job", function (jobId) {
   check(arguments, [Match.Any]);
-  return [
-    Jobs.find({
-      _id: jobId
-    })
-  ];
+
+  // Check authorization
+  const isAdmin = Roles.userIsInRole(this.userId, 'admin');
+
+  // Build query with authorization logic
+  const query = { _id: jobId };
+
+  if (!isAdmin) {
+    // Non-admins can only see active jobs OR their own jobs
+    query.$or = [
+      { status: "active" },
+      { userId: this.userId }
+    ];
+  }
+
+  return Jobs.find(query);
 });
 
 // Meteor.publishComposite('profile', function (profileId) {
